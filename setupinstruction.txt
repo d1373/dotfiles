@@ -1,0 +1,12 @@
+add this to tuchpad config ("/etc/X11/xorg.conf.d/*-touchpad.conf")
+
+    Option "Tapping" "on"
+	Option "Accel Speed" "0.70"
+	Option "Disable While Typing" "true"
+	Option "Natural Scrolling" "true"
+
+
+add this to keyboard config ("/etc/X11/xorg.conf.d/*-keyboard.conf")
+		Option          "XkbOptions" "caps:swapescape"
+
+yay -S awesome rofi picom i3lock xclip ttf-roboto polkit-gnome materia-theme lxappearance flameshot pnmixer network-manager-applet xfce4-power-manager qt5-styleplugins papirus-icon-theme setxkbmap gufw ttf-font-awesome pcmanfm themix-full-git code blender audacity gimp inkscape spotify ripgrep bat acpi acpid caffeine-ng pulsemixer brave-bin chromium rofi-emoji gucharmap gotop-bin timeshift gparted colorpicker copyq joplin joplin-desktop virtualbox qt5ct qt5 discord veracrypt blueberry kitty trash-cli ranger 

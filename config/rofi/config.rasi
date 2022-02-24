@@ -1,0 +1,10 @@
+configuration {
+	terminal: "/usr/bin/kitty";
+	kb-row-up: "Up,Control+k";
+	kb-row-down: "Down,Control+j";
+	kb-remove-to-eol: "";
+	kb-accept-entry: "Control+m,Return,KP_Enter";
+	matching: "fuzzy";
+	sorting-method: "fzf";
+}
+@theme "~/.config/rofi/themes/center.rasi"
