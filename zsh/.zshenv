@@ -165,8 +165,10 @@ export BROWSER=firefox
 #export BROWSER=brave
 PATH=$PATH:/home/dhyey/scripts
 PATH=$PATH:/home/dhyey/.local/bin
+PATH=$PATH:/home/dhyey/.local/share/flutter/bin
+PATH=$PATH:/home/dhyey/.local/share/android-studio/bin
 export PATH
-export TERM=xterm-256color
+export TERM=kitty
 #export TERM=alacritty
 export TERMINAL=kitty
 export XDG_DATA_HOME=/home/dhyey/.local/share/

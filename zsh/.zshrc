@@ -41,29 +41,27 @@ alias ed="cd /run/media/dhyey/Dhyey"
 alias r="ranger"
 alias ..="cd .."
 alias ...="cd ..;cd .."
-alias wi="powershell.exe 'C:\Program Files\Neovim\bin\nvim.exe'"
-alias win="cd /mnt/c/Users/Dhyey"
-alias winget="powershell.exe winget"
-alias p="powershell.exe"
 alias s="exec $SHELL"
-#alias yay="paru"
+alias yay="paru"
 alias se="sudoedit"
 alias n="prime-run"
 alias vi="nvim"
+alias grep="rg"
+alias nano="nvim"
 alias v="nvim"
 export EDITOR="nvim"
-#alias ll="exa --icons --group-directories-first -al"
-alias ll="lsd -al"
-alias l="lsd -l"
-alias rm="rm -i"
-alias ls="lsd"
-#alias ls="exa --icons --group-directories-first"
+alias ll="exa --icons --group-directories-first -al"
+#alias ll="lsd -al"
+#alias l="lsd -l"
+#alias rm="rm -i"
+#alias ls="lsd"
+alias ls="exa --icons --group-directories-first"
 alias clip="xclip -selection clipboard"
 alias nvimrc="cd ~/dotfiles/config/nvim; nvim init.vim; cd"
 alias :q="exit"
-#alias l="exa --icons --group-directories-first -1"
+alias l="exa --icons --group-directories-first -1"
 alias code="codium"
-alias pac="sudo pacman"
+alias pac="paru"
 alias usb="cd /run/media/dhyey"
 alias aurls="diff <(pacman -Q) <(pacman -Qn)"
 #alias clear="clear;neofetch"
@@ -180,10 +178,61 @@ selected=`echo "$items" | fzf`
 rm "$selected"
 }
 vimopen () {
-items=`find ~/Documents/  ~/scripts ~/dotfiles ~/projects`
+items=`find ~/Documents/  ~/scripts ~/dotfiles`
 selected=`echo "$items" | fzf`
-nvim "$selected"
+directories=`echo "$selected" | awk -F "/"'BEGIN {for (i=1;i<=100;i++) {if ($i == $NF) i=101;}{else print "$i"/}}'`
+files=`echo "$selected" | awk -F "/"'{print $NF}' `
+nvim "$files"
 }
+f() {
+    # if no arguments passed, just lauch fzf
+    if [ $# -eq 0 ]
+    then
+        fzf
+        return 0
+    fi
+
+    # Store the program
+    program="$1"
+
+    # Remove first argument off the list
+    shift
+
+    # Store any option flags
+    #options="$@"
+
+    # Store the arguments from fzf
+    arguments=$(fzf --multi)
+
+    # If no arguments passed (e.g. if Esc pressed), return to terminal
+    if [ -z "${arguments}" ]; then
+        return 1
+    fi
+
+    # Sanitise the command by putting single quotes around each argument, also
+    # first put an extra single quote next to any pre-existing single quotes in
+    # the raw argument. Put them all on one line.
+    for arg in "${arguments[@]}"; do
+        arguments=$(echo "$arg" | sed "s/'/''/g; s/.*/'&'/g; s/\n//g")
+    done
+
+    # If the program is on the GUI list, add a '&'
+    if [[ "$program" =~ ^(thunar|zathura|evince|mpv|eog|kolourpaint)$ ]]; then
+        arguments="$arguments &"
+    fi
+
+    # Write the shell's active history to ~/.bash_history.
+    history -w
+
+    # Add the command with the sanitised arguments to .bash_history
+    echo $program $options $arguments >> ~/.bash_history
+
+    # Reload the ~/.bash_history into the shell's active history
+    history -r
+
+    # execute the last command in history
+    fc -s -1
+    }
 manpage () {
 items=`man -k . | fzf | awk '{print $1}'`
 man "$items"
@@ -202,6 +251,7 @@ bindkey -s '^[f' "vimopen\n"
 bindkey -s '^[m' "manpage\n"
 bindkey -s '^[i' "pacinstall\n"
 bindkey -s '^[u' "pacuninstall\n"
+bindkey -s '^f'  "lf | xdotool key f f \n"
 bindkey -s '^[h' '^r'
 bindkey -s '^[d' '^[c'
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.

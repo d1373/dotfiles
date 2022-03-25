@@ -13,7 +13,7 @@ map K zoom out
 map J zoom in
 map i recolor
 map p print
-map <C-j> scroll full-down
-map <C-k> scroll full-up
+map <A-j> scroll full-down
+map <A-k> scroll full-up
 set recolor-lightcolor \#282828
 set recolor-darkcolor \#f4f4f4

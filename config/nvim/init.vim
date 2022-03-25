@@ -1,64 +1,32 @@
 let mapleader = " "
 map q <Nop>
-"map <leader>, :WhichKey '<Space>'<CR>
 map <leader>N :tabnew<CR> 
 map <C-l> :tabn<CR>
 map <C-h> :tabp<CR> 
 call plug#begin('~/.vim/plugged')
 Plug 'ap/vim-css-color'                            " Color previews for CSS
-" multicursor
-Plug 'terryma/vim-multiple-cursors'
-"latex
-Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
-" Nerdtree
-"Highlight 
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'preservim/nerdtree'
 Plug 'ryanoasis/vim-devicons'
-Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
-" Vim code runner
 Plug 'xianzhon/vim-code-runner'
-"find and replace 
-Plug 'mhinz/vim-grepper', { 'on': ['Grepper', '<plug>(GrepperOperator)'] }
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'yuki-yano/fzf-preview.vim', { 'branch': 'release/rpc' }
-"Plug 'nvim-lua/plenary.nvim'
-"Plug 'nvim-telescope/telescope.nvim'
-"Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'mattn/emmet-vim'
-"Markdow 
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 Plug 'godlygeek/tabular'
-  "  Cheat Sheet
-Plug 'dbeniamine/cheat.sh-vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes' 
-"Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
-"Plug 'edkolev/tmuxline.vim'
 Plug 'turbio/bracey.vim' 
 Plug 'neoclide/coc.nvim', {'branch': 'release'} 
-Plug 'joshdick/onedark.vim'
 Plug 'morhetz/gruvbox'
-Plug 'sainnhe/gruvbox-material'
-"Plug 'sainnhe/sonokai'
-Plug 'mhartington/oceanic-next'
-"Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'} "pythonn syntax highlighting
-"Plug 'itmammoth/maximize.vim'
-"Plug 'liuchengxu/vim-which-key'
 Plug 'preservim/nerdcommenter'
-"Plug 'dracula/vim', { 'as': 'dracula' }   
 Plug 'cometsong/CommentFrame.vim'
-Plug 'rbgrouleff/bclose.vim'
 Plug 'dikiaap/minimalist'
 Plug 'sheerun/vim-polyglot'
-Plug 'dylanaraps/crayon'
 Plug 'kaicataldo/material.vim', { 'branch': 'main' }
 Plug 'uiiaoo/java-syntax.vim'
-Plug 'ayu-theme/ayu-vim'
-"Plug 'sonph/onehalf', { 'rtp': 'vim' }
-" vim fugitive
 Plug 'tpope/vim-fugitive'
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'akinsho/toggleterm.nvim'
@@ -78,17 +46,12 @@ inoremap <silent><A-t> <Esc><Cmd>exe v:count1 . "ToggleTerm"<CR>
 "set shortmess-=F
 syntax enable
 autocmd VimEnter * hi Normal ctermbg=NONE guibg=NONE
-colorscheme gruvbox
+colorscheme material
+set background=dark
 set t_Co=256
 let g:gruvbox_contrast_dark = 'medium'
 let g:material_theme_style = 'darker'
 let ayucolor="dark"
-" Mappings
-" This is the default extra key bindings
-let g:fzf_action = {
-  \ 'ENTER': 'tab split',
-  \ 'ctrl-x': 'split',
-  \ 'ctrl-v': 'vsplit' }
 command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}), <bang>0)
 nnoremap <leader>f <cmd>Files<cr>
 nnoremap <leader>s <cmd>Ag<cr>
@@ -118,7 +81,6 @@ autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists('s:std_in
 " Make nerdtree open on right side
 let g:NERDTreeWinPos = "right"
 nnoremap <A-b> :NERDTreeToggle<CR>
-let NERDTreeMapOpenInTab='<ENTER>'
 "------------------------------------------------------------------------------"
 "                                 commets keys                                 "
 "------------------------------------------------------------------------------"
@@ -142,10 +104,6 @@ set t_Co=256                    " Set if term supports 256 colors.
 set number relativenumber       " Display line numbers
 "set nowrap
 "set nu nu
-"set guicursor=n-v-c:block-Cursor
-"set guicursor+=i:ver100-iCursor
-"set guicursor+=n-v-c:blinkon0
-"set guicursor+=i:blinkwait10
 let g:livepreview_previewer = 'zathura'
 map <A-q> :q!<CR>
 map <A-w> :wq<CR>
@@ -166,45 +124,10 @@ nnoremap <leader>k :m .-2<CR>==
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
 vmap <leader>,  <Plug>(coc-format-selected)
 map <leader>/ <Plug>NERDCommenterToggle
-"
-"
-"
-
-"------------------------------------------------------------------------------"
-"                                  code runner                                 "
-"------------------------------------------------------------------------------"
 nmap <silent><leader>r <plug>CodeRunner
-"------------------------------------------------------------------------------"
-"                                  fireneovim                                  "
-"------------------------------------------------------------------------------"
-"
-"function! s:IsFirenvimActive(event) abort
-  "if !exists('*nvim_get_chan_info')
-    "return 0
-  "endif
-  "let l:ui = nvim_get_chan_info(a:event.chan)
-  "return has_key(l:ui, 'client') && has_key(l:ui.client, 'name') &&
-      "\ l:ui.client.name =~? 'Firenvim'
-"endfunction
-
-"function! OnUIEnter(event) abort
-  "if s:IsFirenvimActive(a:event)
-    "set laststatus=0
-  "endif
-"endfunction
-"autocmd UIEnter * call OnUIEnter(deepcopy(v:event))
-au BufEnter github.com_*.txt set filetype=markdown
-au BufEnter gitlab.com_*.txt set filetype=markdown
-au BufEnter reddit.com_*.txt set filetype=markdown
-
-
-
-"
 let g:fzf_preview_command = 'bat --color=always --plain {-1}'
 let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.8 } }
 let $FZF_DEFAULT_OPTS='--reverse'
-
-
 "------------------------------------------------------------------------------"
 "                               find and replace                               "
 "------------------------------------------------------------------------------"
@@ -243,18 +166,8 @@ let g:mkdp_auto_close = 1
  set smarttab                    " Be smart using tabs ;)
  set shiftwidth=4                " One tab == four spaces.
  set tabstop=4                   " One tab == four spaces.
- """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
- " => Mouse Scrolling
- """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
  set mouse=nicr
-
- """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
- " => Splits and Tabbed Files
- """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
  set splitbelow splitright
-
- "nnoremap <leader>V <C-w>v
- "nnoremap <leader>H <C-w>s
  map <A-H> :sp 
  map <A-v> :vs 
  " Remap splits navigation to just ctrl+ hjkl
@@ -262,38 +175,13 @@ nnoremap <A-h> <C-w>h
 nnoremap <A-j> <C-w>j
 nnoremap <A-k> <C-w>k
 nnoremap <A-l> <C-w>l
-"let g:maximize_default_mapping = 0
-"nnoremap <leader>m :MaximizeWindow<CR>
-" Make adjusing split sizes a bit more friendly
 noremap <A-Left> :vertical resize +3<CR>
 noremap <A-Right> :vertical resize -3<CR>
 noremap <A-Up> :resize +3<CR>
 noremap <A-Down> :resize -3<CR>
- " Change 2 split windows from vert to horiz or horiz to vert
- map <Leader>th <C-w>t<C-w>H
- map <Leader>tk <C-w>t<C-w>K
-
- " Removes pipes | that act as seperators on splits
- set fillchars+=vert:\ 
-
- """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
- " => Other Stuff
- """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+map <Leader>th <C-w>t<C-w>H
+map <Leader>tk <C-w>t<C-w>K
  let g:python_highlight_all = 1
-
- au! BufRead,BufWrite,BufWritePost,BufNewFile *.org 
- au BufEnter *.org            call org#SetOrgFileType()
-
- set guioptions-=m  "remove menu bar
- set guioptions-=T  "remove toolbar
- set guioptions-=r  "remove right-hand scroll bar
- set guioptions-=L  "remove left-hand scroll bar
-"quit 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Open terminal inside Vim
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-map <Leader>tt :vnew term://zsh<CR>
-
 "-----------------------------------------------------------
 "make use of tab and shift tab 
 "-----------------------------------------------------------
@@ -400,7 +288,7 @@ let g:airline#extensions#tabline#show_splits = 0
 "let g:airline_left_sep = '>'
 "let g:airline_right_sep = '<'
 " Switch to your current theme
-"let g:airline_theme = 'gruvbox'
+let g:airline_theme = 'minimalist'
 "" Always show tabs
 set showtabline=2
  "We don't need to see things like -- INSERT -- anymore
