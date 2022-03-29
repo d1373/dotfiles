@@ -58,7 +58,10 @@ alias ll="exa --icons --group-directories-first -al"
 alias ls="exa --icons --group-directories-first"
 alias clip="xclip -selection clipboard"
 alias nvimrc="cd ~/dotfiles/config/nvim; nvim init.vim; cd"
-alias :q="exit"
+alias :q="if [ ! "$TMUX" ]; then 
+			exit 
+		else tmux detach 
+			fi"
 alias l="exa --icons --group-directories-first -l"
 alias code="codium"
 alias pac="paru"
@@ -88,7 +91,8 @@ alias gst="git status"
 alias tmux="tmux -u"
 alias tl="tmux -u ls"
 alias tn="tmux -u  new -s"
-alias ta="tmux -u a -t"
+alias taa="tmux -u a -t"
+alias ta="tmux attach"
 #------------------------------------------------------------------------------#
 #                                   trash-cli                                  #
 #------------------------------------------------------------------------------#
@@ -287,8 +291,8 @@ SPACESHIP_TERRAFORM_SHOW=false
 SPACESHIP_VI_MODE_SHOW=false
 SPACESHIP_JOBS_SHOW=false
 # load
-autoload -U promptinit; promptinit
-prompt spaceship
+#autoload -U promptinit; promptinit
+#prompt spaceship
 source $HOME/.zshenv 
 #source /usr/share/fzf/key-bindings.zsh
 #source /usr/share/fzf/completion.zsh
@@ -296,14 +300,15 @@ source $HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source $HOME/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 #neofetch
  #To customize prompt, run `p10k configure` or edit ~/my-git-projects/dotfiles/zsh/.p10k.zsh.
-#source ~/.zsh/powerlevel10k/powerlevel10k.zsh-theme
+source ~/.zsh/powerlevel10k/powerlevel10k.zsh-theme
 
 #[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-#[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 #clear
 #fm6000 -dog -c white
 # To customize prompt, run `p10k configure` or edit ~/dotfiles/zsh/.p10k.zsh.
 #[[ ! -f ~/dotfiles/zsh/.p10k.zsh ]] || source ~/dotfiles/zsh/.p10k.zsh
 terminall=`basename "/"$(ps -f -p $(cat /proc/$(echo $$)/stat | cut -d \  -f 4) | tail -1 | sed 's/^.* //')`
+[ -f /opt/miniconda3/etc/profile.d/conda.sh ] && source /opt/miniconda3/etc/profile.d/conda.sh

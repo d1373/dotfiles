@@ -168,9 +168,10 @@ PATH=$PATH:/home/dhyey/.local/bin
 PATH=$PATH:/home/dhyey/.local/share/flutter/bin
 PATH=$PATH:/home/dhyey/.local/share/android-studio/bin
 export PATH
-export TERM=kitty
-#export TERM=alacritty
-export TERMINAL=kitty
+#export TERM=kitty
+#export TERM="alacritty"
+export TERMINAL="alacritty"
+export TERM="xterm-256color"
 export XDG_DATA_HOME=/home/dhyey/.local/share/
 #export BAT_THEME="gruvbox-dark"
 #export BAT_THEME="Dracula"

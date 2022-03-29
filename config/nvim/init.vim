@@ -30,6 +30,7 @@ Plug 'uiiaoo/java-syntax.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'akinsho/toggleterm.nvim'
+Plug 'edkolev/tmuxline.vim'
 call plug#end()
 " set
 let g:toggleterm_terminal_mapping = '<A-t>'
@@ -45,8 +46,8 @@ nnoremap <silent><A-t> <Cmd>exe v:count1 . "ToggleTerm"<CR>
 inoremap <silent><A-t> <Esc><Cmd>exe v:count1 . "ToggleTerm"<CR>
 "set shortmess-=F
 syntax enable
-autocmd VimEnter * hi Normal ctermbg=NONE guibg=NONE
 colorscheme material
+au ColorScheme * hi Normal ctermbg=none guibg=none
 set background=dark
 set t_Co=256
 let g:gruvbox_contrast_dark = 'medium'
@@ -70,8 +71,8 @@ autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTr
 " Close the tab if NERDTree is the only window remaining in it.
 autocmd BufEnter * if winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
  "If another buffer tries to replace NERDTree, put it in the other window, and bring back NERDTree.
-"autocmd BufEnter * if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_tree_\d\+' && winnr('$') > 1 |
-	"\ let buf=bufnr() | buffer# | execute "normal! \<C-W>w" | execute 'buffer'.buf | endif
+autocmd BufEnter * if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_tree_\d\+' && winnr('$') > 1 |
+	\ let buf=bufnr() | buffer# | execute "normal! \<C-W>w" | execute 'buffer'.buf | endif
 " Open the existing NERDTree on each new tab.
 autocmd BufWinEnter * if getcmdwintype() == '' | silent NERDTreeMirror | endif
 " Start NERDTree when Vim starts with a directory argument.
@@ -89,7 +90,7 @@ map <leader>c' :CommentFrameQuoteDash ""<left>
 map <leader>c/ :CommentFrameSlashes ""<left>
 map <leader>ch :CommentFrameHashDash ""<left>
 set background=dark 
-set termguicolors
+"set termguicolors
 let g:mkdp_auto_start = 1
 set cursorline
 highlight link javaIdentifier NONE
@@ -212,7 +213,23 @@ nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
-
+"COC config
+let g:coc_global_extentions = [
+	\ 'coc-snippet',
+	\ 'coc-tabnine',
+	\ 'coc-prettier',
+	\ 'coc-pairs',
+	\ 'coc-html',
+	\ 'coc-emmet',
+	\ 'coc-jedi',
+	\ 'coc-java',
+	\ 'coc-css',
+	\ 'coc-pyright',
+	\ 'coc-git',
+	\ 'coc-fzf-preview',
+	\ 'coc-clangd',
+	\ 'coc-flutter',
+	\]
 " Use K to show documentation in preview window
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 " Use <c-space> to trigger completion.
@@ -290,7 +307,7 @@ let g:airline#extensions#tabline#show_splits = 0
 " Switch to your current theme
 let g:airline_theme = 'minimalist'
 "" Always show tabs
-set showtabline=2
+"set showtabline=2
  "We don't need to see things like -- INSERT -- anymore
 set noshowmode
 "------------------------------------------------------------------------------"
@@ -302,19 +319,18 @@ nmap <leader>gs :G<CR>
 nmap <leader>gg :Git commit<CR>
 nmap <leader>gp :Git push<CR>
 "tmuxline
-"let g:airline#extensions#tmuxline#enabled = 1
-"let airline#extensions#tmuxline#snapshot_file = "~/.tmux-status.conf"
-"source $HOME/.config/nvim/keys/which-key.vim
+let g:airline#extensions#tmuxline#enabled = 1
+let airline#extensions#tmuxline#snapshot_file = "~/.tmux-status.conf"
 set nocompatible
 filetype plugin on
 set tgc
-"let g:tmuxline_powerline_separators = 0
+let g:tmuxline_powerline_separators = 0
 map j gj
 map k gk
-map <A-a> 0
-"map <leader>a 0
-"map <leader>; $
-map <A-;> $
+"map <A-a> 0
+map <leader>a 0
+map <leader>; $
+"map <A-;> $
 xnoremap <C-j> <C-n>
 xnoremap <C-k> <C-p>
 nnoremap <C-j> <C-n>
