@@ -4,6 +4,8 @@ map <leader>N :tabnew<CR>
 map <C-l> :tabn<CR>
 map <C-h> :tabp<CR> 
 call plug#begin('~/.vim/plugged')
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'AndrewRadev/tagalong.vim'
 Plug 'ap/vim-css-color'                            " Color previews for CSS
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'preservim/nerdtree'
@@ -31,7 +33,10 @@ Plug 'tpope/vim-fugitive'
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'akinsho/toggleterm.nvim'
 Plug 'edkolev/tmuxline.vim'
+Plug 'jiangmiao/auto-pairs'
 call plug#end()
+lua << EOF
+EOF
 " set
 let g:toggleterm_terminal_mapping = '<A-t>'
 " or manually...
@@ -218,7 +223,6 @@ let g:coc_global_extentions = [
 	\ 'coc-snippet',
 	\ 'coc-tabnine',
 	\ 'coc-prettier',
-	\ 'coc-pairs',
 	\ 'coc-html',
 	\ 'coc-emmet',
 	\ 'coc-jedi',

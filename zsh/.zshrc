@@ -90,7 +90,10 @@ alias gst="git status"
 # -------------------------------------------------------------------------------------------- #
 alias tmux="tmux -u"
 alias tl="tmux -u ls"
-alias tn="tmux -u  new -s"
+tn (){
+tmux new-session  -d -s $1
+}
+#alias tn="tmux -u  new -s"
 alias taa="tmux -u a -t"
 alias ta="tmux attach"
 #------------------------------------------------------------------------------#

@@ -170,7 +170,7 @@ PATH=$PATH:/home/dhyey/.local/share/android-studio/bin
 export PATH
 #export TERM=kitty
 #export TERM="alacritty"
-export TERMINAL="alacritty"
+#export TERMINAL="alacritty"
 export TERM="xterm-256color"
 export XDG_DATA_HOME=/home/dhyey/.local/share/
 #export BAT_THEME="gruvbox-dark"
