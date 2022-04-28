@@ -49,6 +49,7 @@ alias vi="nvim"
 alias grep="rg"
 alias nano="nvim"
 alias v="nvim"
+alias prime-run="__NV_PRIME_RENDER_OFFLOAD=1 __GLX_VENDOR_LIBRARY_NAME=nvidia "
 export EDITOR="nvim"
 alias ll="exa --icons --group-directories-first -al"
 #alias ll="lsd -al"
@@ -64,9 +65,10 @@ alias :q="if [ ! "$TMUX" ]; then
 			fi"
 alias l="exa --icons --group-directories-first -l"
 alias code="codium"
-alias pac="paru"
+#alias pac="paru"
+alias dnf="sudo dnf"
 alias usb="cd /run/media/dhyey"
-alias aurls="diff <(pacman -Q) <(pacman -Qn)"
+#alias aurls="diff <(pacman -Q) <(pacman -Qn)"
 #alias clear="clear;neofetch"
 #alias firefox="firefox-developer-edition"
 ## check mime type
@@ -154,15 +156,6 @@ bindkey -v '^?' backward-delete-char
 autoload edit-command-line; zle -N edit-command-line
 bindkey '^e' edit-command-line
 # Use lf to switch directories and bind it to ctrl-o
-lf () {
-	LF_TEMPDIR="$(mktemp -d -t lf-tempdir-XXXXXX)"
-	LF_TEMPDIR="$LF_TEMPDIR" lf-run -last-dir-path="$LF_TEMPDIR/lastdir" "$@"
-	if [ "$(cat "$LF_TEMPDIR/cdtolastdir" 2>/dev/null)" = "1" ]; then
-		cd "$(cat "$LF_TEMPDIR/lastdir")"
-	fi
-	rm -r "$LF_TEMPDIR"
-	unset LF_TEMPDIR
-}
 #lfcd () {
 	#tmp="$(mktemp)"
 	#lf -last-dir-path="$tmp" "$@"

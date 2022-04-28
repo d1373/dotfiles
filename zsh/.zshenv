@@ -165,8 +165,7 @@ export BROWSER=firefox
 #export BROWSER=brave
 PATH=$PATH:/home/dhyey/scripts
 PATH=$PATH:/home/dhyey/.local/bin
-PATH=$PATH:/home/dhyey/.local/share/flutter/bin
-PATH=$PATH:/home/dhyey/.local/share/android-studio/bin
+PATH=$PATH:/home/dhyey/.local/opt
 export PATH
 #export TERM=kitty
 #export TERM="alacritty"

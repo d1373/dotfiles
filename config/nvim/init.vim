@@ -23,6 +23,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'turbio/bracey.vim' 
 Plug 'neoclide/coc.nvim', {'branch': 'release'} 
 Plug 'morhetz/gruvbox'
+Plug 'sainnhe/gruvbox-material'
 Plug 'preservim/nerdcommenter'
 Plug 'cometsong/CommentFrame.vim'
 Plug 'dikiaap/minimalist'
@@ -51,8 +52,8 @@ nnoremap <silent><A-t> <Cmd>exe v:count1 . "ToggleTerm"<CR>
 inoremap <silent><A-t> <Esc><Cmd>exe v:count1 . "ToggleTerm"<CR>
 "set shortmess-=F
 syntax enable
-colorscheme material
-au ColorScheme * hi Normal ctermbg=none guibg=none
+colorscheme minimalist
+"au ColorScheme * hi Normal ctermbg=none guibg=none
 set background=dark
 set t_Co=256
 let g:gruvbox_contrast_dark = 'medium'
@@ -305,7 +306,7 @@ let g:airline#extensions#tabline#right_sep = ''
 let g:airline#extensions#tabline#right_alt_sep = ''
 let g:airline#extensions#tabline#show_splits = 0
 " enable powerline fonts
-"let g:airline_powerline_fonts = 1
+let g:airline_powerline_fonts = 1
 "let g:airline_left_sep = '>'
 "let g:airline_right_sep = '<'
 " Switch to your current theme
