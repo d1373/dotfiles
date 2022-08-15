@@ -11,7 +11,7 @@ do
         #"C-w")
                 #nitrogen --save --set-zoom-fill "$file" ;;
         "C-w")
-				plasma-apply-wallpaperimage "$file" ;;
-                #feh --bg-fill "$file" ;;
+				#plasma-apply-wallpaperimage "$file" ;;
+				feh --bg-fill "$file" ;;
         esac
 done

@@ -6,12 +6,12 @@
  */
 
 * {
-    background-color:           #101010;
-    border-color:               #101010;
+    background-color:           #181818;
+    border-color:               #181818;
     text-color:                 #ebebeb;
-    height:                     38px;
-    font:                       "SF Pro Display 15";
-    prompt-font:                "SF Pro Display 15";
+    height:                     33px;
+    font:                       "Hack Nerd Font 12.5";
+    prompt-font:                "Hack Nerd Font 12.5";
 	prompt-background:          #444444;
 	/*prompt-background:          #2F5582;*/
 	prompt-foreground:          #ebebeb;

@@ -52,6 +52,7 @@ alias v="nvim"
 alias prime-run="__NV_PRIME_RENDER_OFFLOAD=1 __GLX_VENDOR_LIBRARY_NAME=nvidia "
 export EDITOR="nvim"
 alias ll="exa --icons --group-directories-first -al"
+alias tree="exa  --icons --tree"
 #alias ll="lsd -al"
 #alias l="lsd -l"
 #alias rm="rm -i"
@@ -64,9 +65,9 @@ alias :q="if [ ! "$TMUX" ]; then
 		else tmux detach 
 			fi"
 alias l="exa --icons --group-directories-first -l"
-alias code="codium"
-#alias pac="paru"
-alias dnf="sudo dnf"
+#alias code="codium"
+alias pac="paru"
+alias apt="sudo apt"
 alias usb="cd /run/media/dhyey"
 #alias aurls="diff <(pacman -Q) <(pacman -Qn)"
 #alias clear="clear;neofetch"
@@ -115,10 +116,10 @@ alias trm="trash-rm"
 #------------------------------------------------------------------------------#
 #
 #alias yt="youtube-dl -f bestvideo+bestaudio"
-#alias ym="youtube-dl -f bestvideo+bestaudio -x" 
+alias ym="youtube-dl -f bestvideo+bestaudio -x" 
 alias yt="youtube-dl"
-alias ytdl="youtube-dl -f 137+140"
-alias ym="youtube-dl -x" 
+#alias ytdl="youtube-dl -f 137+140"
+#alias ym="youtube-dl -x" 
 # vi mode
 bindkey -v
 export KEYTIMEOUT=1
@@ -308,3 +309,4 @@ source ~/.zsh/powerlevel10k/powerlevel10k.zsh-theme
 #[[ ! -f ~/dotfiles/zsh/.p10k.zsh ]] || source ~/dotfiles/zsh/.p10k.zsh
 terminall=`basename "/"$(ps -f -p $(cat /proc/$(echo $$)/stat | cut -d \  -f 4) | tail -1 | sed 's/^.* //')`
 [ -f /opt/miniconda3/etc/profile.d/conda.sh ] && source /opt/miniconda3/etc/profile.d/conda.sh
+export PATH=$PATH:/home/dhyey/.spicetify

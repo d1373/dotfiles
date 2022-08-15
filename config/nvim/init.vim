@@ -4,7 +4,7 @@ map <leader>N :tabnew<CR>
 map <C-l> :tabn<CR>
 map <C-h> :tabp<CR> 
 call plug#begin('~/.vim/plugged')
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+"Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'AndrewRadev/tagalong.vim'
 Plug 'ap/vim-css-color'                            " Color previews for CSS
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
@@ -35,6 +35,7 @@ Plug 'dhruvasagar/vim-table-mode'
 Plug 'akinsho/toggleterm.nvim'
 Plug 'edkolev/tmuxline.vim'
 Plug 'jiangmiao/auto-pairs'
+Plug 'dense-analysis/ale'
 call plug#end()
 lua << EOF
 EOF
@@ -52,8 +53,8 @@ nnoremap <silent><A-t> <Cmd>exe v:count1 . "ToggleTerm"<CR>
 inoremap <silent><A-t> <Esc><Cmd>exe v:count1 . "ToggleTerm"<CR>
 "set shortmess-=F
 syntax enable
-colorscheme minimalist
-"au ColorScheme * hi Normal ctermbg=none guibg=none
+colorscheme material
+au ColorScheme * hi Normal ctermbg=none guibg=none
 set background=dark
 set t_Co=256
 let g:gruvbox_contrast_dark = 'medium'
@@ -61,6 +62,7 @@ let g:material_theme_style = 'darker'
 let ayucolor="dark"
 command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}), <bang>0)
 nnoremap <leader>f <cmd>Files<cr>
+nnoremap <C-f> :BLines<CR>
 nnoremap <leader>s <cmd>Ag<cr>
 nnoremap <leader>b <cmd>Buffers<cr>
 nnoremap <leader>gc :Commits<CR>
@@ -109,7 +111,7 @@ set nobackup                    " No auto backups
 set noswapfile                  " No swap
 set t_Co=256                    " Set if term supports 256 colors.
 set number relativenumber       " Display line numbers
-"set nowrap
+set nowrap
 "set nu nu
 let g:livepreview_previewer = 'zathura'
 map <A-q> :q!<CR>
@@ -234,6 +236,8 @@ let g:coc_global_extentions = [
 	\ 'coc-fzf-preview',
 	\ 'coc-clangd',
 	\ 'coc-flutter',
+	\ 'coc-json',
+	\ 'coc-tsserver',
 	\]
 " Use K to show documentation in preview window
 nnoremap <silent> K :call <SID>show_documentation()<CR>

@@ -162,14 +162,12 @@ ex=:\
 *.nix=:\
 "
 export BROWSER=firefox
-#export BROWSER=brave
 PATH=$PATH:/home/dhyey/scripts
 PATH=$PATH:/home/dhyey/.local/bin
 PATH=$PATH:/home/dhyey/.local/opt
+PATH=$PATH:/home/dhyey/.cargo/bin
 export PATH
-#export TERM=kitty
-#export TERM="alacritty"
-#export TERMINAL="alacritty"
+export TERMINAL="alacritty"
 export TERM="xterm-256color"
 export XDG_DATA_HOME=/home/dhyey/.local/share/
 #export BAT_THEME="gruvbox-dark"

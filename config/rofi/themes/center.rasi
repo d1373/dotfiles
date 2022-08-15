@@ -3,8 +3,8 @@
     background-color:            #141414;
 	border-color:                #141414;
     text-color:                  #ebebeb;
-	font:                       "Roboto medium 18";
-	prompt-font:                "Roboto medium 18";
+	font:                       "Roboto medium 17";
+	prompt-font:                "Roboto medium 17";
 
 	prompt-background:           #444444;
 	/*prompt-background:    		 #2F5582;*/
