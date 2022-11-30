@@ -37,11 +37,8 @@ zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"         # Colored comple
 #------------------------------------------------------------------------------#
 #                                my custom alias                               #
 #------------------------------------------------------------------------------#
-alias ed="cd /run/media/dhyey/Dhyey"
-alias r="ranger"
 alias ..="cd .."
 alias ...="cd ..;cd .."
-alias s="exec $SHELL"
 alias yay="paru"
 alias se="sudoedit"
 alias n="prime-run"
@@ -49,40 +46,18 @@ alias vi="nvim"
 alias grep="rg"
 alias nano="nvim"
 alias v="nvim"
-alias prime-run="__NV_PRIME_RENDER_OFFLOAD=1 __GLX_VENDOR_LIBRARY_NAME=nvidia "
 export EDITOR="nvim"
-alias ll="exa --icons --group-directories-first -al"
-alias tree="exa  --icons --tree"
-#alias ll="lsd -al"
-#alias l="lsd -l"
-#alias rm="rm -i"
-#alias ls="lsd"
-alias ls="exa --icons --group-directories-first"
-alias clip="xclip -selection clipboard"
-alias nvimrc="cd ~/dotfiles/config/nvim; nvim init.vim; cd"
+alias ll="lsd -al"
+alias l="lsd -l"
+alias rm="rm -i"
+alias ls="lsd"
 alias :q="if [ ! "$TMUX" ]; then 
 			exit 
 		else tmux detach 
 			fi"
-alias l="exa --icons --group-directories-first -l"
-#alias code="codium"
-alias pac="paru"
-alias apt="sudo apt"
-alias usb="cd /run/media/dhyey"
-#alias aurls="diff <(pacman -Q) <(pacman -Qn)"
-#alias clear="clear;neofetch"
-#alias firefox="firefox-developer-edition"
 ## check mime type
 alias m="file --mime-type"
 alias o="xdg-open"
-# transmission aliases
-alias td="transmission-daemon"
-alias tds="transmission-remote --exit"
-alias tsm="transmission-remote"
-# protonvpn
-alias vpnc="protonvpn-cli c"
-alias vpnd="protonvpn-cli d"
-alias vpns="protonvpn-cli s"
 # git
 alias g="git"
 alias gd="git diff"
@@ -99,18 +74,6 @@ tmux new-session  -d -s $1
 #alias tn="tmux -u  new -s"
 alias taa="tmux -u a -t"
 alias ta="tmux attach"
-#------------------------------------------------------------------------------#
-#                                   trash-cli                                  #
-#------------------------------------------------------------------------------#
-
-alias trp="trash-put"
-alias trl="trash-list"
-alias trp="trash-put"
-alias trr="trash-restore"
-alias tre="trash-empty"
-alias trm="trash-rm"
-
-
 #------------------------------------------------------------------------------#
 #                                  youtube-dl                                  #
 #------------------------------------------------------------------------------#
