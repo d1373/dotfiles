@@ -4,38 +4,20 @@ map <leader>N :tabnew<CR>
 map <C-l> :tabn<CR>
 map <C-h> :tabp<CR> 
 call plug#begin('~/.vim/plugged')
-"Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-Plug 'AndrewRadev/tagalong.vim'
-Plug 'ap/vim-css-color'                            " Color previews for CSS
-Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
-Plug 'preservim/nerdtree'
-Plug 'ryanoasis/vim-devicons'
-Plug 'xianzhon/vim-code-runner'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'yuki-yano/fzf-preview.vim', { 'branch': 'release/rpc' }
-Plug 'kyazdani42/nvim-web-devicons'
 Plug 'mattn/emmet-vim'
-Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
-Plug 'godlygeek/tabular'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes' 
-Plug 'turbio/bracey.vim' 
 Plug 'neoclide/coc.nvim', {'branch': 'release'} 
-Plug 'morhetz/gruvbox'
-Plug 'sainnhe/gruvbox-material'
 Plug 'preservim/nerdcommenter'
-Plug 'cometsong/CommentFrame.vim'
-Plug 'dikiaap/minimalist'
-Plug 'sheerun/vim-polyglot'
 Plug 'kaicataldo/material.vim', { 'branch': 'main' }
-Plug 'uiiaoo/java-syntax.vim'
 Plug 'tpope/vim-fugitive'
-Plug 'dhruvasagar/vim-table-mode'
-Plug 'akinsho/toggleterm.nvim'
-Plug 'edkolev/tmuxline.vim'
 Plug 'jiangmiao/auto-pairs'
-Plug 'dense-analysis/ale'
+Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'morhetz/gruvbox'
+Plug 'projekt0n/github-nvim-theme'
 call plug#end()
 lua << EOF
 EOF
@@ -71,25 +53,6 @@ nnoremap <leader>m 	:Marks<CR>
 nnoremap <leader>, :Maps<CR>
 nnoremap <leader>t :TableModeToggle<CR>
 nnoremap <leader>M 	<ESC>:delm!<bar>:delm A-Z0-9<bar>:wshada!<CR>
-"------------------------------------------------------------------------------"
-"                                   Nerdtree                                   "
-"------------------------------------------------------------------------------"
-" Exit Vim if NERDTree is the only window remaining in the only tab.
-autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
-" Close the tab if NERDTree is the only window remaining in it.
-autocmd BufEnter * if winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
- "If another buffer tries to replace NERDTree, put it in the other window, and bring back NERDTree.
-autocmd BufEnter * if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_tree_\d\+' && winnr('$') > 1 |
-	\ let buf=bufnr() | buffer# | execute "normal! \<C-W>w" | execute 'buffer'.buf | endif
-" Open the existing NERDTree on each new tab.
-autocmd BufWinEnter * if getcmdwintype() == '' | silent NERDTreeMirror | endif
-" Start NERDTree when Vim starts with a directory argument.
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists('s:std_in') |
-    \ execute 'NERDTree' argv()[0] | wincmd p | enew | execute 'cd '.argv()[0] | endif
-" Make nerdtree open on right side
-let g:NERDTreeWinPos = "right"
-nnoremap <A-b> :NERDTreeToggle<CR>
 "------------------------------------------------------------------------------"
 "                                 commets keys                                 "
 "------------------------------------------------------------------------------"
@@ -302,7 +265,7 @@ set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 "                                    airline                                   "
 "------------------------------------------------------------------------------"
 "enable tabline
-let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#enabled = 0
 let g:airline#extensions#tabline#show_buffers = 0
 let g:airline#extensions#tabline#left_sep = ''
 let g:airline#extensions#tabline#left_alt_sep = ''
@@ -310,7 +273,7 @@ let g:airline#extensions#tabline#right_sep = ''
 let g:airline#extensions#tabline#right_alt_sep = ''
 let g:airline#extensions#tabline#show_splits = 0
 " enable powerline fonts
-let g:airline_powerline_fonts = 1
+let g:airline_powerline_fonts = 0
 "let g:airline_left_sep = '>'
 "let g:airline_right_sep = '<'
 " Switch to your current theme

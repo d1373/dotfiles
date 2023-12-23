@@ -1,14 +1,8 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
+
 
 ### "nvim" as manpager
+
 export MANPAGER="/bin/sh -c \"col -b | nvim -c 'set ft=man ts=8 nomod nolist nonu noma' -\""
-### "bat" as manpager
-#export MANPAGER="sh -c 'col -bx | bat -l man '"
 # Preferred editor for local and remote sessions
  if [[ -n $SSH_CONNECTION ]]; then
    export EDITOR='nvim'
@@ -17,44 +11,22 @@ export MANPAGER="/bin/sh -c \"col -b | nvim -c 'set ft=man ts=8 nomod nolist non
  fi
 
 
-autoload -Uz compinit && compinit
-zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}'
-ZSH_AUTOSUGGEST_STRATEGY=(history completion)
-# history setup
-setopt SHARE_HISTORY
-HISTFILE=$HOME/.zsh_history
-SAVEHIST=1000
-HISTSIZE=999
-setopt HIST_EXPIRE_DUPS_FIRST
-
-setopt extendedglob                                             # Extended globbing. Allows using regular expressions with *
-setopt nocaseglob                                               # Case insensitive globbing
-setopt rcexpandparam                                            # Array expension with parameters
-setopt numericglobsort                                          # Sort filenames numerically when it makes sense
-setopt nobeep                                                   # No beep
-setopt appendhistory                                            # Immediately append history instead of overwriting
-zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"         # Colored completion (different colors for dirs/files/etc)
 #------------------------------------------------------------------------------#
 #                                my custom alias                               #
 #------------------------------------------------------------------------------#
 alias ..="cd .."
 alias ...="cd ..;cd .."
-alias yay="paru"
 alias se="sudoedit"
-alias n="prime-run"
 alias vi="nvim"
 alias grep="rg"
 alias nano="nvim"
 alias v="nvim"
 export EDITOR="nvim"
-alias ll="lsd -al"
-alias l="lsd -l"
+alias ll="exa --icons -al"
+alias l="exa --icons -l"
 alias rm="rm -i"
-alias ls="lsd"
-alias :q="if [ ! "$TMUX" ]; then 
-			exit 
-		else tmux detach 
-			fi"
+alias ls="exa --icons"
+alias :q="exit"
 ## check mime type
 alias m="file --mime-type"
 alias o="xdg-open"
@@ -63,26 +35,6 @@ alias g="git"
 alias gd="git diff"
 alias gc="git clone"
 alias gst="git status"
-# -------------------------------------------------------------------------------------------- #
-# TMUX                                                                                         #
-# -------------------------------------------------------------------------------------------- #
-alias tmux="tmux -u"
-alias tl="tmux -u ls"
-tn (){
-tmux new-session  -d -s $1
-}
-#alias tn="tmux -u  new -s"
-alias taa="tmux -u a -t"
-alias ta="tmux attach"
-#------------------------------------------------------------------------------#
-#                                  youtube-dl                                  #
-#------------------------------------------------------------------------------#
-#
-#alias yt="youtube-dl -f bestvideo+bestaudio"
-alias ym="youtube-dl -f bestvideo+bestaudio -x" 
-alias yt="youtube-dl"
-#alias ytdl="youtube-dl -f 137+140"
-#alias ym="youtube-dl -x" 
 # vi mode
 bindkey -v
 export KEYTIMEOUT=1
@@ -119,161 +71,310 @@ bindkey -v '^?' backward-delete-char
  #Edit line in vim with ctrl-e:
 autoload edit-command-line; zle -N edit-command-line
 bindkey '^e' edit-command-line
-# Use lf to switch directories and bind it to ctrl-o
-#lfcd () {
-	#tmp="$(mktemp)"
-	#lf -last-dir-path="$tmp" "$@"
-	#if [ -f "$tmp" ]; then
-		#dir="$(cat "$tmp")"
-		#rm -f "$tmp"
-		#[ -d "$dir" ] && [ "$dir" != "$(pwd)" ] && cd "$dir"
+source $HOME/.zshenv 
+source $HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-	#fi
+##### ZSH MINIMAL THEME #########################################
+# Global settings
+MNML_OK_COLOR="${MNML_OK_COLOR:-2}"
+MNML_ERR_COLOR="${MNML_ERR_COLOR:-1}"
 
-#}
-#movedir () {
-#items=`find ~ /media/common/Home/Videos /media/common/Home/Pictures /media/common/Home/Unacademy-jee /media/common/Home/Downloads /media/common/Home/Documents ~/my-git-projects /media/common/Home/Music ~/.config ~/my-git-projects/dotfiles/config/lf/.config/ ~/my-git-projects/dotfiles/config/nvim/.config/ ~/my-git-projects/dotfiles/config/rofi/.config/ ~/my-git-projects/dhyey-awesome/src ~/my-git-projects/dotfiles/config/ranger/.config/ ~/my-git-projects/dotfiles/config/kitty/.config/ ~/my-git-projects/dotfiles/ -maxdepth 1 -mindepth 1 -type d`
-#selected=`echo "$items" | fzf`
-#cd "$selected"
-#}
-fzfrm(){
-items=`find .`
-selected=`echo "$items" | fzf`
-rm "$selected"
-}
-vimopen () {
-items=`find ~/Documents/  ~/scripts ~/dotfiles`
-selected=`echo "$items" | fzf`
-directories=`echo "$selected" | awk -F "/"'BEGIN {for (i=1;i<=100;i++) {if ($i == $NF) i=101;}{else print "$i"/}}'`
-files=`echo "$selected" | awk -F "/"'{print $NF}' `
-nvim "$files"
-}
-f() {
-    # if no arguments passed, just lauch fzf
-    if [ $# -eq 0 ]
-    then
-        fzf
-        return 0
+MNML_USER_CHAR="${MNML_USER_CHAR:-λ}"
+MNML_INSERT_CHAR="${MNML_INSERT_CHAR:-›}"
+MNML_NORMAL_CHAR="${MNML_NORMAL_CHAR:-·}"
+MNML_ELLIPSIS_CHAR="${MNML_ELLIPSIS_CHAR:-..}"
+MNML_BGJOB_MODE=${MNML_BGJOB_MODE:-4}
+
+#[ "${+MNML_PROMPT}" -eq 0 ] && MNML_PROMPT=(mnml_ssh mnml_pyenv mnml_status mnml_keymap)
+#[ "${+MNML_RPROMPT}" -eq 0 ] && MNML_RPROMPT=('mnml_cwd 2 0' mnml_git)
+[ "${+MNML_PROMPT}" -eq 0 ] && MNML_PROMPT=(mnml_ssh mnml_pyenv mnml_status 'mnml_cwd 1 0' mnml_keymap)
+[ "${+MNML_RPROMPT}" -eq 0 ] && MNML_RPROMPT=( mnml_git)
+[ "${+MNML_INFOLN}" -eq 0 ] && MNML_INFOLN=(mnml_err mnml_jobs mnml_uhp mnml_files)
+
+[ "${+MNML_MAGICENTER}" -eq 0 ] && MNML_MAGICENTER=(mnml_me_dirs mnml_me_ls mnml_me_git)
+
+
+# Components
+function mnml_status {
+    local okc="$MNML_OK_COLOR"
+    local errc="$MNML_ERR_COLOR"
+    local uchar="$MNML_USER_CHAR"
+
+    local job_ansi="0"
+    if [ -n "$(jobs | sed -n '$=')" ]; then
+        job_ansi="$MNML_BGJOB_MODE"
     fi
 
-    # Store the program
-    program="$1"
-
-    # Remove first argument off the list
-    shift
-
-    # Store any option flags
-    #options="$@"
-
-    # Store the arguments from fzf
-    arguments=$(fzf --multi)
-
-    # If no arguments passed (e.g. if Esc pressed), return to terminal
-    if [ -z "${arguments}" ]; then
-        return 1
+    local err_ansi="$MNML_OK_COLOR"
+    if [ "$MNML_LAST_ERR" != "0" ]; then
+        err_ansi="$MNML_ERR_COLOR"
     fi
 
-    # Sanitise the command by putting single quotes around each argument, also
-    # first put an extra single quote next to any pre-existing single quotes in
-    # the raw argument. Put them all on one line.
-    for arg in "${arguments[@]}"; do
-        arguments=$(echo "$arg" | sed "s/'/''/g; s/.*/'&'/g; s/\n//g")
+    printf '%b' "%{\e[$job_ansi;3${err_ansi}m%}%(!.#.$uchar)%{\e[0m%}"
+}
+
+function mnml_keymap {
+    local kmstat="$MNML_INSERT_CHAR"
+    [ "$KEYMAP" = 'vicmd' ] && kmstat="$MNML_NORMAL_CHAR"
+    printf '%b' "$kmstat"
+}
+
+function mnml_cwd {
+    local echar="$MNML_ELLIPSIS_CHAR"
+    local segments="${1:-2}"
+    local seg_len="${2:-0}"
+
+    local _w="%{\e[0m%}"
+    local _g="%{\e[38;5;244m%}"
+
+    if [ "$segments" -le 0 ]; then
+        segments=0
+    fi
+    if [ "$seg_len" -gt 0 ] && [ "$seg_len" -lt 4 ]; then
+        seg_len=4
+    fi
+    local seg_hlen=$((seg_len / 2 - 1))
+
+    local cwd="%${segments}~"
+    cwd="${(%)cwd}"
+    cwd=("${(@s:/:)cwd}")
+
+    local pi=""
+    for i in {1..${#cwd}}; do
+        pi="$cwd[$i]"
+        if [ "$seg_len" -gt 0 ] && [ "${#pi}" -gt "$seg_len" ]; then
+            cwd[$i]="${pi:0:$seg_hlen}$_w$echar$_g${pi: -$seg_hlen}"
+        fi
     done
 
-    # If the program is on the GUI list, add a '&'
-    if [[ "$program" =~ ^(thunar|zathura|evince|mpv|eog|kolourpaint)$ ]]; then
-        arguments="$arguments &"
+    printf '%b' "$_g${(j:/:)cwd//\//$_w/$_g}$_w"
+}
+
+function mnml_git {
+    local statc="%{\e[0;3${MNML_OK_COLOR}m%}" # assume clean
+    local bname="$(git rev-parse --abbrev-ref HEAD 2> /dev/null)"
+
+    if [ -n "$bname" ]; then
+        if [ -n "$(git status --porcelain 2> /dev/null)" ]; then
+            statc="%{\e[0;3${MNML_ERR_COLOR}m%}"
+        fi
+        printf '%b' "$statc$bname%{\e[0m%}"
     fi
-
-    # Write the shell's active history to ~/.bash_history.
-    history -w
-
-    # Add the command with the sanitised arguments to .bash_history
-    echo $program $options $arguments >> ~/.bash_history
-
-    # Reload the ~/.bash_history into the shell's active history
-    history -r
-
-    # execute the last command in history
-    fc -s -1
-    }
-manpage () {
-items=`man -k . | fzf | awk '{print $1}'`
-man "$items"
 }
-pacuninstall () {
-	pacman -Qq | fzf --multi --preview 'pacman -Qi {1}' | xargs -ro sudo pacman -Rns
+
+function mnml_hg {
+    local statc="%{\e[0;3${MNML_OK_COLOR}m%}" # assume clean
+    local bname="$(hg branch 2> /dev/null)"
+    if [ -n "$bname" ]; then
+        if [ -n "$(hg status 2> /dev/null)" ]; then
+            statc="%{\e[0;3${MNML_ERR_COLOR}m%}"
+        fi
+        printf '%b' "$statc$bname%{\e[0m%}"
+    fi
 }
-pacinstall () {
-	pacman -Slq | fzf --multi --preview 'pacman -Si {1}' | xargs -ro sudo pacman -S
+
+function mnml_hg_no_color {
+    # Assume branch name is clean
+    local statc="%{\e[0;3${MNML_OK_COLOR}m%}"
+    local bname=""
+    # Defines path as current directory
+    local current_dir=$PWD
+    # While current path is not root path
+    while [[ $current_dir != '/' ]]
+    do
+        if [[ -d "${current_dir}/.hg" ]]
+        then
+            if [[ -f "$current_dir/.hg/branch" ]]
+            then
+                bname=$(<"$current_dir/.hg/branch")
+            else
+                bname="default"
+            fi
+            printf '%b' "$statc$bname%{\e[0m%}"
+            return;
+        fi
+        # Defines path as parent directory and keeps looking for :)
+        current_dir="${current_dir:h}"
+   done
 }
-bindkey -s '^[l' "lfcd\n"
-bindkey -s '^[r' "ranger\n"
-bindkey -s '^[r' "fzfrm\n"
-#bindkey -s '^[d' "movedir\n"
-bindkey -s '^[f' "vimopen\n"
-bindkey -s '^[m' "manpage\n"
-bindkey -s '^[i' "pacinstall\n"
-bindkey -s '^[u' "pacuninstall\n"
-bindkey -s '^f'  "lf | xdotool key f f \n"
-bindkey -s '^[h' '^r'
-bindkey -s '^[d' '^[c'
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-#[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-# spaceship settings
-SPACESHIP_PROMPT_ADD_NEWLINE=false
-SPACESHIP_PROMPT_SEPARATE_LINE=false
-SPACESHIP_CHAR_SYMBOL=❯
-SPACESHIP_CHAR_SUFFIX=" "
-SPACESHIP_HG_SHOW=false
-SPACESHIP_PACKAGE_SHOW=false
-SPACESHIP_NODE_SHOW=false
-SPACESHIP_RUBY_SHOW=false
-SPACESHIP_ELM_SHOW=false
-SPACESHIP_ELIXIR_SHOW=false
-SPACESHIP_XCODE_SHOW_LOCAL=false
-SPACESHIP_SWIFT_SHOW_LOCAL=false
-SPACESHIP_GOLANG_SHOW=false
-SPACESHIP_PHP_SHOW=false
-SPACESHIP_RUST_SHOW=false
-SPACESHIP_JULIA_SHOW=false
-SPACESHIP_DOCKER_SHOW=false
-SPACESHIP_DOCKER_CONTEXT_SHOW=false
-SPACESHIP_AWS_SHOW=false
-SPACESHIP_CONDA_SHOW=false
-SPACESHIP_VENV_SHOW=false
-SPACESHIP_PYENV_SHOW=false
-SPACESHIP_DOTNET_SHOW=false
-SPACESHIP_EMBER_SHOW=false
-SPACESHIP_KUBECONTEXT_SHOW=false
-SPACESHIP_TERRAFORM_SHOW=false
-SPACESHIP_TERRAFORM_SHOW=false
-SPACESHIP_VI_MODE_SHOW=false
-SPACESHIP_JOBS_SHOW=false
-# load
-#autoload -U promptinit; promptinit
-#prompt spaceship
-source $HOME/.zshenv 
-#source /usr/share/fzf/key-bindings.zsh
-#source /usr/share/fzf/completion.zsh
-source $HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source $HOME/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
-#neofetch
- #To customize prompt, run `p10k configure` or edit ~/my-git-projects/dotfiles/zsh/.p10k.zsh.
-source ~/.zsh/powerlevel10k/powerlevel10k.zsh-theme
 
-#[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+function mnml_uhp {
+    local _w="%{\e[0m%}"
+    local _g="%{\e[38;5;244m%}"
+    local cwd="%~"
+    cwd="${(%)cwd}"
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-#clear
-#fm6000 -dog -c white
-# To customize prompt, run `p10k configure` or edit ~/dotfiles/zsh/.p10k.zsh.
-#[[ ! -f ~/dotfiles/zsh/.p10k.zsh ]] || source ~/dotfiles/zsh/.p10k.zsh
-terminall=`basename "/"$(ps -f -p $(cat /proc/$(echo $$)/stat | cut -d \  -f 4) | tail -1 | sed 's/^.* //')`
-[ -f /opt/miniconda3/etc/profile.d/conda.sh ] && source /opt/miniconda3/etc/profile.d/conda.sh
-export PATH=$PATH:/home/dhyey/.spicetify
+    printf '%b' "$_g%n$_w@$_g%m$_w:$_g${cwd//\//$_w/$_g}$_w"
+}
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+function mnml_ssh {
+    if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
+        printf '%b' "$(hostname -s)"
+    fi
+}
+
+function mnml_pyenv {
+    if [ -n "$VIRTUAL_ENV" ]; then
+        _venv="$(basename $VIRTUAL_ENV)"
+        printf '%b' "${_venv%%.*}"
+    fi
+}
+
+function mnml_err {
+    local _w="%{\e[0m%}"
+    local _err="%{\e[3${MNML_ERR_COLOR}m%}"
+
+    if [ "${MNML_LAST_ERR:-0}" != "0" ]; then
+        printf '%b' "$_err$MNML_LAST_ERR$_w"
+    fi
+}
+
+function mnml_jobs {
+    local _w="%{\e[0m%}"
+    local _g="%{\e[38;5;244m%}"
+
+    local job_n="$(jobs | sed -n '$=')"
+    if [ "$job_n" -gt 0 ]; then
+        printf '%b' "$_g$job_n$_w&"
+    fi
+}
+
+function mnml_files {
+    local _ls="$(env which ls)"
+    local _w="%{\e[0m%}"
+    local _g="%{\e[38;5;244m%}"
+
+    local a_files="$($_ls -1A | sed -n '$=')"
+    local v_files="$($_ls -1 | sed -n '$=')"
+    local h_files="$((a_files - v_files))"
+
+    local output="${_w}[$_g${v_files:-0}"
+    if [ "${h_files:-0}" -gt 0 ]; then
+        output="$output $_w($_g$h_files$_w)"
+    fi
+    output="$output${_w}]"
+
+    printf '%b' "$output"
+}
+
+# Magic enter functions
+function mnml_me_dirs {
+    local _w="\e[0m"
+    local _g="\e[38;5;244m"
+
+    if [ "$(dirs -p | sed -n '$=')" -gt 1 ]; then
+        local stack="$(dirs)"
+        echo "$_g${stack//\//$_w/$_g}$_w"
+    fi
+}
+
+function mnml_me_ls {
+    if [ "$(uname)" = "Darwin" ] && ! ls --version &> /dev/null; then
+        COLUMNS=$COLUMNS CLICOLOR_FORCE=1 ls -C -G -F
+    else
+        env ls -C -F --color="always" -w $COLUMNS
+    fi
+}
+
+function mnml_me_git {
+    git -c color.status=always status -sb 2> /dev/null
+}
+
+# Wrappers & utils
+# join outpus of components
+function _mnml_wrap {
+    local -a arr
+    arr=()
+    local cmd_out=""
+    local cmd
+    for cmd in ${(P)1}; do
+        cmd_out="$(eval "$cmd")"
+        if [ -n "$cmd_out" ]; then
+            arr+="$cmd_out"
+        fi
+    done
+
+    printf '%b' "${(j: :)arr}"
+}
+
+# expand string as prompt would do
+function _mnml_iline {
+    echo "${(%)1}"
+}
+
+# display magic enter
+function _mnml_me {
+    local -a output
+    output=()
+    local cmd_out=""
+    local cmd
+    for cmd in $MNML_MAGICENTER; do
+        cmd_out="$(eval "$cmd")"
+        if [ -n "$cmd_out" ]; then
+            output+="$cmd_out"
+        fi
+    done
+    printf '%b' "${(j:\n:)output}" | less -XFR
+}
+
+# capture exit status and reset prompt
+function _mnml_zle-line-init {
+    MNML_LAST_ERR="$?" # I need to capture this ASAP
+    zle reset-prompt
+}
+
+# redraw prompt on keymap select
+function _mnml_zle-keymap-select {
+    zle reset-prompt
+}
+
+# draw infoline if no command is given
+function _mnml_buffer-empty {
+    if [ -z "$BUFFER" ]; then
+        _mnml_iline "$(_mnml_wrap MNML_INFOLN)"
+        _mnml_me
+        zle redisplay
+    else
+        zle accept-line
+    fi
+}
+
+# properly bind widgets
+# see: https://github.com/zsh-users/zsh-syntax-highlighting/blob/1f1e629290773bd6f9673f364303219d6da11129/zsh-syntax-highlighting.zsh#L292-L356
+function _mnml_bind_widgets() {
+    zmodload zsh/zleparameter
+
+    local -a to_bind
+    to_bind=(zle-line-init zle-keymap-select buffer-empty)
+
+    typeset -F SECONDS
+    local zle_wprefix=s$SECONDS-r$RANDOM
+
+    local cur_widget
+    for cur_widget in $to_bind; do
+        case "${widgets[$cur_widget]:-""}" in
+            user:_mnml_*);;
+            user:*)
+                zle -N $zle_wprefix-$cur_widget ${widgets[$cur_widget]#*:}
+                eval "_mnml_ww_${(q)zle_wprefix}-${(q)cur_widget}() { _mnml_${(q)cur_widget}; zle ${(q)zle_wprefix}-${(q)cur_widget} }"
+                zle -N $cur_widget _mnml_ww_$zle_wprefix-$cur_widget
+                ;;
+            *)
+                zle -N $cur_widget _mnml_$cur_widget
+                ;;
+        esac
+    done
+}
+
+# Setup
+autoload -U colors && colors
+setopt prompt_subst
+
+PROMPT='$(_mnml_wrap MNML_PROMPT) '
+RPROMPT='$(_mnml_wrap MNML_RPROMPT)'
+_mnml_bind_widgets
+
+bindkey -M main  "^M" buffer-empty
+bindkey -M vicmd "^M" buffer-empty
+
+############################################################
