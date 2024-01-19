@@ -11,13 +11,17 @@ export MANPAGER="/bin/sh -c \"col -b | nvim -c 'set ft=man ts=8 nomod nolist non
  fi
 
 
+export EDITOR="nvim"
+
 #------------------------------------------------------------------------------#
 #                                my custom alias                               #
 #------------------------------------------------------------------------------#
 alias ..="cd .."
 alias ...="cd ..;cd .."
+alias bat="batcat"
 alias se="sudoedit"
 alias vi="nvim"
+alias r="ranger"
 alias grep="rg"
 alias nano="nvim"
 alias v="nvim"
@@ -35,6 +39,10 @@ alias g="git"
 alias gd="git diff"
 alias gc="git clone"
 alias gst="git status"
+# wsl
+alias winget="powershell.exe winget"
+alias ex="explorer.exe"
+
 # vi mode
 bindkey -v
 export KEYTIMEOUT=1
@@ -71,9 +79,7 @@ bindkey -v '^?' backward-delete-char
  #Edit line in vim with ctrl-e:
 autoload edit-command-line; zle -N edit-command-line
 bindkey '^e' edit-command-line
-source $HOME/.zshenv 
 source $HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
 ##### ZSH MINIMAL THEME #########################################
 # Global settings
 MNML_OK_COLOR="${MNML_OK_COLOR:-2}"
@@ -374,7 +380,187 @@ PROMPT='$(_mnml_wrap MNML_PROMPT) '
 RPROMPT='$(_mnml_wrap MNML_RPROMPT)'
 _mnml_bind_widgets
 
-bindkey -M main  "^M" buffer-empty
-bindkey -M vicmd "^M" buffer-empty
+#bindkey -M main  "^M" buffer-empty
+#bindkey -M vicmd "^M" buffer-empty
 
 ############################################################
+export PATH="$(go env GOPATH)/bin:$PATH"
+########### LF ICONS ######################################
+export LF_ICONS="\
+di=:\
+fi=:\
+ln=:\
+or=:\
+ex=:\
+*.vimrc=:\
+*.viminfo=:\
+*.gitignore=:\
+*.c=:\
+*.cc=:\
+
+*.clj=:\
+*.coffee=:\
+*.cpp=:\
+*.css=:\
+*.d=:\
+*.dart=:\
+*.erl=:\
+*.exs=:\
+*.fs=:\
+*.go=:\
+*.h=:\
+
+*.hh=:\
+*.hpp=:\
+*.hs=:\
+
+*.html=:\
+*.java=:\
+*.jl=:\
+*.js=:\
+
+*.json=:\
+*.lua=:\
+*.md=:\
+*.php=:\
+
+*.pl=:\
+*.pro=:\
+*.py=:\
+
+*.rb=:\
+*.rs=:\
+*.scala=:\
+*.ts=:\
+*.vim=:\
+*.cmd=:\
+*.ps1=:\
+*.sh=:\
+*.bash=:\
+*.zsh=:\
+*.fish=:\
+*.tar=:\
+
+*.tgz=:\
+*.arc=:\
+*.arj=:\
+*.taz=:\
+*.lha=:\
+*.lz4=:\
+*.lzh=:\
+*.lzma=:\
+*.tlz=:\
+*.txz=:\
+*.tzo=:\
+*.t7z=:\
+*.zip=:\
+*.z=:\
+*.dz=:\
+
+*.gz=:\
+*.lrz=:\
+*.lz=:\
+
+*.lzo=:\
+*.xz=:\
+*.zst=:\
+*.tzst=:\
+*.bz2=:\
+*.bz=:\
+*.tbz=:\
+*.tbz2=:\
+*.tz=:\
+*.deb=:\
+*.rpm=:\
+*.jar=:\
+*.war=:\
+*.ear=:\
+*.sar=:\
+*.rar=:\
+*.alz=:\
+*.ace=:\
+*.zoo=:\
+*.cpio=:\
+*.7z=:\
+*.rz=:\
+*.cab=:\
+*.wim=:\
+*.swm=:\
+*.dwm=:\
+*.esd=:\
+*.jpg=:\
+*.jpeg=:\
+*.mjpg=:\
+*.mjpeg=:\
+*.gif=:\
+*.bmp=:\
+
+*.pbm=:\
+*.pgm=:\
+*.ppm=:\
+*.tga=:\
+*.xbm=:\
+*.xpm=:\
+*.tif=:\
+*.tiff=:\
+*.png=:\
+*.svg=:\
+*.svgz=:\
+*.mng=:\
+*.pcx=:\
+
+*.mov=:\
+*.mpg=:\
+*.mpeg=:\
+*.m2v=:\
+*.mkv=:\
+*.webm=:\
+*.ogm=:\
+*.mp4=:\
+*.m4v=:\
+*.mp4v=:\
+*.vob=:\
+*.qt=:\
+*.nuv=:\
+
+*.wmv=:\
+*.asf=:\
+*.rm=:\
+*.rmvb=:\
+
+*.flc=:\
+*.avi=:\
+*.fli=:\
+*.flv=:\
+*.gl=:\
+*.dl=:\
+*.xcf=:\
+*.xwd=:\
+*.yuv=:\
+*.cgm=:\
+*.emf=:\
+*.ogv=:\
+*.ogx=:\
+*.aac=:\
+*.au=:\
+*.flac=:\
+*.m4a=:\
+*.mid=:\
+*.midi=:\
+*.mka=:\
+*.mp3=:\
+*.mpc=:\
+*.ogg=:\
+*.ra=:\
+*.wav=:\
+*.oga=:\
+*.opus=:\
+*.spx=:\
+*.xspf=:\
+*.pdf=:\
+*.nix=:\
+"
+##########################################
+autoload -Uz compinit && compinit
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+export BAT_THEME="gruvbox-dark"

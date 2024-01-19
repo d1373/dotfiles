@@ -1,4 +1,4 @@
-" Plugins "
+
 call plug#begin('~/.vim/plugged')
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
@@ -14,6 +14,7 @@ Plug 'sheerun/vim-polyglot'
 Plug 'preservim/nerdtree'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'ryanoasis/vim-devicons'
+Plug 'd1373/my_gruvbox'
 call plug#end()
 
 """"""""""""
@@ -28,9 +29,10 @@ if executable(s:clip)
 		augroup END
 endif
 syntax enable
-colorscheme material
-au ColorScheme * hi Normal ctermbg=none guibg=none
 set background=dark
+au ColorScheme * hi Normal ctermbg=none guibg=none
+colorscheme gruvbox
+"set termguicolors
 set t_Co=256
 command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}), <bang>0)
 set cursorline
@@ -40,8 +42,8 @@ set incsearch                   " Incremental search
 set hidden                      " Needed to keep multiple buffers open
 set nobackup                    " No auto backups
 set noswapfile                  " No swap
-set number relativenumber       " Display line numbers
-set nowrap
+"set number relativenumber       " Display line numbers
+set number        " Display line numbers
 set mouse=a
 set clipboard+=unnamedplus
 set go+=a               " Visual selection automatically copied to the clipboard
@@ -66,17 +68,22 @@ let g:coc_global_extentions = [
 	\ 'coc-json',
 	\ 'coc-tsserver',
 	\]
-let g:airline_theme = 'minimalist'
+let g:airline_theme = 'gruvbox'
+" symbols section for unicode/airline symbols
+let g:airline_powerline_fonts = 1
+
 " Close the tab if NERDTree is the only window remaining in it.
 autocmd BufEnter * if winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
 " Start NERDTree when Vim is started without file arguments.
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists('s:std_in') | NERDTree | endif
+let NERDTreeShowHidden=1
 """""""""""""""""""
 "    Remapings    "
 """""""""""""""""""
 let mapleader = " "
 map q <Nop>
+map S <Nop>
 nnoremap Y y$
 nnoremap n nzzzv
 nnoremap N Nzzzv
