@@ -16,11 +16,8 @@ end
 bootstrap_pckr()
 
 require('pckr').add{
-	{'preservim/nerdtree';
-	requires = {
-	'ryanoasis/vim-devicons';
-	'tiagofumo/vim-nerdtree-syntax-highlight';
-	};};
+	'nvim-tree/nvim-tree.lua';
+	'nvim-tree/nvim-web-devicons';
 	{
 	'nvim-telescope/telescope.nvim', tag = '0.1.5',
   	requires = { {'nvim-lua/plenary.nvim'} }
@@ -35,6 +32,11 @@ require('pckr').add{
 		  au ColorScheme * hi Normal ctermbg=none guibg=none
 		  colorscheme material]]
 	  end};
+	  {'edkolev/tmuxline.vim';
+  	config = function ()
+		vim.cmd[[let g:tmuxline_powerline_separators = 0]]
+  		
+  	end};
 	{
 	  'VonHeikemen/lsp-zero.nvim',
 	  branch = 'v1.x',

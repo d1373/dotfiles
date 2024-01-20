@@ -31,7 +31,7 @@ vnoremap <C-j> <C-n>
 vnoremap <C-k> <C-p>
 inoremap <C-j> <C-n>
 inoremap <C-k> <C-p>
-nnoremap <C-b> :NERDTreeToggle<CR>
+nnoremap <C-b> :NvimTreeToggle<CR>
 nnoremap <A-h> <C-w>h
 nnoremap <A-j> <C-w>j
 nnoremap <A-k> <C-w>k

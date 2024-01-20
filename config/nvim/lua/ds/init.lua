@@ -5,10 +5,8 @@ require("ds.set")
 
 
 -- NETRW basic Set
-vim.g.netrw_browse_split = 0
-vim.g.netrw_banner = 0
-vim.g.netrw_winsize = 25
-
+vim.g.loaded_netrw = 0
+vim.g.loaded_netrwPlugin = 0
 -- WSL Yank Support
 vim.cmd([[
 let s:clip = '/mnt/c/Windows/System32/clip.exe'  " change this path according to your mount point
