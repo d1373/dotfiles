@@ -60,6 +60,7 @@ require('pckr').add{
 		  {'rafamadriz/friendly-snippets'},
 	  	   };
   	};
+	'tpope/vim-surround';
 	"tpope/vim-fugitive";
 	"mbbill/undotree";
 	{"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"};
