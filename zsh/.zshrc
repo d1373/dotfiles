@@ -564,3 +564,9 @@ ex=:\
 autoload -Uz compinit && compinit
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 export BAT_THEME="gruvbox-dark"
+movedir () {
+items=`find ~ ~/dotfiles ~/.config  ~/dev -maxdepth 1 -mindepth 1 -type d`
+selected=`echo "$items" | fzf`
+cd "$selected"
+}
+bindkey -s '^[d' "movedir\n"
