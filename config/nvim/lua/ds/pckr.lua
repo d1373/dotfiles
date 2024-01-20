@@ -28,11 +28,12 @@ require('pckr').add{
 	'preservim/nerdcommenter';
 	'jiangmiao/auto-pairs';
 
-	{'d1373/my_gruvbox';
+	{'kaicataldo/material.vim';
+	branch = 'main',
 	config = function()
 		  vim.cmd[[
 		  au ColorScheme * hi Normal ctermbg=none guibg=none
-		  colorscheme gruvbox]]
+		  colorscheme material]]
 	  end};
 	{
 	  'VonHeikemen/lsp-zero.nvim',
