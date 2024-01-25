@@ -25,17 +25,10 @@ require('pckr').add{
 	'preservim/nerdcommenter';
 	'jiangmiao/auto-pairs';
 
-	{'kaicataldo/material.vim';
-	branch = 'main',
-	config = function()
-		  vim.cmd[[
-		  au ColorScheme * hi Normal ctermbg=none guibg=none
-		  colorscheme material]]
-	  end};
-	  {'edkolev/tmuxline.vim';
+	"sainnhe/sonokai";
+	{'edkolev/tmuxline.vim';
   	config = function ()
 		vim.cmd[[let g:tmuxline_powerline_separators = 0]]
-  		
   	end};
 	{
 	  'VonHeikemen/lsp-zero.nvim',

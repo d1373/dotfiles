@@ -1,4 +1,5 @@
 -- vim commands port
+
 vim.cmd[[
 set t_Co=256
 set cursorline
@@ -12,9 +13,14 @@ set number        " Display line numbers
 set mouse=a
 set clipboard+=unnamedplus
 let g:airline_powerline_fonts = 1
-let g:airline_theme = 'minimalist'
+""let g:airline_theme = 'minimalist'
+let g:sonokai_transparent_background = 1
+let g:sonokai_style = 'espresso'
+let g:sonokai_menu_selection_background= "blue"
+colorscheme sonokai
 ]]
 if vim.fn.argc(-1) == 0 then
   vim.cmd("NvimTreeOpen")
 end
+vim.opt.fillchars:append { eob = " " }
 

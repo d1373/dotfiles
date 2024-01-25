@@ -1,5 +1,5 @@
-vim.keymap.set("n", "<leader>gs", vim.cmd.Git)
-
+--vim.keymap.set("n", "<leader>gs", vim.cmd.Git)
+vim.cmd [[map <leader>gs :vert Git<CR>]]
 
 local autocmd = vim.api.nvim_create_autocmd
 autocmd("BufWinEnter", {
