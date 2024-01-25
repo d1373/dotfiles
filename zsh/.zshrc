@@ -1,8 +1,7 @@
 
 
 ### "nvim" as manpager
-
-export MANPAGER="/bin/sh -c \"col -b | nvim -c 'set ft=man ts=8 nomod nolist nonu noma' -\""
+export MANPAGER="sh -c 'col -bx | batcat -l man -p'"
 # Preferred editor for local and remote sessions
  if [[ -n $SSH_CONNECTION ]]; then
    export EDITOR='nvim'
@@ -42,6 +41,15 @@ alias gst="git status"
 # wsl
 alias winget="powershell.exe winget"
 alias ex="explorer.exe"
+#tmux
+alias tn="tmux new -s"
+alias tl="tmux ls"
+ta () {
+items=`tmux ls`
+selected=`echo "$items" | fzf`
+session=`echo "$selected" | head -n1 | sed -e 's/\s.*$//'`
+tmux a -t "$session"
+}
 
 # vi mode
 bindkey -v
@@ -563,7 +571,7 @@ ex=:\
 ##########################################
 autoload -Uz compinit && compinit
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
-export BAT_THEME="gruvbox-dark"
+#export BAT_THEME="gruvbox-dark"
 movedir () {
 items=`find ~ ~/dotfiles ~/.config  ~/dev -maxdepth 1 -mindepth 1 -type d`
 selected=`echo "$items" | fzf`
