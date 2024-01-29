@@ -1,5 +1,3 @@
-
-
 ### "nvim" as manpager
 export MANPAGER="sh -c 'col -bx | batcat -l man -p'"
 # Preferred editor for local and remote sessions
@@ -577,4 +575,6 @@ items=`find ~ ~/dotfiles ~/.config  ~/dev -maxdepth 1 -mindepth 1 -type d`
 selected=`echo "$items" | fzf`
 cd "$selected"
 }
+bindkey -s '^[t' "ta\n"
 bindkey -s '^[d' "movedir\n"
+export PATH="$HOME/.local/bin:$PATH"
