@@ -24,8 +24,17 @@ require('pckr').add{
 	};
 	'preservim/nerdcommenter';
 	'jiangmiao/auto-pairs';
+	'frazrepo/vim-rainbow';
+	{"sainnhe/sonokai";
+	config=function ()
+		vim.cmd[[
+		let g:sonokai_transparent_background = 1
+		let g:sonokai_style = 'espresso'
+		let g:sonokai_menu_selection_background= "blue"
+		colorscheme sonokai
 
-	"sainnhe/sonokai";
+		]]
+	end};
 	{'edkolev/tmuxline.vim';
   	config = function ()
 		vim.cmd[[let g:tmuxline_powerline_separators = 0]]

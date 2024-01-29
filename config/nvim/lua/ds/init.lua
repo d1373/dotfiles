@@ -9,11 +9,35 @@ vim.g.loaded_netrw = 0
 vim.g.loaded_netrwPlugin = 0
 -- WSL Yank Support
 vim.cmd([[
-let s:clip = '/mnt/c/Windows/System32/clip.exe'  " change this path according to your mount point
-if executable(s:clip)
-	augroup WSLYank
-			autocmd!
-			autocmd TextYankPost * if v:event.operator ==# 'y' | call system(s:clip, @0) | endif
-	augroup END
-endif
+ let g:clipboard = {
+\             'name': 'win32yank-wsl',
+\            'copy': {
+\              '+': 'win32yank.exe -i --crlf',
+\               '*': 'win32yank.exe -i --crlf',
+\             },
+\            'paste': {
+\               '+': 'win32yank.exe -o --lf',
+\               '*': 'win32yank.exe -o --lf',
+\            },
+\            'cache_enabled': 0,
+\          }
+]])
+
+vim.cmd([[
+
+function! CloseBufferOrVim(force='')
+  if len(filter(range(1, bufnr('$')), 'buflisted(v:val)')) == 1
+    exec ("quit" . a:force)
+
+
+    quit
+  else
+    exec ("bdelete" . a:force)
+  endif
+endfunction
+
+
+nnoremap <silent> <Leader>q :call CloseBufferOrVim()<CR>
+
+nnoremap <silent> <Leader>Q :call CloseBufferOrVim('!')<CR>
 ]])

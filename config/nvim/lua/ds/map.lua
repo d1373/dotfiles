@@ -21,8 +21,8 @@ nnoremap <leader>k :m .-2<CR>==
 map <leader>/ <Plug>NERDCommenterToggle
 map <leader>a 0
 map <leader>; $
-map <C-l> :tabn<CR>
-map <C-h> :tabp<CR>
+map <C-l> :bnext<CR>
+map <C-h> :bprev<CR>
 xnoremap <C-j> <C-n>
 xnoremap <C-k> <C-p>
 nnoremap <C-j> <C-n>

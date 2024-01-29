@@ -13,11 +13,11 @@ set number        " Display line numbers
 set mouse=a
 set clipboard+=unnamedplus
 let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#formatter = 'unique_tail'
+
 ""let g:airline_theme = 'minimalist'
-let g:sonokai_transparent_background = 1
-let g:sonokai_style = 'espresso'
-let g:sonokai_menu_selection_background= "blue"
-colorscheme sonokai
+let g:rainbow_active = 1
 ]]
 if vim.fn.argc(-1) == 0 then
   vim.cmd("NvimTreeOpen")
