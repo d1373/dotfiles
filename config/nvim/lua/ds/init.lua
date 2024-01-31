@@ -40,4 +40,5 @@ endfunction
 nnoremap <silent> <Leader>q :call CloseBufferOrVim()<CR>
 
 nnoremap <silent> <Leader>Q :call CloseBufferOrVim('!')<CR>
+nnoremap <silent> <Leader>s :w<CR>
 ]])

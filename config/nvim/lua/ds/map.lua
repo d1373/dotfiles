@@ -23,6 +23,8 @@ map <leader>a 0
 map <leader>; $
 map <C-l> :bnext<CR>
 map <C-h> :bprev<CR>
+map <leader>h :tabp<CR>
+map <leader>l :tabn<CR>
 xnoremap <C-j> <C-n>
 xnoremap <C-k> <C-p>
 nnoremap <C-j> <C-n>
@@ -42,4 +44,5 @@ noremap <A-Left> :vertical resize +3<CR>
 noremap <A-Right> :vertical resize -3<CR>
 noremap <A-Up> :resize +3<CR>
 noremap <A-Down> :resize -3<CR>
+ 
 ]]
