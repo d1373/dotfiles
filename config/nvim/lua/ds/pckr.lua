@@ -35,7 +35,7 @@ require('pckr').add{
 
 		]]
 	end};
-	'airblade/vim-gitgutter';
+	'lewis6991/gitsigns.nvim';
 	{'edkolev/tmuxline.vim';
   	config = function ()
 		vim.cmd[[let g:tmuxline_powerline_separators = 0]]
