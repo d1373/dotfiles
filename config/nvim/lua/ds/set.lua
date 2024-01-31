@@ -14,9 +14,9 @@ set mouse=a
 set clipboard+=unnamedplus
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#show_tabs = 0
 let g:airline#extensions#tabline#formatter = 'unique_tail'
-
-""let g:airline_theme = 'minimalist'
+let g:airline_theme = 'sonokai'
 let g:rainbow_active = 1
 ]]
 if vim.fn.argc(-1) == 0 then
