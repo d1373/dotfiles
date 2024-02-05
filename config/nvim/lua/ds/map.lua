@@ -1,7 +1,6 @@
 vim.cmd[[
 let mapleader = " "
 map q <Nop>
-map S <Nop>
 nnoremap Y y$
 nnoremap n nzzzv
 nnoremap N Nzzzv

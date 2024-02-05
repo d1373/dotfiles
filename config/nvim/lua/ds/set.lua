@@ -1,6 +1,6 @@
 -- vim commands port
 
-vim.cmd[[
+vim.cmd [[
 set t_Co=256
 set cursorline
 set path+=**					" Searches current directory recursively.
@@ -10,17 +10,14 @@ set hidden                      " Needed to keep multiple buffers open
 set nobackup                    " No auto backups
 set noswapfile                  " No swap
 set number        " Display line numbers
+set tabstop=2     "tab width
+set shiftwidth=2  "indent size
+set expandtab     "use space to instead the tab character
+set smarttab
 set mouse=a
 set clipboard+=unnamedplus
-let g:airline_powerline_fonts = 1
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#show_tabs = 0
-let g:airline#extensions#tabline#formatter = 'unique_tail'
-let g:airline_theme = 'sonokai'
-let g:rainbow_active = 1
 ]]
 if vim.fn.argc(-1) == 0 then
   vim.cmd("NvimTreeOpen")
 end
 vim.opt.fillchars:append { eob = " " }
-

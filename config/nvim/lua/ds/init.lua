@@ -1,8 +1,7 @@
 require("ds.map")
 require("ds.pckr")
 require("ds.plugset")
-require("ds.set")
-
+require("ds.set")  
 
 -- NETRW basic Set
 vim.g.loaded_netrw = 0
