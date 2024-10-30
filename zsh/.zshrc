@@ -44,6 +44,11 @@ eval "$(zoxide init zsh)"
 alias np="~/.script/sesh.sh"
 alias tn="tmux new -s"
 alias tl="tmux ls"
+alias syss='sudo systemctl status'
+alias sysstart='sudo systemctl start'
+alias sysstop='sudo systemctl stop'
+alias syse='sudo systemctl enable'
+alias chrome="chromium-browser"
 ta () {
 items=`tmux ls`
 selected=`echo "$items" | fzf`
@@ -88,7 +93,7 @@ bindkey -v '^?' backward-delete-char
  #Edit line in vim with ctrl-e:
 autoload edit-command-line; zle -N edit-command-line
 bindkey '^e' edit-command-line
-source $HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+#source $HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 #source $HOME/.zshenv
 ##### ZSH MINIMAL THEME #########################################
 # Global settings
@@ -408,3 +413,24 @@ bindkey -s '^[d' "movedir\n"
 export PATH="$HOME/.local/bin:$PATH"
 export $EDITOR='nvim'
 export VISUAL="nvim"
+
+
+source ~/path/to/fsh/fast-syntax-highlighting.plugin.zsh
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/dhyey/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/dhyey/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/dhyey/miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/dhyey/miniconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+export WARP_ENABLE_WAYLAND=1
+export MESA_D3D12_DEFAULT_ADAPTER_NAME=NVIDIA
+export BROWSER=google-chrome
