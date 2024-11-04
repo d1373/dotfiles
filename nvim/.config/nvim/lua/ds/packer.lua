@@ -10,10 +10,6 @@ return require('packer').startup(function(use)
 	  'nvim-telescope/telescope.nvim', tag = '0.1.8',
 	  requires = { {'nvim-lua/plenary.nvim'} }
   }
-  use{
-	  'rose-pine/neovim',
-	  as = 'rose-pine',
-  }
   use({'nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'}})
   use 'ThePrimeagen/harpoon'
   use 'mbbill/undotree'
@@ -33,4 +29,6 @@ return require('packer').startup(function(use)
  use 'preservim/nerdcommenter'
  use 'jiangmiao/auto-pairs'
  use 'tpope/vim-surround'
+ use 'dikiaap/minimalist'
+ use { 'sainnhe/sonokai' }
 end)

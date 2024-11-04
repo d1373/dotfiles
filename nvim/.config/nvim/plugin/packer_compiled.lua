@@ -99,6 +99,11 @@ _G.packer_plugins = {
     path = "/home/dhyey/.local/share/nvim/site/pack/packer/start/lsp-zero.nvim",
     url = "https://github.com/VonHeikemen/lsp-zero.nvim"
   },
+  minimalist = {
+    loaded = true,
+    path = "/home/dhyey/.local/share/nvim/site/pack/packer/start/minimalist",
+    url = "https://github.com/dikiaap/minimalist"
+  },
   nerdcommenter = {
     loaded = true,
     path = "/home/dhyey/.local/share/nvim/site/pack/packer/start/nerdcommenter",
@@ -134,10 +139,10 @@ _G.packer_plugins = {
     path = "/home/dhyey/.local/share/nvim/site/pack/packer/start/plenary.nvim",
     url = "https://github.com/nvim-lua/plenary.nvim"
   },
-  ["rose-pine"] = {
+  sonokai = {
     loaded = true,
-    path = "/home/dhyey/.local/share/nvim/site/pack/packer/start/rose-pine",
-    url = "https://github.com/rose-pine/neovim"
+    path = "/home/dhyey/.local/share/nvim/site/pack/packer/start/sonokai",
+    url = "https://github.com/sainnhe/sonokai"
   },
   ["telescope.nvim"] = {
     loaded = true,
