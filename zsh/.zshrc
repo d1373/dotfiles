@@ -431,6 +431,12 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
-export WARP_ENABLE_WAYLAND=1
-export MESA_D3D12_DEFAULT_ADAPTER_NAME=NVIDIA
-export BROWSER=google-chrome
+# brew
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+# fnm
+FNM_PATH="/home/dhyey/.local/share/fnm"
+if [ -d "$FNM_PATH" ]; then
+  export PATH="/home/dhyey/.local/share/fnm:$PATH"
+  eval "`fnm env`"
+fi
+eval "$(fnm env --use-on-cd --shell zsh)"
