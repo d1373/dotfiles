@@ -1,6 +1,6 @@
 # Basic Settings
 set preview true
-set hidden true
+set hidden false
 set drawbox true
 set icons true
 set ignorecase true
@@ -203,7 +203,7 @@ map ms $mkscript
 map ch chmod
 map bg setwallpaper
 map o open_config
-map bb brave 
+map bb brave.exe 
 map br $vimv $fx
 map r rename
 map H top
