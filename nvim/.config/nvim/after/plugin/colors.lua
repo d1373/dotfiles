@@ -11,4 +11,4 @@ function ColorMy(color)
 end
 
 ColorMy()
-
+vim.cmd[[set number]]

@@ -25,12 +25,14 @@ set incsearch                   " Incremental search
 set hidden                      " Needed to keep multiple buffers open
 set nobackup                    " No auto backups
 set noswapfile                  " No swap
-set number        " Display line numbers
 set tabstop=2     "tab width
 set shiftwidth=2  "indent size
 set expandtab     "use space to instead the tab character
 set smarttab
 set mouse=a
+set termguicolors
+set number
+
 
 ]])
 
@@ -55,3 +57,5 @@ nnoremap <silent> <Leader>q :call CloseBufferOrVim()<CR>
 nnoremap <silent> <Leader>Q :call CloseBufferOrVim('!')<CR>
 nnoremap <silent> <Leader>s :w<CR>
 ]])
+-- optionally enable 24-bit colour
+
