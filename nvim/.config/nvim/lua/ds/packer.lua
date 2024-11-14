@@ -33,6 +33,8 @@ return require('packer').startup(function(use)
   use {
     'nvim-lualine/lualine.nvim',
   }
+use { 'williamboman/mason.nvim' }
+use { 'williamboman/mason-lspconfig.nvim' }
 use({
     "kdheepak/lazygit.nvim",
     requires = {

@@ -31,6 +31,10 @@ vim.api.nvim_create_autocmd('LspAttach', {
 })
 
 
+require('mason').setup()
+require('mason-lspconfig').setup({
+  ensure_installed = { 'jdtls' }
+})
 -- These are just examples. Replace them with the language
 -- servers you have installed in your system
 require('lspconfig').gleam.setup({})
@@ -45,7 +49,6 @@ require('lspconfig').lua_ls.setup({
 	},
 })
 require('lspconfig').clangd.setup({})
-require('lspconfig').jdtls.setup({})
 require('lspconfig').pyright.setup({})
 require('lspconfig').ts_ls.setup({})
 require('lspconfig').html.setup({})

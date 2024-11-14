@@ -94,6 +94,11 @@ _G.packer_plugins = {
     path = "/home/dhyey/.local/share/nvim/site/pack/packer/start/harpoon",
     url = "https://github.com/ThePrimeagen/harpoon"
   },
+  ["lazygit.nvim"] = {
+    loaded = true,
+    path = "/home/dhyey/.local/share/nvim/site/pack/packer/start/lazygit.nvim",
+    url = "https://github.com/kdheepak/lazygit.nvim"
+  },
   ["lsp-zero.nvim"] = {
     loaded = true,
     path = "/home/dhyey/.local/share/nvim/site/pack/packer/start/lsp-zero.nvim",
@@ -103,6 +108,16 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/dhyey/.local/share/nvim/site/pack/packer/start/lualine.nvim",
     url = "https://github.com/nvim-lualine/lualine.nvim"
+  },
+  ["mason-lspconfig.nvim"] = {
+    loaded = true,
+    path = "/home/dhyey/.local/share/nvim/site/pack/packer/start/mason-lspconfig.nvim",
+    url = "https://github.com/williamboman/mason-lspconfig.nvim"
+  },
+  ["mason.nvim"] = {
+    loaded = true,
+    path = "/home/dhyey/.local/share/nvim/site/pack/packer/start/mason.nvim",
+    url = "https://github.com/williamboman/mason.nvim"
   },
   minimalist = {
     loaded = true,
@@ -114,21 +129,6 @@ _G.packer_plugins = {
     path = "/home/dhyey/.local/share/nvim/site/pack/packer/start/nerdcommenter",
     url = "https://github.com/preservim/nerdcommenter"
   },
-  nerdtree = {
-    loaded = true,
-    path = "/home/dhyey/.local/share/nvim/site/pack/packer/start/nerdtree",
-    url = "https://github.com/preservim/nerdtree"
-  },
-  ["noice.nvim"] = {
-    loaded = true,
-    path = "/home/dhyey/.local/share/nvim/site/pack/packer/start/noice.nvim",
-    url = "https://github.com/folke/noice.nvim"
-  },
-  ["nui.nvim"] = {
-    loaded = true,
-    path = "/home/dhyey/.local/share/nvim/site/pack/packer/start/nui.nvim",
-    url = "https://github.com/MunifTanjim/nui.nvim"
-  },
   ["nvim-cmp"] = {
     loaded = true,
     path = "/home/dhyey/.local/share/nvim/site/pack/packer/start/nvim-cmp",
@@ -138,11 +138,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/dhyey/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
     url = "https://github.com/neovim/nvim-lspconfig"
-  },
-  ["nvim-notify"] = {
-    loaded = true,
-    path = "/home/dhyey/.local/share/nvim/site/pack/packer/start/nvim-notify",
-    url = "https://github.com/rcarriga/nvim-notify"
   },
   ["nvim-spectre"] = {
     loaded = true,
@@ -178,16 +173,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/dhyey/.local/share/nvim/site/pack/packer/start/undotree",
     url = "https://github.com/mbbill/undotree"
-  },
-  ["vim-devicons"] = {
-    loaded = true,
-    path = "/home/dhyey/.local/share/nvim/site/pack/packer/start/vim-devicons",
-    url = "https://github.com/ryanoasis/vim-devicons"
-  },
-  ["vim-fugitive"] = {
-    loaded = true,
-    path = "/home/dhyey/.local/share/nvim/site/pack/packer/start/vim-fugitive",
-    url = "https://github.com/tpope/vim-fugitive"
   },
   ["vim-surround"] = {
     loaded = true,
