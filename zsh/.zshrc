@@ -23,22 +23,24 @@ alias grep="rg"
 alias nano="nvim"
 alias v="nvim"
 export EDITOR="nvim"
-alias ll="exa --icons -al"
-alias l="exa --icons -l"
+alias ll="lsd -al"
+alias l="lsd -l"
 alias rm="rm -i"
-alias ls="exa --icons"
+alias ls="lsd"
 alias :q="exit"
 ## check mime type
 alias m="file --mime-type"
 alias o="xdg-open"
+alias t="cd ~ ;z"
 # git
 alias g="git"
 alias gd="git diff"
 alias gc="git clone"
 alias gst="git status"
+alias sesh="sh ~/.script/sesh.sh"
 # wsl
 alias winget="powershell.exe winget"
-alias ex="explorer.exe"
+alias ex="explorer.exe ."
 eval "$(zoxide init zsh)"
 #tmux
 alias np="~/.script/sesh.sh"
@@ -49,6 +51,8 @@ alias sysstart='sudo systemctl start'
 alias sysstop='sudo systemctl stop'
 alias syse='sudo systemctl enable'
 alias chrome="chromium-browser"
+alias yy='~/yazi/yazi'
+alias ya='~/yazi/ya'
 ta () {
 items=`tmux ls`
 selected=`echo "$items" | fzf`
