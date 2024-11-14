@@ -13,7 +13,6 @@ return require('packer').startup(function(use)
   use({ 'nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' } })
   use 'ThePrimeagen/harpoon'
   use 'mbbill/undotree'
-  use 'tpope/vim-fugitive'
   use({ 'VonHeikemen/lsp-zero.nvim', branch = 'v4.x' })
   use({ 'neovim/nvim-lspconfig' })
   use({ 'hrsh7th/nvim-cmp' })
@@ -34,4 +33,10 @@ return require('packer').startup(function(use)
   use {
     'nvim-lualine/lualine.nvim',
   }
+use({
+    "kdheepak/lazygit.nvim",
+    requires = {
+        "nvim-lua/plenary.nvim",
+    },
+})
 end)
