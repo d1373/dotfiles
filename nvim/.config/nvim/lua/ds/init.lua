@@ -57,5 +57,4 @@ nnoremap <silent> <Leader>q :call CloseBufferOrVim()<CR>
 nnoremap <silent> <Leader>Q :call CloseBufferOrVim('!')<CR>
 nnoremap <silent> <Leader>s :w<CR>
 ]])
--- optionally enable 24-bit colour
 
