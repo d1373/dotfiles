@@ -41,4 +41,6 @@ use({
         "nvim-lua/plenary.nvim",
     },
 })
+use 'supermaven-inc/supermaven-nvim'
+
 end)

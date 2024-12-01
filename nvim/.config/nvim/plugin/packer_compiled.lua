@@ -164,6 +164,11 @@ _G.packer_plugins = {
     path = "/home/dhyey/.local/share/nvim/site/pack/packer/start/sonokai",
     url = "https://github.com/sainnhe/sonokai"
   },
+  ["supermaven-nvim"] = {
+    loaded = true,
+    path = "/home/dhyey/.local/share/nvim/site/pack/packer/start/supermaven-nvim",
+    url = "https://github.com/supermaven-inc/supermaven-nvim"
+  },
   ["telescope.nvim"] = {
     loaded = true,
     path = "/home/dhyey/.local/share/nvim/site/pack/packer/start/telescope.nvim",

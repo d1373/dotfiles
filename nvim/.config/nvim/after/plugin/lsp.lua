@@ -71,7 +71,6 @@ cmp.setup({
 			vim.snippet.expand(args.body)
 		end,
 	},
-
 	mapping = cmp.mapping.preset.insert({
 		['<Tab>'] = cmp_action.tab_complete(),
 		['<S-Tab>'] = cmp.mapping.select_prev_item({ behavior = 'select' }),

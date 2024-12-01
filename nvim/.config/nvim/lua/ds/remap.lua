@@ -10,15 +10,15 @@ map k gk
 nnoremap Q <nop>
 map <leader>a 0
 map <leader>; $
-nnoremap <A-h> <C-w>h
-nnoremap <A-j> <C-w>j
-nnoremap <A-k> <C-w>k
-nnoremap <A-l> <C-w>l
-map <A-H> :vs<CR>
-noremap <A-Left> :vertical resize +3<CR>
-noremap <A-Right> :vertical resize -3<CR>
-noremap <A-Up> :resize +3<CR>
-noremap <A-Down> :resize -3<CR>
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+map <C-b> :vs<CR>
+noremap <C-Left> :vertical resize +3<CR>
+noremap <C-Right> :vertical resize -3<CR>
+noremap <C-Up> :resize +3<CR>
+noremap <C-Down> :resize -3<CR>
 map <leader>/ <Plug>NERDCommenterToggle
 
 ]]
