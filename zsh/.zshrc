@@ -37,13 +37,13 @@ alias g="git"
 alias gd="git diff"
 alias gc="git clone"
 alias gst="git status"
-alias sesh="sh ~/.script/sesh.sh"
 # wsl
 alias winget="powershell.exe winget"
 alias ex="explorer.exe ."
 eval "$(zoxide init zsh)"
 #tmux
 alias np="~/.script/sesh.sh"
+alias rt="~/.script/rt.sh"
 alias tn="tmux new -s"
 alias tl="tmux ls"
 alias syss='sudo systemctl status'
@@ -53,6 +53,7 @@ alias syse='sudo systemctl enable'
 alias chrome="chromium-browser"
 alias yy='~/yazi/yazi'
 alias ya='~/yazi/ya'
+alias n='pnpm'
 ta () {
 items=`tmux ls`
 selected=`echo "$items" | fzf`
@@ -444,3 +445,11 @@ if [ -d "$FNM_PATH" ]; then
   eval "`fnm env`"
 fi
 eval "$(fnm env --use-on-cd --shell zsh)"
+
+# pnpm
+export PNPM_HOME="/home/dhyey/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
