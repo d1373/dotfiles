@@ -28,7 +28,7 @@ return require('packer').startup(function(use)
   use 'preservim/nerdcommenter'
   use 'jiangmiao/auto-pairs'
   use 'tpope/vim-surround'
-  use 'dikiaap/minimalist'
+  use {"rose-pine/neovim",as = "rose-pine"}
   use { 'sainnhe/sonokai' }
   use {
     'nvim-lualine/lualine.nvim',
@@ -42,5 +42,10 @@ use({
     },
 })
 use 'supermaven-inc/supermaven-nvim'
+use {
+  'rafamadriz/friendly-snippets',
+  requires = { 'L3MON4D3/LuaSnip' }
+}
+
 
 end)
