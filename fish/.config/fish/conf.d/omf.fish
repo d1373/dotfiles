@@ -61,6 +61,7 @@ alias sysstart 'sudo systemctl start'
 alias sysstop 'sudo systemctl stop'
 alias syse 'sudo systemctl enable'
 alias taa 'tmux a'
+alias tks 'tmux kill-server'
 
 # Other aliases
 alias yy '~/yazi/yazi'
