@@ -13,7 +13,9 @@ return {
   config = function()
       require('neo-tree').setup({
   close_if_last_window = true,
+    window= {
+     width=28,},
 })
-    vim.keymap.set('', '<M-b>', ':Neotree toggle<CR>', { silent = true })
+    vim.keymap.set('', '<M-b>', ':Neotree toggle <CR>', { silent = true })
   end
 }
