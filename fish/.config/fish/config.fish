@@ -36,3 +36,5 @@ set -x PNPM_HOME "/home/dhyey/.local/share/pnpm"
 if not contains $PNPM_HOME $PATH
     set -x PATH $PNPM_HOME $PATH
 end
+
+fish_add_path /home/dhyey/.cargo/bin
