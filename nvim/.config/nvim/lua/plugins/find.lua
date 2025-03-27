@@ -89,6 +89,6 @@ return {
 		vim.keymap.set("n", "<leader>w", builtin.grep_string, { desc = "[S]earch current [W]ord" })
 		vim.keymap.set("n", "<leader>/", builtin.live_grep, { desc = "[S]earch by [G]rep" })
 		vim.keymap.set("n", "<leader>ss", builtin.spell_suggest, { desc = "[S]pell suggest" })
-		vim.keymap.set("n", "<leader>o", "<cmd>Telescope undo<cr>", { desc = "[U]ndo" })
+		vim.keymap.set("n", "<M-o>", "<cmd>Telescope undo<cr>", { desc = "[U]ndo" })
 	end,
 }

@@ -1,6 +1,7 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 local opts = { noremap = true, silent = true }
+
 -- Custom buffer-close function
 local function close_buffer_or_vim(force)
 	local listed_buffers = vim.tbl_filter(function(bufnr)
