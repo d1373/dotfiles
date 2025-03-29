@@ -80,15 +80,25 @@ return {
 		pcall(require("telescope").load_extension, "ui-select")
 		require("telescope").load_extension("undo")
 
-		vim.keymap.set("n", "<leader>gf", builtin.git_files, { desc = "Search [G]it [F]iles" })
-		vim.keymap.set("n", "<leader>gc", builtin.git_commits, { desc = "Search [G]it [C]ommits" })
+		vim.keymap.set("n", "<leader>gf", "<cmd>Telescope git_files theme=ivy<cr>", { desc = "Search [G]it [F]iles" })
+		vim.keymap.set(
+			"n",
+			"<leader>gc",
+			"<cmd>Telescope git_commits theme=ivy<cr>",
+			{ desc = "Search [G]it [C]ommits" }
+		)
 		vim.keymap.set("n", "<leader>gb", builtin.git_branches, { desc = "Search [G]it [B]ranches" })
 		vim.keymap.set("n", "<leader>gs", builtin.git_status, { desc = "Search [G]it [S]tatus (diff view)" })
-		vim.keymap.set("n", "<leader>f", builtin.find_files, { desc = "[S]earch [F]iles" })
+		vim.keymap.set("n", "<leader>f", "<cmd>Telescope find_files theme=ivy<cr>", { desc = "[S]earch [F]iles" })
 		vim.keymap.set("n", "<leader>j", builtin.help_tags, { desc = "[S]earch [H]elp" })
-		vim.keymap.set("n", "<leader>w", builtin.grep_string, { desc = "[S]earch current [W]ord" })
-		vim.keymap.set("n", "<leader>/", builtin.live_grep, { desc = "[S]earch by [G]rep" })
-		vim.keymap.set("n", "<leader>ss", builtin.spell_suggest, { desc = "[S]pell suggest" })
-		vim.keymap.set("n", "<M-o>", "<cmd>Telescope undo<cr>", { desc = "[U]ndo" })
+		vim.keymap.set(
+			"n",
+			"<leader>w",
+			"<cmd>Telescope grep_string theme=ivy<cr>",
+			{ desc = "[S]earch current [W]ord" }
+		)
+		vim.keymap.set("n", "<leader>/", "<cmd>Telescope live_grep theme=ivy<cr>", { desc = "[S]earch by [G]rep" })
+		vim.keymap.set("n", "<leader>ss", "<cmd>Telescope spell_suggest theme=cursor<cr>", { desc = "[S]pell suggest" })
+		vim.keymap.set("n", "<M-o>", "<cmd>Telescope undo theme=ivy<cr>", { desc = "[U]ndo" })
 	end,
 }
