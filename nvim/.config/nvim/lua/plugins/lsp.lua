@@ -152,7 +152,7 @@ return { -- LSP Configuration & Plugins
 				},
 			},
 			ruff = {
-				-- Notes on code actions: https://github.com/astral-sh/ruff-lsp/issues/119#issuecomment-1595628355
+
 				-- Get isort like behavior: https://github.com/astral-sh/ruff/issues/8926#issuecomment-1834048218
 				commands = {
 					RuffAutofix = {
@@ -185,8 +185,25 @@ return { -- LSP Configuration & Plugins
 			dockerls = {},
 			docker_compose_language_service = {},
 			tailwindcss = {},
-			html = { filetypes = { "html", "twig", "hbs" } },
+			html = {
+				filetypes = { "html", "twig", "hbs", "javascript", "typescript", "javascriptreact", "typescriptreact" },
+			},
 			cssls = {},
+			emmet_ls = {
+				filetypes = {
+					"html",
+					"twig",
+					"hbs",
+					"javascript",
+					"typescript",
+					"css",
+					"scss",
+					"less",
+					"vue",
+					"javascriptreact",
+					"typescriptreact",
+				},
+			},
 			-- ltex = {},
 			-- texlab = {},
 		}
