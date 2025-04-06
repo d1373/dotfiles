@@ -97,8 +97,8 @@ return {
 			"<cmd>Telescope grep_string theme=ivy<cr>",
 			{ desc = "[S]earch current [W]ord" }
 		)
-		vim.keymap.set("n", "<leader>/", "<cmd>Telescope live_grep theme=ivy<cr>", { desc = "[S]earch by [G]rep" })
-		vim.keymap.set("n", "<leader>ss", "<cmd>Telescope spell_suggest theme=cursor<cr>", { desc = "[S]pell suggest" })
+		vim.keymap.set("n", "<leader>ss", "<cmd>Telescope live_grep theme=ivy<cr>", { desc = "[S]earch by [G]rep" })
+		vim.keymap.set("n", "<leader>sp", "<cmd>Telescope spell_suggest theme=cursor<cr>", { desc = "[S]pell suggest" })
 		vim.keymap.set("n", "<M-o>", "<cmd>Telescope undo theme=ivy<cr>", { desc = "[U]ndo" })
 	end,
 }
