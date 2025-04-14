@@ -62,10 +62,9 @@ alias sysstop 'sudo systemctl stop'
 alias syse 'sudo systemctl enable'
 alias taa 'tmux a'
 alias tks 'tmux kill-server'
+alias lg 'lazygit'
 
 # Other aliases
-alias yy '~/yazi/yazi'
-alias ya '~/yazi/ya'
 alias n 'pnpm'
 
 #===============================================================================
