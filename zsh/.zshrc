@@ -1,105 +1,131 @@
-### "nvim" as manpager
+#===============================================================================
+# Environment Variables
+#===============================================================================
 export MANPAGER="sh -c 'col -bx | batcat -l man -p'"
-# Preferred editor for local and remote sessions
- if [[ -n $SSH_CONNECTION ]]; then
-   export EDITOR='nvim'
- else
-   export EDITOR='nvim'
- fi
-
-
 export EDITOR="nvim"
+export VISUAL="nvim"
 
-#------------------------------------------------------------------------------#
-#                                my custom alias                               #
-#------------------------------------------------------------------------------#
-alias ..="cd .."
-alias ...="cd ..;cd .."
-alias bat="batcat"
-alias se="sudoedit"
-alias vi="nvim"
-alias r="ranger"
-alias grep="rg"
-alias nano="nvim"
-alias v="nvim"
-export EDITOR="nvim"
-alias ll="lsd -al"
-alias l="lsd -l"
-alias rm="rm -i"
-alias ls="lsd"
-alias :q="exit"
-## check mime type
-alias m="file --mime-type"
-alias o="xdg-open"
-alias t="cd ~ ;z"
-# git
-alias g="git"
-alias gd="git diff"
-alias gc="git clone"
-alias gst="git status"
-# wsl
-alias winget="powershell.exe winget"
-alias ex="explorer.exe ."
-eval "$(zoxide init zsh)"
-#tmux
-alias np="~/.script/sesh.sh"
-alias rt="~/.script/rt.sh"
-alias tn="tmux new -s"
-alias tl="tmux ls"
+#===============================================================================
+# Aliases
+#===============================================================================
+alias ..='cd ..'
+alias ...='cd ../..'
+alias bat='batcat'
+alias se='sudoedit'
+alias vi='nvim'
+alias nano='nvim'
+alias v='nvim'
+alias r='ranger'
+alias grep='rg'
+alias ll='lsd -al'
+alias l='lsd -l'
+alias rm='rm -i'
+alias ls='lsd'
+alias :q='exit'
+alias m='file --mime-type'
+alias o='xdg-open'
+alias t='cd ~; z'
+
+# Git Aliases
+alias g='git'
+alias gd='git diff'
+alias gc='git clone'
+alias gst='git status'
+
+# WSL Aliases
+alias winget='powershell.exe winget'
+alias ex='explorer.exe .'
+
+# Tmux Aliases
+alias np='~/.script/sesh.sh'
+alias rt='~/.script/rt.sh'
+alias tn='tmux new -s'
+alias tl='tmux ls'
+alias taa='tmux a'
+alias tks='tmux kill-server'
 alias syss='sudo systemctl status'
 alias sysstart='sudo systemctl start'
 alias sysstop='sudo systemctl stop'
 alias syse='sudo systemctl enable'
-alias chrome="chromium-browser"
-alias yy='~/yazi/yazi'
-alias ya='~/yazi/ya'
-alias n='pnpm'
-ta () {
-items=`tmux ls`
-selected=`echo "$items" | fzf`
-session=`echo "$selected" | head -n1 | sed -e 's/\s.*$//'`
-tmux a -t "$session"
-}
-alias taa="tmux a"
+alias lg='lazygit'
 
-# vi mode
+# Miscellaneous
+alias n='pnpm'
+
+#===============================================================================
+# Plugins / Initialization
+#===============================================================================
+eval "$(zoxide init zsh)"
+
+#===============================================================================
+# Custom Functions
+#===============================================================================
+function ta() {
+  local selected session
+  selected=$(tmux ls | fzf)
+  session=$(echo $selected | awk '{print $1}')
+  tmux attach -t "$session"
+}
+
+function movedir() {
+  local items selected
+  items=$(find ~ ~/dotfiles ~/.config ~/dev -maxdepth 1 -mindepth 1 -type d)
+  selected=$(echo $items | fzf)
+  cd "$selected"
+}
+
+#===============================================================================
+# Key Bindings and Cursor Shape (Vi Mode)
+#===============================================================================
 bindkey -v
 export KEYTIMEOUT=1
 
-# Change cursor shape for different vi modes.
 function zle-keymap-select {
-  if [[ ${KEYMAP} == vicmd ]] ||
-	 [[ $1 = 'block' ]]; then
-	echo -ne '\e[1 q'
-  elif [[ ${KEYMAP} == main ]] ||
-	   [[ ${KEYMAP} == viins ]] ||
-	   [[ ${KEYMAP} = '' ]] ||
-	   [[ $1 = 'beam' ]]; then
-	echo -ne '\e[5 q'
+  if [[ ${KEYMAP} == vicmd || $1 == 'block' ]]; then
+    echo -ne '\e[1 q'
+  else
+    echo -ne '\e[5 q'
   fi
 }
 zle -N zle-keymap-select
-zle-line-init() {
-	zle -K viins # initiate `vi insert` as keymap (can be removed if `bindkey -V` has been set elsewhere)
-	echo -ne "\e[5 q"
+
+function zle-line-init {
+  zle -K viins
+  echo -ne "\e[5 q"
 }
 zle -N zle-line-init
-echo -ne '\e[5 q' # Use beam shape cursor on startup.
-preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
-# Use vim keys in tab complete menu:
+echo -ne '\e[5 q'
+preexec() { echo -ne '\e[5 q'; }
+
 zstyle ':completion:*' menu select
 zmodload zsh/complist
-# use the vi navigation keys in menu completion
 bindkey -M menuselect 'h' vi-backward-char
+bindkey -M menuselect 'j' vi-down-line-or-history
 bindkey -M menuselect 'k' vi-up-line-or-history
 bindkey -M menuselect 'l' vi-forward-char
-bindkey -M menuselect 'j' vi-down-line-or-history
-bindkey -v '^?' backward-delete-char
- #Edit line in vim with ctrl-e:
-autoload edit-command-line; zle -N edit-command-line
+
+autoload edit-command-line
+zle -N edit-command-line
 bindkey '^e' edit-command-line
-#source $HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-#source $HOME/.zshenv
+
+
+#===============================================================================
+# Plugins: zsh-autosuggestions and zsh-syntax-highlighting
+#===============================================================================
+# Ensure you have both plugins cloned in ~/.zsh/zsh-autosuggestions and ~/.zsh/zsh-syntax-highlighting
+
+# zsh-autosuggestions
+source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+# zsh-syntax-highlighting (must be sourced at the end of the file)
+source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# Optional: make autosuggestions use a subtle color
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=244'
+
+#===============================================================================
+# Minimal zsh prompt
+#===============================================================================
 ##### ZSH MINIMAL THEME #########################################
 # Global settings
 MNML_OK_COLOR="${MNML_OK_COLOR:-2}"
@@ -400,56 +426,3 @@ PROMPT='$(_mnml_wrap MNML_PROMPT) '
 RPROMPT='$(_mnml_wrap MNML_RPROMPT)'
 _mnml_bind_widgets
 
-#bindkey -M main  "^M" buffer-empty
-#bindkey -M vicmd "^M" buffer-empty
-
-############################################################
-export PATH="$(go env GOPATH)/bin:$PATH"
-autoload -Uz compinit && compinit
-zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
-#export BAT_THEME="gruvbox-dark"
-movedir () {
-items=`find ~ ~/dotfiles ~/.config  ~/dev -maxdepth 1 -mindepth 1 -type d`
-selected=`echo "$items" | fzf`
-cd "$selected"
-}
-bindkey -s '^[t' "ta\n"
-bindkey -s '^[d' "movedir\n"
-export PATH="$HOME/.local/bin:$PATH"
-export $EDITOR='nvim'
-export VISUAL="nvim"
-
-
-source ~/path/to/fsh/fast-syntax-highlighting.plugin.zsh
-
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/dhyey/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/home/dhyey/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/dhyey/miniconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/home/dhyey/miniconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
-# brew
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-# fnm
-FNM_PATH="/home/dhyey/.local/share/fnm"
-if [ -d "$FNM_PATH" ]; then
-  export PATH="/home/dhyey/.local/share/fnm:$PATH"
-  eval "`fnm env`"
-fi
-eval "$(fnm env --use-on-cd --shell zsh)"
-
-# pnpm
-export PNPM_HOME="/home/dhyey/.local/share/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
-# pnpm end

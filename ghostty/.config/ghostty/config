@@ -1,0 +1,46 @@
+# Window settings
+window-decoration = true
+window-inherit-working-directory = true
+window-theme = dark
+window-save-state = always
+window-width = 1920
+window-height = 1080
+
+# Mouse
+mouse-hide-while-typing = true
+copy-on-select = true
+
+# Background and transparency
+background = #121212
+background-opacity = 0.9
+
+# Font and cursor
+font-family = Hack Nerd Font
+font-size = 14
+cursor-style = block
+
+# Colors
+foreground = #C1C1C1
+selection-background = #FFFFFF
+cursor-color = #FFFFFF
+
+# ANSI 0–7 (normal)
+palette = 0=#665C54
+palette = 1=#EA6962
+palette = 2=#A9B665
+palette = 3=#D8A657
+palette = 4=#7DAEA3
+palette = 5=#D3869B
+palette = 6=#89B482
+palette = 7=#D4BE98
+
+# ANSI 8–15 (bright)
+palette = 8=#928374
+palette = 9=#EA6962
+palette = 10=#A9B665
+palette = 11=#D8A657
+palette = 12=#7DAEA3
+palette = 13=#D3869B
+palette = 14=#89B482
+palette = 15=#D4BE98
+

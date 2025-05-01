@@ -1,0 +1,158 @@
+
+### ─────────────────────────────────────────────
+### General Settings
+### ─────────────────────────────────────────────
+set -g prefix M-a
+unbind C-b
+set -g escape-time 4
+set -g default-terminal "xterm-256color"
+set-option -g detach-on-destroy off
+set-option -g allow-rename off
+set -g mouse on
+
+### Window and Pane Indexing
+set-option -g base-index 1
+set-window-option -g pane-base-index 1
+
+### Enable vi keys in copy and choose mode
+set-window-option -g mode-keys vi
+
+### Reload config
+binM-key M-r source-file ~/.tmux.conf \; display "Config Reloaded!"
+
+### ─────────────────────────────────────────────
+### Pane & Window Management
+### ─────────────────────────────────────────────
+
+## Splits
+unbinM-key v
+unbinM-key h
+binM-key M-v split-window -v    # horizontal split
+binM-key M-b split-window -h    # vertical split
+
+## Kill pane/window
+unbinM-key x
+binM-key x kill-pane
+binM-key X kill-window
+
+## Pane Navigation - Vim style
+binM-key -r h select-pane -L
+binM-key -r j select-pane -D
+binM-key -r k select-pane -U
+binM-key -r l select-pane -R
+
+## Resize Panes - Vim style
+binM-key -r H resize-pane -L 2
+binM-key -r J resize-pane -D 2
+binM-key -r K resize-pane -U 2
+binM-key -r L resize-pane -R 2
+
+## Arrow Key Navigation
+binM-key Up select-pane -U
+binM-key Down select-pane -D
+binM-key Left select-pane -L
+binM-key Right select-pane -R
+
+### Smart pane switching with Vim awareness
+is_vim="ps -o state= -o comm= -t '#{pane_tty}' \
+    | grep -iqE '^[^TXZ ]+ +(\\S+\\/)?g?(view|l?n?vim?x?|fzf)(diff)?$'"
+binM-key -n C-h if-shell "$is_vim" 'senM-keys C-h' 'select-pane -L'
+binM-key -n C-j if-shell "$is_vim" 'senM-keys C-j' 'select-pane -D'
+binM-key -n C-k if-shell "$is_vim" 'senM-keys C-k' 'select-pane -U'
+binM-key -n C-l if-shell "$is_vim" 'senM-keys C-l' 'select-pane -R'
+binM-key -n C-\\ if-shell "$is_vim" 'senM-keys C-\\' 'select-pane -l'
+
+### Window Switching
+binM-key -r C-h select-window -t :-
+binM-key -r C-l select-window -t :+
+binM-key -r R commanM-prompt -I "#W" "rename-window -- '%%'"
+binM-key L last-window
+
+### Alt + Number for window switching
+binM-key -n M-1 select-window -t 1
+binM-key -n M-2 select-window -t 2
+binM-key -n M-3 select-window -t 3
+binM-key -n M-4 select-window -t 4
+binM-key -n M-5 select-window -t 5
+binM-key -n M-6 select-window -t 6
+binM-key -n M-7 select-window -t 7
+binM-key -n M-8 select-window -t 8
+binM-key -n M-9 select-window -t 9
+
+### Copy Mode
+binM-key Escape copy-mode
+bind-key D-v run "tmux set-buffer \"$(xclip -o -sel clipboard)\""
+
+### ─────────────────────────────────────────────
+### Tmux Configuration with Catppuccin Monochrome
+### ─────────────────────────────────────────────
+
+# Plugin Manager
+set -g @plugin 'catppuccin/tmux#v2.1.3'
+
+# Use custom theme flavor
+set -g @catppuccin_flavour 'custom'
+
+# ─────────────────────────────────────────────
+# Monochrome Color Palette using @thm_* variables
+# ─────────────────────────────────────────────
+set -g @thm_bg "#1c1c1c"
+set -g @thm_fg "#d0d0d0"
+set -g @thm_surface_0 "#2e2e2e"
+set -g @thm_surface_1 "#3a3a3a"
+set -g @thm_surface_2 "#4e4e4e"
+set -g @thm_overlay_0 "#5e5e5e"
+set -g @thm_overlay_1 "#6e6e6e"
+set -g @thm_overlay_2 "#7e7e7e"
+set -g @thm_crust "#101010"
+set -g @thm_mantle "#1a1a1a"
+set -g @thm_base "#303030"
+set -g @thm_text "#c0c0c0"
+set -g @thm_subtext_0 "#a0a0a0"
+set -g @thm_subtext_1 "#808080"
+
+# Optional muted "accent" (still grayscale)
+set -g @thm_blue "#b0b0b0"
+set -g @thm_mauve "#909090"
+set -g @thm_green "#707070"
+set -g @thm_red "#505050"
+set -g @thm_yellow "#606060"
+set -g @thm_peach "#707070"
+set -g @thm_pink "#707070"
+set -g @thm_maroon "#707070"
+set -g @thm_rose "#707070"
+set -g @thm_lavender "#a0a0a0"
+### ─────────────────────────────────────────────
+### Style Settings
+### ─────────────────────────────────────────────
+# Status bar appearance
+set -g status on
+set -g status-position top
+
+# Rounded window style
+set -g @catppuccin_window_status_style "rounded"
+set -g @catppuccin_window_default_text "#W"
+set -g @catppuccin_window_text "#W"
+set -g @catppuccin_window_current_text "#W"
+
+# Transparency and true color support
+set -g default-terminal "tmux-256color"
+set-option -ga terminal-overrides ",xterm-256color:Tc"
+### ─────────────────────────────────────────────
+### Status Bar Layout (Top + Transparent Look)
+### ─────────────────────────────────────────────
+
+# Left & right status (minimal)
+set -g status-left ""
+set -g status-right "#{E:@catppuccin_status_application} #{E:@catppuccin_status_session}"
+
+### ─────────────────────────────────────────────
+### Plugins
+### ─────────────────────────────────────────────
+set -g @plugin 'tmux-plugins/tpm'
+set -g @plugin 'tmux-plugins/tmux-resurrect'
+set -g @resurrect-strategy-vim 'session'
+set -g @resurrect-strategy-nvim 'session'
+
+run '~/.tmux/plugins/tpm/tpm'
+set -g status-style bg=default
