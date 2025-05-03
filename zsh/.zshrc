@@ -1,16 +1,18 @@
 #===============================================================================
 # Environment Variables
 #===============================================================================
-export MANPAGER="sh -c 'col -bx | batcat -l man -p'"
+export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 export EDITOR="nvim"
 export VISUAL="nvim"
+export BAT_THEME="ansi"
+
 
 #===============================================================================
 # Aliases
 #===============================================================================
 alias ..='cd ..'
 alias ...='cd ../..'
-alias bat='batcat'
+alias bat='bat'
 alias se='sudoedit'
 alias vi='nvim'
 alias nano='nvim'
