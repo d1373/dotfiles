@@ -121,9 +121,23 @@ source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # zsh-syntax-highlighting (must be sourced at the end of the file)
 source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# zshenv
+source ~/.zshenv
 
 # Optional: make autosuggestions use a subtle color
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=244'
+
+#===============================================================================
+# Yazi Shell Wrapper
+#===============================================================================
+function y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	yazi "$@" --cwd-file="$tmp"
+	if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+		builtin cd -- "$cwd"
+	fi
+	rm -f -- "$tmp"
+}
 
 #===============================================================================
 # Minimal zsh prompt
