@@ -1,0 +1,52 @@
+#  ███████╗███████╗███████╗██╗  ██╗     ██████╗ ██████╗ ███╗   ██╗███████╗██╗ ██████╗ 
+#  ██╔════╝██╔════╝██╔════╝██║  ██║    ██╔════╝██╔═══██╗████╗  ██║██╔════╝██║██╔════╝ 
+#  ███████╗█████╗  ███████╗███████║    ██║     ██║   ██║██╔██╗ ██║█████╗  ██║██║  ███╗
+#  ╚════██║██╔══╝  ╚════██║██╔══██║    ██║     ██║   ██║██║╚██╗██║██╔══╝  ██║██║   ██║
+#  ███████║███████╗███████║██║  ██║    ╚██████╗╚██████╔╝██║ ╚████║██║     ██║╚██████╔╝
+#  ╚══════╝╚══════╝╚══════╝╚═╝  ╚═╝     ╚═════╝ ╚═════╝ ╚═╝  ╚═══╝╚═╝     ╚═╝ ╚═════╝ 
+
+
+# default
+
+[default_session]
+startup_command = "nvim ."
+startup_command_ignore_dirs = ["~/repos", "~/.config"]
+preview_command = "eza --all --git --icons --color=always {}"
+
+# main session + Finder Session
+[[session]]
+name = "main"
+path = "~"
+startup_command = "yazi"
+
+# Configs 
+[[session]]
+name = "dotfiles"
+path = "~/Developer/dotfiles"
+startup_command = "yazi"
+
+[[session]]
+name = "neovim config"
+path = "~/Developer/dotfiles/nvim/.config/nvim"
+startup_command = "nvim ."
+
+[[session]]
+name = "zsh config"
+path = "~/Developer/dotfiles/zsh"
+startup_command = "nvim .zshrc"
+
+[[session]]
+name = "tmux config"
+path = "~/Developer/dotfiles/zsh"
+startup_command = "nvim .tmux.conf"
+
+# Persistant Projects
+[[session]]
+name = "portfolio"
+path = "~/Developer/portfolio"
+startup_command = "zsh ~/Developer/dotfiles/sesh/.config/sesh/script/react.sh"
+
+[[session]]
+name = "flixora"
+path = "~/Developer/Flixora"
+startup_command = "zsh ~/Developer/dotfiles/sesh/.config/sesh/script/fullstack.sh"
