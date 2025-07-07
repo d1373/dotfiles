@@ -31,4 +31,6 @@ require("lazy").setup({
 	require("plugins.indent"),
 	require("plugins.supermaven"),
 	require("plugins.alpha"),
+	require("plugins.avante"),
+	require("plugins.claude"),
 })

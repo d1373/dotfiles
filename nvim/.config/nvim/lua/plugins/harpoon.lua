@@ -35,7 +35,7 @@ return {
 			harpoon.ui:toggle_quick_menu(harpoon:list())
 		end)
 
-		vim.keymap.set("n", "<leader>a", function()
+		vim.keymap.set("n", "<M-a>", function()
 			harpoon:list():add()
 		end)
 
