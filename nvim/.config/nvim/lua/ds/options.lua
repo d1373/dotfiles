@@ -29,3 +29,4 @@ vim.opt.number = true
 vim.g.have_nerd_font = false
 vim.opt.showmode = false
 vim.opt.undofile = true
+vim.opt.laststatus = 3
