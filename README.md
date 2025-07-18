@@ -238,10 +238,6 @@ chown -R $USER:$USER ~/dotfiles
 - The amazing open-source community
 - [Distrotube](https://gitlab.com/dwt1/dotfile) dotfiles
 
-## 📄 License
-
-These dotfiles include configurations from various sources, each with their own licenses. Please refer to individual application directories for specific licensing information.
-
 ---
 
 **Note**: These are my personal configurations. They work for me but might need adjustments for your setup. Feel free to fork and customize!
