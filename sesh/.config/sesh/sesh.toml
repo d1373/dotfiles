@@ -17,13 +17,13 @@ preview_command = "eza --all --git --icons --color=always {}"
 [[session]]
 name = "main"
 path = "~"
-startup_command = "yazi"
+startup_command = "lf"
 
 # Configs 
 [[session]]
 name = "dotfiles"
 path = "~/Developer/dotfiles"
-startup_command = "yazi"
+startup_command = ""
 
 [[session]]
 name = "neovim config"
