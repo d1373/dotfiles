@@ -93,7 +93,7 @@ return {
 		vim.keymap.set("n", "<leader>j", builtin.help_tags, { desc = "[S]earch [H]elp" })
 		vim.keymap.set(
 			"n",
-			"<leader>w",
+			"<leader>sw",
 			"<cmd>Telescope grep_string theme=ivy<cr>",
 			{ desc = "[S]earch current [W]ord" }
 		)

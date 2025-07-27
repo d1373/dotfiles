@@ -1,12 +1,11 @@
 return {
-	"sainnhe/sonokai",
-	lazy = false,
-	priority = 1000,
+	"vague2k/vague.nvim",
 	config = function()
-		-- Optionally configure and load the colorscheme
-		-- directly inside the plugin declaration.
-		vim.g.sonokai_enable_italic = true
-		vim.g.sonokai_transparent_background = 1
-		vim.cmd.colorscheme("sonokai")
+		-- NOTE: you do not need to call setup if you don't want to.
+		require("vague").setup({
+			-- optional configuration here
+			transparent = true, -- don't set background
+		})
+		vim.cmd.colorscheme("vague")
 	end,
 }

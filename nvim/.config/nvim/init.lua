@@ -34,4 +34,5 @@ require("lazy").setup({
 	require("plugins.avante"),
 	require("plugins.claude"),
 	require("plugins.markdown"),
+	require("plugins.obsidian"),
 })
