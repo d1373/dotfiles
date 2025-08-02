@@ -123,6 +123,8 @@ source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # zshenv
 source ~/.zshenv
+# API
+source ~/.api
 
 # Optional: make autosuggestions use a subtle color
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=244'
