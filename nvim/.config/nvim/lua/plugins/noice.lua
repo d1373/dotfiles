@@ -13,4 +13,30 @@ return {
 		--   If not available, we use `mini` as the fallback
 		"rcarriga/nvim-notify",
 	},
+	config = function()
+		require("noice").setup({
+			lsp = {
+				override = {
+					["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+					["vim.lsp.util.stylize_markdown"] = true,
+					["cmp.entry.get_documentation"] = true,
+				},
+				hover = {
+					enabled = true,
+					silent = false,
+					view = "hover",
+					opts = {
+						border = "rounded",
+					},
+				},
+				signature = {
+					enabled = true,
+					view = "hover",
+					opts = {
+						border = "rounded",
+					},
+				},
+			},
+		})
+	end,
 }
