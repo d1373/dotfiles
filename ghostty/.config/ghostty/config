@@ -27,23 +27,24 @@ foreground = #C1C1C1
 selection-background = #FFFFFF
 cursor-color = #FFFFFF
 
-# Sonokai Color Scheme by sainnhe
-# ANSI 0–7 (normal)
-palette = 0=#2C2E34
-palette = 1=#FC5D7C
-palette = 2=#9ED072
-palette = 3=#E7C664
-palette = 4=#76CCE0
-palette = 5=#B39DF3
-palette = 6=#F39660
-palette = 7=#E2E2E3
-# ANSI 8–15 (bright)
-palette = 8=#7F8490
-palette = 9=#FC5D7C
-palette = 10=#9ED072
-palette = 11=#E7C664
-palette = 12=#76CCE0
-palette = 13=#B39DF3
-palette = 14=#F39660
-palette = 15=#E2E2E3
+
+# Vague.nvim for Ghostty (ANSI 0–15)
+palette = 0=#1e1e2e   
+palette = 1=#f38ba8   
+palette = 2=#a6e3a1   
+palette = 3=#f9e2af   
+palette = 4=#89b4fa   
+palette = 5=#cba6f7   
+palette = 6=#94e2d5   
+palette = 7=#cdd6f4   
+
+# Brights
+palette = 8=#585b70   
+palette = 9=#f38ba8   
+palette = 10=#a6e3a1  
+palette = 11=#f9e2af  
+palette = 12=#89b4fa  
+palette = 13=#cba6f7  
+palette = 14=#94e2d5  
+palette = 15=#ffffff  
 
