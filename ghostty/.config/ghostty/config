@@ -1,7 +1,7 @@
-# Window settings
+#Window settings
 #macos-titlebar-style = hidden
 window-inherit-working-directory = true
-window-theme = dark
+#window-theme = dark
 window-save-state = always
 window-width = 1920
 window-height = 1080
@@ -13,7 +13,7 @@ mouse-hide-while-typing = true
 copy-on-select = true
 
 # Background and transparency
-background = #101010
+background = #0d0d10
 #background = #000000
 background-opacity = 0.9
 
