@@ -1,7 +1,7 @@
 #===============================================================================
 # Environment Variables
 #===============================================================================
-export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+export MANPAGER="sh -c 'col -bx | nvim -R -c \"set ft=man\" -'"
 export EDITOR="nvim"
 export VISUAL="nvim"
 export BAT_THEME="ansi"
@@ -27,6 +27,7 @@ alias :q='exit'
 alias m='file --mime-type'
 alias o='xdg-open'
 alias t='cd ~; z'
+alias cls="clear && neofetch"
 
 # Git Aliases
 alias g='git'
@@ -39,17 +40,15 @@ alias winget='powershell.exe winget'
 alias ex='explorer.exe .'
 
 # Tmux Aliases
-alias np='~/.script/sesh.sh'
-alias rt='~/.script/rt.sh'
 alias tn='tmux new -s'
 alias tl='tmux ls'
-alias taa='tmux a'
 alias tks='tmux kill-server'
 alias syss='sudo systemctl status'
 alias sysstart='sudo systemctl start'
 alias sysstop='sudo systemctl stop'
 alias syse='sudo systemctl enable'
 alias lg='lazygit'
+alias ta='~/.script/sss.sh'
 
 # Miscellaneous
 alias n='pnpm'
@@ -62,12 +61,12 @@ eval "$(zoxide init zsh)"
 #===============================================================================
 # Custom Functions
 #===============================================================================
-function ta() {
-  local selected session
-  selected=$(tmux ls | fzf)
-  session=$(echo $selected | awk '{print $1}')
-  tmux attach -t "$session"
-}
+#function ta() {
+  #local selected session
+  #selected=$(tmux ls | fzf)
+  #session=$(echo $selected | awk '{print $1}')
+  #tmux attach -t "$session"
+#}
 
 function movedir() {
   local items selected
@@ -444,3 +443,9 @@ PROMPT='$(_mnml_wrap MNML_PROMPT) '
 RPROMPT='$(_mnml_wrap MNML_RPROMPT)'
 _mnml_bind_widgets
 
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/dhyey/.lmstudio/bin"
+# End of LM Studio CLI section
+
+export PATH="$HOME/.local/bin:$PATH"
