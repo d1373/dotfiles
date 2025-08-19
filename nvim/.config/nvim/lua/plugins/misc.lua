@@ -78,4 +78,15 @@ return {
 			require("mini.ai").setup()
 		end,
 	},
+	{
+		"lewis6991/gitsigns.nvim",
+		config = function()
+			require("gitsigns").setup({
+				signs_staged_enable = true,
+				signcolumn = true, -- Toggle with `:Gitsigns toggle_signs`
+				current_line_blame = false, -- Toggle with `:Gitsigns toggle_current_line_blame`
+			})
+			vim.keymap.set("n", "<leader>gp", "<cmd>Gitsigns preview_hunk<cr>", { desc = "Gitsigns hunk preview" })
+		end,
+	},
 }
