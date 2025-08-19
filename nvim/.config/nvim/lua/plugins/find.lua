@@ -99,6 +99,6 @@ return {
 		)
 		vim.keymap.set("n", "<leader>ss", "<cmd>Telescope live_grep theme=ivy<cr>", { desc = "[S]earch by [G]rep" })
 		vim.keymap.set("n", "<leader>sp", "<cmd>Telescope spell_suggest theme=cursor<cr>", { desc = "[S]pell suggest" })
-		vim.keymap.set("n", "<M-o>", "<cmd>Telescope undo theme=ivy<cr>", { desc = "[U]ndo" })
+		vim.keymap.set("n", "<M-u>", "<cmd>Telescope undo theme=ivy<cr>", { desc = "[U]ndo" })
 	end,
 }
