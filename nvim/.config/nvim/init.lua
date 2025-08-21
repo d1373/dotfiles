@@ -22,7 +22,6 @@ require("lazy").setup({
 	require("plugins.autoformat"),
 	require("plugins.comment"),
 	require("plugins.misc"),
-	require("plugins.surround"),
 	require("plugins.find"),
 	require("plugins.harpoon"),
 	require("plugins.lsp"),
