@@ -13,5 +13,7 @@ return {
 				hide_signcolumn = true, -- Hide the sign column in the terminal window
 			},
 		})
+
+		vim.keymap.set("n", "<leader>cc", ":ClaudeCode<CR>", { desc = "Toggle Claude Code window" })
 	end,
 }
