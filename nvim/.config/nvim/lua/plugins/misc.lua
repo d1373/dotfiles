@@ -15,10 +15,6 @@ return {
 		"tpope/vim-fugitive",
 	},
 	{
-		-- GitHub integration for vim-fugitive
-		"tpope/vim-rhubarb",
-	},
-	{
 		-- Highlight todo, notes, etc in comments
 		"folke/todo-comments.nvim",
 		event = "VimEnter",
