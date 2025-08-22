@@ -128,6 +128,8 @@ source ~/.zshenv
 # API
 source ~/.api
 
+# add this to your shell profile (~/.zshrc or ~/.bashrc) too
+export GPG_TTY=$(tty)
 # Optional: make autosuggestions use a subtle color
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=244'
 
