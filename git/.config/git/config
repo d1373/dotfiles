@@ -8,7 +8,18 @@
     template = ~/.config/git/template
     verbose = true  # add more context to commit messages
 
+[gpg]
+	program = gpg
+[alias]
+    st = status
+    co = checkout
+    br = branch
+    cm = commit
+    lg = log --oneline --graph --decorate --all
+[credential]
+    helper = osxkeychain
 [core]
+    editor = nvim
     autocrlf = input  # keep newlines as in input
     compression = 9  # trade cpu for network
     fsync = none
