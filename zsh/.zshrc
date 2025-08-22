@@ -12,7 +12,7 @@ export BAT_THEME="ansi"
 #===============================================================================
 alias ..='cd ..'
 alias ...='cd ../..'
-alias bat='bat'
+alias cat='bat'
 alias se='sudoedit'
 alias vi='nvim'
 alias nano='nvim'
