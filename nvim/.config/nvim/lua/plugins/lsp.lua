@@ -175,6 +175,7 @@ return { -- LSP Configuration & Pluginslsp
 			jsonls = {},
 			sqlls = {},
 			bashls = {},
+			tinymist = {},
 			dockerls = {},
 			docker_compose_language_service = {},
 			tailwindcss = {},

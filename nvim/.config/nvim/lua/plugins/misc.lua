@@ -85,4 +85,18 @@ return {
 			vim.keymap.set("n", "<leader>gp", "<cmd>Gitsigns preview_hunk<cr>", { desc = "Gitsigns hunk preview" })
 		end,
 	},
+	{
+		"chomosuke/typst-preview.nvim",
+		lazy = true, -- or ft = 'typst'
+		version = "1.*",
+		opts = {}, -- lazy.nvim will implicitly calls `setup {}`
+		config = function()
+			vim.keymap.set(
+				"n",
+				"<leader>tp",
+				"<cmd>TypstPreviewFollowCursorToggle<cr>",
+				{ desc = "Typst Preview Follow Cursor Toggle" }
+			)
+		end,
+	},
 }
