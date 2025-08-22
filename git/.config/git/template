@@ -1,16 +1,11 @@
 # feat: ✨ 
-# feat: 🔍 
-# feat: 🔗 
 # feat: 🔒 
 
-# fix: 🐛 
 # fix: 🐞 
 # fix: 🩹 
 # fix: 🚑️ 
 
-# style: 💅 
 # style: 🎨 
-# style: 💄 
 
 # ci: 🦊 
 # ci: 📦 
@@ -19,7 +14,6 @@
 # deploy: 📦 
 
 # chore: 🧹 
-# chore: 🔧 
 # chore: ⚙️ 
 # docs: 📜 
 
@@ -30,5 +24,3 @@
 # debug: 🧪 
 
 # BREAKING CHANGE: 🚨 
-# BREAKING CHANGE: 💥 
-# BREAKING CHANGE: 💣 
