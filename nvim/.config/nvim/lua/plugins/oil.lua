@@ -90,7 +90,7 @@ return {
 			use_default_keymaps = true,
 			view_options = {
 				-- Show files and directories that start with "."
-				show_hidden = false,
+				show_hidden = true,
 				-- This function defines what is considered a "hidden" file
 				is_hidden_file = function(name, bufnr)
 					local m = name:match("^%.")
@@ -136,8 +136,8 @@ return {
 				-- Padding around the floating window
 				padding = 2,
 				-- max_width and max_height can be integers or a float between 0 and 1 (e.g. 0.4 for 40%)
-				max_width = 0,
-				max_height = 0,
+				max_width = 0.6,
+				max_height = 0.6,
 				border = "rounded",
 				win_options = {
 					winblend = 0,
@@ -211,6 +211,13 @@ return {
 				border = "rounded",
 			},
 		})
-		vim.keymap.set("", "<leader>e", ":Oil <CR>", { silent = true })
+		--vim.keymap.set("", "<leader>e", ":Oil<CR>", { silent = true })
+		vim.keymap.set("n", "<leader>e", function()
+			if vim.bo.filetype == "oil" then
+				require("oil.actions").close.callback()
+			else
+				vim.cmd("Oil --float")
+			end
+		end, { noremap = true, silent = true, desc = "Toggle Oil.nvim" })
 	end,
 }
