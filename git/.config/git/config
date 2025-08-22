@@ -80,8 +80,8 @@
 
 # URL shortcuts
 [url "git@github.com:"]
-    insteadOf = "gh:"
+    insteadOf = "gh/"
 
 [url "git@github.com:d1373/"]
-    insteadOf = "ds:"
+    insteadOf = "ds/"
 
