@@ -52,7 +52,10 @@ alias ta='~/.script/sss.sh'
 
 # Miscellaneous
 alias n='pnpm'
-
+alias bi='brew install'
+alias bu="brew update"
+alias bup="brew upgrade"
+alias br="brew uninstall"
 #===============================================================================
 # Plugins / Initialization
 #===============================================================================
