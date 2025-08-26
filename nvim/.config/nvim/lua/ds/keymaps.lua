@@ -53,18 +53,3 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz", opts)
 vim.keymap.set("n", "n", "nzzzv", opts)
 vim.keymap.set("n", "N", "Nzzzv", opts)
 vim.keymap.set("n", "<M-r>", ":source ~/.config/nvim/init.lua", { silent = true })
-vim.keymap.set("n", "<leader>rr", '<cmd>lua require("spectre").toggle()<CR>', {
-	desc = "Toggle Spectre",
-})
-vim.keymap.set("n", "<leader>rw", '<cmd>lua require("spectre").open_visual({select_word=true})<CR>', {
-	desc = "Search current word",
-})
-vim.keymap.set("v", "<leader>rw", '<esc><cmd>lua require("spectre").open_visual()<CR>', {
-	desc = "Search current word",
-})
-vim.keymap.set("n", "<leader>R", '<cmd>lua require("spectre").open_file_search({select_word=true})<CR>', {
-	desc = "Search on current file",
-})
-vim.keymap.set("v", "<leader>R", '<cmd>lua require("spectre").open_file_search()<CR>', {
-	desc = "Search on current file",
-})

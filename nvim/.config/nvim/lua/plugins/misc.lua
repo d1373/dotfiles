@@ -47,9 +47,6 @@ return {
 		},
 	},
 	{
-		"nvim-pack/nvim-spectre",
-	},
-	{
 		"folke/which-key.nvim",
 		event = "VeryLazy",
 		opts = {
