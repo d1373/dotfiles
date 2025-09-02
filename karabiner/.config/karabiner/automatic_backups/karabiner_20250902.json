@@ -33,14 +33,13 @@
                         ]
                     },
                     {
-                        "description": "Swap ⌘ and ⌥ in Ghostty,Wezterm + remap common combos",
+                        "description": "Swap ⌘ and ⌥ in Ghostty + remap common combos",
                         "manipulators": [
                             {
                                 "conditions": [
                                     {
                                         "bundle_identifiers": [
-                                            "^com\\.mitchellh\\.ghostty$",
-                                            "^com\\.github\\.wez\\.wezterm$"
+                                            "^com\\.mitchellh\\.ghostty$"
                                         ],
                                         "type": "frontmost_application_if"
                                     }
