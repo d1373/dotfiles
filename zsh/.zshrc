@@ -27,7 +27,7 @@ alias :q='exit'
 alias m='file --mime-type'
 alias o='xdg-open'
 alias t='cd ~; z'
-alias cls="clear && neofetch"
+alias cls="clear && fastfetch"
 
 # Git Aliases
 alias g='git'

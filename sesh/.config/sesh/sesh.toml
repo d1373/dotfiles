@@ -17,7 +17,7 @@ preview_command = "eza --all --git --icons --color=always {}"
 [[session]]
 name = "main"
 path = "~"
-startup_command = "clear && neofetch"
+startup_command = "clear && fastfetch"
 
 # Configs 
 [[session]]
