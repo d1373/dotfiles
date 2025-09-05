@@ -13,7 +13,7 @@ mouse-hide-while-typing = true
 copy-on-select = true
 
 # Background and transparency
-background = #0d0d10
+background = #141418
 #background = #000000
 background-opacity = 0.9
 
