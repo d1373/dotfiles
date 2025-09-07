@@ -2,6 +2,8 @@ local opts = { noremap = true, silent = true }
 local vk = vim.keymap
 
 vk.set("", "q", "<Nop>")
+vk.set("", "B", "0")
+vk.set("", "E", "$")
 vk.set("n", "Q", "<nop>")
 vk.set("v", "J", ":m '>+1<CR>gv=gv", { silent = true })
 vk.set("v", "K", ":m '<-2<CR>gv=gv", { silent = true })
