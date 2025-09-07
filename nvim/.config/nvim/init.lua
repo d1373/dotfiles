@@ -1,5 +1,6 @@
 require("set")
 require("key")
+require("open")
 _G.vim = vim
 -- Setting Up leader Key
 vim.g.mapleader = " "
