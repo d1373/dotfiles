@@ -22,7 +22,7 @@ vk.set("n", "n", "nzzzv", opts)
 vk.set("n", "<leader>gp", ":Gitsigns preview_hunk<cr>", { desc = "Gitsigns hunk preview" })
 vk.set("", "<M-p>", ":Pick files<cr>", { desc = "Pick Files" })
 vk.set("", "<M-?>", ":Pick help<cr>", { desc = "help" })
-vk.set("", "<M-s>", ":Pick grep_live<cr>", { desc = "Live Grep" })
+vk.set("", "<M-s>", ":Pick grep_live tool=rg<cr>", { desc = "Live Grep" })
 vk.set("n", "<leader>tp", "<cmd>TypstPreviewFollowCursorToggle<cr>", { desc = "Typst Preview Follow Cursor Toggle" })
 vk.set("n", "<leader>sr", ":%s/<C-r><C-w>//gc<Left><Left><left>", { desc = "Search and replace word under cursor" })
 -- Quick substitute shortcuts
