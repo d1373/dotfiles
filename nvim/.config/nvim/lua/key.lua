@@ -1,0 +1,25 @@
+local opts = { noremap = true, silent = true }
+local vk = vim.keymap
+
+vk.set("", "q", "<Nop>")
+vk.set("n", "Q", "<nop>")
+vk.set("v", "J", ":m '>+1<CR>gv=gv", { silent = true })
+vk.set("v", "K", ":m '<-2<CR>gv=gv", { silent = true })
+vk.set("", "j", "gj")
+vk.set("", "k", "gk")
+vk.set("", "<C-b>", ":vs<CR>", { silent = true })
+vk.set("", "<M-Left>", ":vertical resize +3<CR>", { silent = true })
+vk.set("", "<M-Right>", ":vertical resize -3<CR>", { silent = true })
+vk.set("", "<M-Up>", ":resize +3<CR>", { silent = true })
+vk.set("", "<M-Down>", ":resize -3<CR>", { silent = true })
+vk.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
+vk.set("n", "n", "nzzzv", opts)
+vk.set("n", "<leader>gp", ":Gitsigns preview_hunk<cr>", { desc = "Gitsigns hunk preview" })
+vk.set("", "<M-p>", ":Pick files<cr>", { desc = "Pick Files" })
+vk.set("", "<M-?>", ":Pick help<cr>", { desc = "help" })
+vk.set("", "<M-s>", ":Pick grep_live<cr>", { desc = "Live Grep" })
+vk.set("n", "<leader>tp", "<cmd>TypstPreviewFollowCursorToggle<cr>", { desc = "Typst Preview Follow Cursor Toggle" })
+vk.set("n", "<leader>sr", ":%s/<C-r><C-w>//gc<Left><Left><left>", { desc = "Search and replace word under cursor" })
+-- Quick substitute shortcuts
+vk.set("n", "<leader>S", ":%s//g<Left><Left>", { desc = "Global substitute" })
+vk.set("v", "<leader>S", ":s//g<Left><Left>", { desc = "Substitute in selection" })
