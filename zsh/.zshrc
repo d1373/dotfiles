@@ -58,6 +58,8 @@ alias bi='brew install'
 alias bu="brew update"
 alias bup="brew upgrade"
 alias br="brew uninstall"
+alias mb="~/.script/brew-search.sh"
+alias mbr="~/.script/brew-remove.sh"
 #===============================================================================
 # Plugins / Initialization
 #===============================================================================
