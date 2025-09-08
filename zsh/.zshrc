@@ -18,31 +18,15 @@ alias se='sudoedit'
 alias vi='nvim'
 alias nano='nvim'
 alias v='nvim'
-alias r='ranger'
 alias grep='rg'
 alias ll='lsd -al'
 alias l='lsd -l'
-alias rm='rm -i'
 alias ls='lsd'
 alias :q='exit'
 alias m='file --mime-type'
-alias o='xdg-open'
+alias o='open'
 alias t='cd ~; z'
-alias cls="clear && fastfetch"
-
-# Git Aliases
-alias g='git'
-alias gd='git diff'
-alias gc='git clone'
-alias gst='git status'
-
-# WSL Aliases
-alias winget='powershell.exe winget'
-alias ex='explorer.exe .'
-
 # Tmux Aliases
-alias tn='tmux new -s'
-alias tl='tmux ls'
 alias tks='tmux kill-server'
 alias syss='sudo systemctl status'
 alias sysstart='sudo systemctl start'
@@ -54,33 +38,12 @@ alias ta='~/.script/sss.sh'
 
 # Miscellaneous
 alias n='pnpm'
-alias bi='brew install'
-alias bu="brew update"
-alias bup="brew upgrade"
-alias br="brew uninstall"
 alias mb="~/.script/brew-search.sh"
 alias mbr="~/.script/brew-remove.sh"
 #===============================================================================
 # Plugins / Initialization
 #===============================================================================
 eval "$(zoxide init zsh)"
-
-#===============================================================================
-# Custom Functions
-#===============================================================================
-#function ta() {
-  #local selected session
-  #selected=$(tmux ls | fzf)
-  #session=$(echo $selected | awk '{print $1}')
-  #tmux attach -t "$session"
-#}
-
-function movedir() {
-  local items selected
-  items=$(find ~ ~/dotfiles ~/.config ~/dev -maxdepth 1 -mindepth 1 -type d)
-  selected=$(echo $items | fzf)
-  cd "$selected"
-}
 
 #===============================================================================
 # Key Bindings and Cursor Shape (Vi Mode)
