@@ -9,7 +9,7 @@
 # default
 
 [default_session]
-startup_command = "nvim ."
+startup_command = ""
 startup_command_ignore_dirs = ["~/repos", "~/.config"]
 preview_command = "eza --all --git --icons --color=always {}"
 
@@ -17,13 +17,13 @@ preview_command = "eza --all --git --icons --color=always {}"
 [[session]]
 name = "main"
 path = "~"
-startup_command = "clear && fastfetch"
+startup_command = ""
 
 # Configs 
 [[session]]
 name = "dotfiles"
 path = "~/Developer/dotfiles"
-startup_command = ""
+startup_command = "nvim ."
 
 [[session]]
 name = "neovim config"
@@ -35,24 +35,8 @@ name = "Notes"
 path = "~/Notes/"
 startup_command = "zsh ~/Developer/dotfiles/sesh/.config/sesh/script/notes.sh"
 
-
-[[session]]
-name = "zsh config"
-path = "~/Developer/dotfiles/zsh"
-startup_command = "nvim .zshrc"
-
-[[session]]
-name = "tmux config"
-path = "~/Developer/dotfiles/zsh"
-startup_command = "nvim .tmux.conf"
-
 # Persistant Projects
 [[session]]
 name = "portfolio"
 path = "~/Developer/portfolio"
 startup_command = "zsh ~/Developer/dotfiles/sesh/.config/sesh/script/react.sh"
-
-[[session]]
-name = "flixora"
-path = "~/Developer/Flixora"
-startup_command = "zsh ~/Developer/dotfiles/sesh/.config/sesh/script/fullstack.sh"
