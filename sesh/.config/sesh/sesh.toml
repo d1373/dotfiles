@@ -33,7 +33,7 @@ startup_command = "nvim ."
 [[session]]
 name = "Notes"
 path = "~/Notes/"
-startup_command = "zsh ~/Developer/dotfiles/sesh/.config/sesh/script/notes.sh"
+startup_command = "nvim ."
 
 # Persistant Projects
 [[session]]
