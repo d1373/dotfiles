@@ -1,6 +1,5 @@
 local vo = vim.opt
 local vg = vim.g
-vo.clipboard:append("unnamedplus")
 vo.termguicolors = true
 vo.cursorline = true
 vo.path:append("**") -- Recursive path search
@@ -15,7 +14,7 @@ vo.expandtab = true
 vo.smarttab = true
 vo.mouse = "a"
 vo.number = true
-vo.relativenumber= true
+vo.relativenumber = true
 vg.have_nerd_font = false
 vo.showmode = false
 vo.undofile = true
