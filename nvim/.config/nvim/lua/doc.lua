@@ -28,7 +28,11 @@ return {
 			notes_subdir = nil,
 			new_notes_location = "current_dir",
 
-			-- Disable obsidian's own rendering since you have render-markdown
+			templates = {
+				folder = "Template", -- relative to your vault
+				date_format = "%Y-%m-%d",
+				time_format = "%H:%M",
+			},
 			ui = {
 				enable = false, -- Let render-markdown handle the UI
 			},
