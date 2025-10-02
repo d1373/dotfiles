@@ -80,14 +80,8 @@ bindkey '^e' edit-command-line
 
 # zsh-autosuggestions
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
-
 # zsh-syntax-highlighting (must be sourced at the end of the file)
 source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-# zshenv
-source ~/.zshenv
-# API
-source ~/.api
-
 # add this to your shell profile (~/.zshrc or ~/.bashrc) too
 export GPG_TTY=$(tty)
 # Optional: make autosuggestions use a subtle color
