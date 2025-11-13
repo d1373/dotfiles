@@ -31,6 +31,13 @@ vk.set("n", "<leader>sr", ":%s/<C-r><C-w>//gc<Left><Left><left>", { desc = "Sear
 -- Quick substitute shortcuts
 vk.set("n", "<leader>S", ":%s//g<Left><Left>", { desc = "Global substitute" })
 vk.set("v", "<leader>S", ":s//g<Left><Left>", { desc = "Substitute in selection" })
+vk.set("n", "<M-o>", function()
+	require("fzf-lua").files({
+		cwd = "~/Notes/",
+		hidden = false,
+		fd_opts = "--type f --strip-cwd-prefix --hidden --exclude '.*'",
+	})
+end, { desc = "Find files in specific dir" })
 local M = {}
 
 M.create_note_from_template = function()
