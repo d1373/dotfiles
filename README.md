@@ -1,4 +1,4 @@
-# 🏠 Dotfiles
+# 🏠 Dotfiles change
 
 My personal configuration files for a complete macOS/Linux desktop environment, managed with GNU Stow.
 
