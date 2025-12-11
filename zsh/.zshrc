@@ -123,3 +123,4 @@ esac
 
 # Added by Antigravity
 export PATH="/Users/dhyey/.antigravity/antigravity/bin:$PATH"
+eval "$(fnm env)"
