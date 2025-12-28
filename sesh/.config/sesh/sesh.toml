@@ -17,7 +17,7 @@ preview_command = "eza --all --git --icons --color=always {}"
 [[session]]
 name = "main"
 path = "~"
-startup_command = ""
+startup_command = "bash ~/.config/sesh/script/main.sh"
 
 # Configs 
 [[session]]
