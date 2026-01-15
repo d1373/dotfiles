@@ -18,7 +18,6 @@ local hotkeys_popup = require("awful.hotkeys_popup")
 -- when client with a matching name is opened:
 require("awful.hotkeys_popup.keys")
 require("collision")()
-
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
 -- another config (This code will only ever execute for the fallback config)
@@ -416,19 +415,27 @@ globalkeys = gears.table.join(
 
 	awful.key({ modkey }, "p", function()
 		awful.util.spawn("/home/dhyey/.script/powermenu.sh")
-	end, { description = "clipboard", group = "program" }),
+	end, { description = "powemenu", group = "system" }),
 	-- rofi locate
 
-	awful.key({ modkey }, "l", function()
+	awful.key({ modkey, "Shift" }, "l", function()
+		awful.spawn.with_shell("betterlockscreen -l")
+	end, { description = "lock screen", group = "system" }),
+	awful.key({ modkey }, "space", function()
 		awful.util.spawn("/home/dhyey/.script/rofi-fzf.sh")
 	end, { description = "launch fzf rofi", group = "rofi" }),
-	-- tui file
-
+	-- set wallpaper
+	awful.key({ modkey }, "s", function()
+		awful.util.spawn_with_shell("sxiv -t ~/Pictures/wallpaper")
+	end, { description = "sxiv wallpaper picker", group = "system" }),
+	-- gui file
 	awful.key({ modkey }, "e", function()
 		awful.util.spawn("pcmanfm")
 	end, { description = "lauch file manager", group = "program" }),
-	-- gui file
 
+	awful.key({ modkey }, "w", function()
+		awful.util.spawn("/home/dhyey/.script/web-search.sh")
+	end, { description = "web search", group = "program" }),
 	-- clipboard
 	awful.key({ modkey }, "v", function()
 		awful.util.spawn("/home/dhyey/.script/rofi-clip.sh")
@@ -441,16 +448,15 @@ globalkeys = gears.table.join(
 	-- fullscreen screenshot
 	awful.key({ modkey, "Shift" }, "p", function()
 		--awful.util.spawn("/home/dhyey/scripts/scrotsave.sh") end,
-		awful.util.spawn("flameshot full -p /home/dhyey/Pictures/Screenshots")
+		awful.util.spawn("/home/dhyey/.script/scrot-full.sh")
 	end, { description = "fullscreen screenshot", group = "program" }),
 	-- snip and screenshot
 	awful.key({ modkey, "Shift" }, "s", function()
-		--awful.util.spawn("/home/dhyey/scripts/scrotsave.sh -s") end,
-		awful.util.spawn("flameshot gui")
+		awful.util.spawn("/home/dhyey/.script/scrot.sh")
 	end, { description = "snip and screenshot", group = "program" }),
 	-- colorpick
 	awful.key({ modkey, "Shift" }, "c", function()
-		awful.util.spawn("/home/dhyey/scripts/colorpick")
+		awful.util.spawn_with_shell("xcolor | xclip -selection clipboard")
 	end, { description = "colorpick", group = "program" }),
 
 	-- browser
@@ -509,7 +515,7 @@ globalkeys = gears.table.join(
 	awful.key({ altkey, "Control" }, "l", function()
 		awful.tag.incncol(-1, nil, true)
 	end, { description = "decrease the number of columns", group = "layout" }),
-	awful.key({ modkey }, "space", function()
+	awful.key({ altkey, "Shift" }, "space", function()
 		awful.layout.inc(1)
 	end, { description = "select next", group = "layout" }),
 	awful.key({ modkey, "Shift" }, "space", function()
@@ -540,19 +546,14 @@ globalkeys = gears.table.join(
 )
 
 clientkeys = gears.table.join(
-	awful.key({ modkey }, "f", function(c)
+	awful.key({ modkey, "Shift" }, "f", function(c)
 		c.fullscreen = not c.fullscreen
 		c:raise()
 	end, { description = "toggle fullscreen", group = "client" }),
 	awful.key({ altkey }, "q", function(c)
 		c:kill()
 	end, { description = "close", group = "client" }),
-	awful.key(
-		{ modkey, "Control" },
-		"f",
-		awful.client.floating.toggle,
-		{ description = "toggle floating", group = "client" }
-	),
+	awful.key({ modkey }, "f", awful.client.floating.toggle, { description = "toggle floating", group = "client" }),
 	awful.key({ modkey, "Control" }, "Return", function(c)
 		c:swap(awful.client.getmaster())
 	end, { description = "move to master", group = "client" }),
@@ -654,6 +655,14 @@ awful.rules.rules = {
 		},
 	},
 
+	{
+		rule = { class = "Zathura" },
+		properties = {
+			floating = false,
+			maximized = false,
+			titlebars_enabled = false,
+		},
+	},
 	{
 		rule = { class = "Ghostty" },
 		properties = {
@@ -814,12 +823,10 @@ _G.client.connect_signal("unfocus", function(c)
 end)
 -- Autostart
 awful.spawn.with_shell("/home/dhyey/.config/awesome/awspawn")
-awful.spawn.with_shell("/home/dhyey/.config/awesome/keyboard.sh")
 awful.spawn.with_shell("picom")
 awful.spawn.with_shell("xrandr -s 1920x1200")
 awful.spawn.with_shell("greenclip daemon&")
 awful.spawn.with_shell("xfce4-power-manager")
-awful.spawn.with_shell("kill flameshot && flameshot")
 awful.spawn.with_shell("nm-applet --indicator")
 awful.spawn.with_shell("volumeicon")
 awful.spawn.with_shell("numlockx on")
