@@ -1,0 +1,170 @@
+/* Vague.nvim-ish rofi theme
+ * Background: #101014
+ */
+
+* {
+  /* Core */
+  bg:        #0a0a0b;   /* palette 0 */
+  bg2:       #2a2a2f;   /* palette 8 */
+  fg:        #C1C1C1;   /* Ghostty foreground */
+  fg2:       #cdd6f4;   /* palette 7 (soft light text) */
+
+  /* Accents */
+  accent:    #89b4fa;   /* palette 4 (blue) */
+  red:       #f38ba8;   /* palette 1 (red/pink) */
+
+  /* UI */
+  bordercol: #2a2a2f;   /* palette 8 */
+  spacing: 10px;
+  animation: none;
+
+  /* Extra palette exposure (optional, handy for later tweaks) */
+  black:     #1e1e2e;   /* 0 */
+  green:     #a6e3a1;   /* 2 */
+  yellow:    #f9e2af;   /* 3 */
+  blue:      #89b4fa;   /* 4 */
+  magenta:   #cba6f7;   /* 5 */
+  cyan:      #94e2d5;   /* 6 */
+  white:     #cdd6f4;   /* 7 */
+  brblack:   #585b70;   /* 8 */
+  brwhite:   #ffffff;   /* 15 */
+
+  /* Ghostty selection/cursor */
+  selectionbg: #FFFFFF; /* Ghostty selection-background */
+  cursorcol:   #FFFFFF; /* Ghostty cursor-color */
+}
+
+window {
+  background-color: @bg;
+  border: 2px;
+  border-color: @bordercol;
+  border-radius: 12px;
+  padding: 16px;
+  width: 36%;
+}
+
+mainbox {
+  background-color: transparent;
+  spacing: @spacing;
+}
+
+inputbar {
+  background-color: @bg2;
+  border-radius: 10px;
+  padding: 10px 12px;
+  spacing: 10px;
+  children: [ prompt, entry ];
+}
+
+prompt {
+  background-color: transparent;
+  text-color: @accent;
+}
+
+entry {
+  background-color: transparent;
+  text-color: @fg;
+  placeholder-color: @fg2;
+  cursor: text;
+}
+
+listview {
+  background-color: transparent;
+  spacing: 6px;
+  scrollbar: false;
+  lines: 10;
+  fixed-height: false;
+}
+
+element {
+  background-color: transparent;
+  text-color: @fg;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+element-icon {
+  background-color: transparent;
+  size: 22px;
+  margin: 0px 10px 0px 0px;
+}
+
+element-text {
+  background-color: transparent;
+  text-color: inherit;
+}
+
+/* IMPORTANT: define ALL state combinations so rofi never falls back to defaults */
+element normal.normal,
+element normal.active,
+element normal.urgent {
+  background-color: transparent;
+  text-color: @fg;
+}
+
+element selected.normal,
+element selected.active {
+  background-color: @bg2;
+  text-color: @accent;
+}
+
+element selected.urgent {
+  background-color: @red;
+  text-color: @bg;
+}
+
+element alternate.normal,
+element alternate.active,
+element alternate.urgent {
+  background-color: transparent;
+  text-color: @fg;
+}
+
+element alternate.selected.normal,
+element alternate.selected.active {
+  background-color: @bg2;
+  text-color: @accent;
+}
+
+element alternate.selected.urgent {
+  background-color: @red;
+  text-color: @bg;
+}
+
+message {
+  background-color: transparent;
+}
+
+textbox {
+  background-color: transparent;
+  text-color: @fg;
+}
+
+error-message {
+  background-color: @bg;
+  text-color: @red;
+}
+
+* {
+  animation: none;
+}
+
+window {
+  animation: none;
+}
+
+mainbox {
+  animation: none;
+}
+
+listview {
+  animation: none;
+}
+
+element {
+  animation: none;
+}
+
+inputbar {
+  animation: none;
+}

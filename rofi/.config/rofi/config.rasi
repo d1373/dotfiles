@@ -1,0 +1,22 @@
+configuration {
+  font: "JetBrainsMono Nerd Font 12";
+  show-icons: true;
+  icon-theme: "Papirus";
+  display-drun: "Apps";
+  display-run: "Run";
+  display-window: "Windows";
+  sidebar-mode: false;
+  /* 1) Remove Ctrl+j from accept-entry */
+  kb-accept-entry: "Return,KP_Enter,Control+m";
+
+  /* 2) Remove Ctrl+k from remove-to-eol (kill to end of line) */
+  kb-remove-to-eol: "";
+
+  /* 3) Now bind them to navigation */
+  kb-row-down: "Down,Control+j";
+  kb-row-up:   "Up,Control+k";
+}
+* {
+  animation: none;
+}
+@theme "~/.config/rofi/vague.rasi"

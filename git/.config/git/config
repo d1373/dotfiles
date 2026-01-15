@@ -1,7 +1,7 @@
 [user]
     name = d1373
     email = dvswadia@gmail.com
-    signingkey = 12AE94CDDBA9C2D6 
+    signingkey = A640F730A5FEB4CF8F73BA4992BA04B326498E70 
 
 [commit]
     gpgSign = true

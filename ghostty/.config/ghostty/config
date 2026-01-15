@@ -1,6 +1,6 @@
 #Window settings
-macos-titlebar-style = hidden
-window-inherit-working-directory = true
+window-decoration = none
+window-inherit-working-directory = false
 #window-theme = dark
 window-save-state = always
 window-width = 1920
@@ -14,11 +14,11 @@ copy-on-select = true
 
 # Background and transparency
 background = #0a0a0a
-background-opacity = 0.9
+background-opacity = 1
 
 # Font and cursor
 font-family = Hack Nerd Font
-font-size = 13.5
+font-size = 12
 cursor-style = block
 
 # Colors
