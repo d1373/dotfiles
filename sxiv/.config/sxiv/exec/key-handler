@@ -1,0 +1,18 @@
+#!/bin/sh
+# sxiv key-handler
+# Triggered via: Ctrl+x then <key>
+# Receives selected file paths on stdin.
+
+while IFS= read -r file; do
+  case "$1" in
+    "C-w")
+      # Set desktop wallpaper + update lockscreen cache
+      feh --bg-fill "$file"
+      betterlockscreen -u "$file"
+      ;;
+    "C-c")
+      # Copy file path to clipboard
+      printf "%s" "$file" | xclip -selection clipboard
+      ;;
+  esac
+done
