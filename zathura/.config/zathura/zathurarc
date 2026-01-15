@@ -1,0 +1,37 @@
+# Basic movement
+map h scroll left
+map j scroll down
+map k scroll up
+map l scroll right
+
+map d scroll half-down
+map u scroll half-up
+
+map gg goto top
+map G goto bottom
+map K previous-page
+map J next-page
+
+map <C-b> previous-page
+map <C-f> next-page
+
+map + zoom in
+map - zoom out
+map = zoom in
+map z zoom original
+map w adjust_window width
+map p adjust_window best-fit
+map / search
+map n search-next
+map N search-previous
+
+map r reload
+set selection-clipboard clipboard
+
+set incremental-search true
+set render-loading true
+set scroll-page-aware true
+set smooth-scroll true
+
+set window-title-basename true
+
