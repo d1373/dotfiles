@@ -29,6 +29,7 @@ alias lg='lazygit'
 alias ta='~/.script/sss.sh'
 alias powershell='powershell.exe'
 alias e='explorer.exe .'
+alias sw='~/.script/sw.sh'
 
 
 # Miscellaneous
