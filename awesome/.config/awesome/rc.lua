@@ -413,7 +413,7 @@ globalkeys = gears.table.join(
 	end, { description = "rofi emoji", group = "rofi" }),
 	-- rofi powermenu
 
-	awful.key({ modkey }, "p", function()
+	awful.key({ modkey, "Shift" }, "p", function()
 		awful.util.spawn("/home/dhyey/.script/powermenu.sh")
 	end, { description = "powemenu", group = "system" }),
 	-- rofi locate
@@ -425,12 +425,16 @@ globalkeys = gears.table.join(
 		awful.util.spawn("/home/dhyey/.script/rofi-fzf.sh")
 	end, { description = "launch fzf rofi", group = "rofi" }),
 	-- set wallpaper
-	awful.key({ modkey }, "s", function()
+	awful.key({ modkey, "Shift" }, "s", function()
 		awful.util.spawn_with_shell("sxiv -t ~/Pictures/wallpaper")
 	end, { description = "sxiv wallpaper picker", group = "system" }),
 	-- gui file
 	awful.key({ modkey }, "e", function()
 		awful.util.spawn("pcmanfm")
+	end, { description = "lauch file manager", group = "program" }),
+	-- gui file
+	awful.key({ modkey, "Shift" }, "e", function()
+		awful.util.spawn("pcmanfm-qt")
 	end, { description = "lauch file manager", group = "program" }),
 
 	awful.key({ modkey }, "w", function()
@@ -446,12 +450,12 @@ globalkeys = gears.table.join(
 	end, { description = "clipboard clear", group = "program" }),
 
 	-- fullscreen screenshot
-	awful.key({ modkey, "Shift" }, "p", function()
+	awful.key({ modkey }, "p", function()
 		--awful.util.spawn("/home/dhyey/scripts/scrotsave.sh") end,
 		awful.util.spawn("/home/dhyey/.script/scrot-full.sh")
 	end, { description = "fullscreen screenshot", group = "program" }),
 	-- snip and screenshot
-	awful.key({ modkey, "Shift" }, "s", function()
+	awful.key({ modkey }, "s", function()
 		awful.util.spawn("/home/dhyey/.script/scrot.sh")
 	end, { description = "snip and screenshot", group = "program" }),
 	-- colorpick
@@ -810,7 +814,7 @@ end)
 --client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 -- }}}
 -- Gaps
-beautiful.useless_gap = 5
+beautiful.useless_gap = 2
 -- fix notification
 --
 --

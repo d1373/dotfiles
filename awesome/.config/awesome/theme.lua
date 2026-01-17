@@ -30,7 +30,7 @@ theme.fg_focus = theme.bar_accent
 theme.fg_urgent = "#ffffff"
 theme.fg_minimize = "#ffffff"
 
-theme.useless_gap = dpi(0)
+theme.useless_gap = dpi(2)
 theme.border_width = dpi(3)
 theme.border_normal = "#000000"
 theme.border_focus = "#666666"
