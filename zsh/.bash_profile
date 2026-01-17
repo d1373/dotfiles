@@ -25,3 +25,6 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
+# Qt theming
+export QT_QPA_PLATFORMTHEME=qt5ct
+export QT_QPA_PLATFORMTHEME_QT6=qt6ct

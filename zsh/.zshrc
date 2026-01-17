@@ -5,6 +5,7 @@ export MANPAGER="sh -c 'col -bx | nvim -R -c \"set ft=man\" -'"
 export EDITOR="nvim"
 export VISUAL="nvim"
 export BAT_THEME="ansi"
+export BROWSER="brave"
 
 # set option
 setopt correct
@@ -22,7 +23,7 @@ alias l='eza -l --icons --header --git --group-directories-first'
 alias ls='eza --icons --oneline --group-directories-first'
 alias :q='exit'
 alias m='file --mime-type'
-alias o='open'
+alias o='xdg-open'
 # Tmux Aliases
 alias tks='tmux kill-server'
 alias lg='lazygit'
@@ -30,6 +31,7 @@ alias ta='~/.script/sss.sh'
 alias powershell='powershell.exe'
 alias e='explorer.exe .'
 alias sw='~/.script/sw.sh'
+alias tuc="~/.local/script/Tu-clausthal.sh"
 
 
 # Miscellaneous
@@ -90,6 +92,9 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=244'
 
 export PATH="$HOME/.local/bin:$PATH"
 
+# Qt theming
+export QT_QPA_PLATFORMTHEME=qt5ct
+export QT_QPA_PLATFORMTHEME_QT6=qt6ct
 
 # .zshrc
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
