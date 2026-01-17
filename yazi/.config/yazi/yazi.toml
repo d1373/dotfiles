@@ -1,0 +1,9 @@
+[mgr]
+show_hidden = false
+sort_by = "natural"
+linemode = "size"
+
+[preview]
+tab_size = 2
+max_width = 1200
+max_height = 1200

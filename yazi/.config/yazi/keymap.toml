@@ -1,0 +1,202 @@
+[mgr]
+prepend_keymap = [
+  # Quit
+  { on = [ "<Esc>" ], run = "quit", desc = "Quit" },
+
+  # Open (Enter / l)
+  { on = [ "<Enter>" ], run = "open", desc = "Open" },
+  { on = "l", run = "enter", desc = "Enter the child directory" },
+
+  # Toggle hidden (.)
+  { on = [ "." ], run = "hidden toggle", desc = "Toggle hidden" },
+
+  # Reload
+  { on = [ "R" ], run = "refresh", desc = "Reload" },
+
+  # Rename
+  { on = [ "r" ], run = "rename", desc = "Rename" },
+
+  # Top / Bottom
+  { on = [ "H" ], run = "arrow -999999", desc = "Top" },
+  { on = [ "L" ], run = "arrow 999999",  desc = "Bottom" },
+
+  # Unselect all
+  { on = [ "U" ], run = "select none", desc = "Unselect all" },
+
+  # ----------------
+  # Trash (trash-cli)
+  # ----------------
+  { on = [ "d", "d" ], run = '''
+    shell --confirm --block '
+      set -e
+      for p in "$@"; do
+        trash-put -- "$p"
+      done
+    ' -- "$@"
+  ''', desc = "Trash selected" },
+
+  { on = [ "t", "c" ], run = '''
+    shell --confirm --block 'trash-empty'
+  ''', desc = "Empty trash" },
+
+  { on = [ "t", "r" ], run = '''
+    shell --block 'trash-restore'
+  ''', desc = "Restore from trash" },
+
+  # -------------
+  # Wallpaper (bg)
+  # -------------
+  { on = [ "b", "g" ], run = '''
+    shell --block '~/.script/sw.sh "$0"' -- "$0"
+  ''', desc = "Set wallpaper" },
+
+  # ------------
+  # Dragon-drop
+  # ------------
+  { on = [ "d", "s" ], run = '''
+    shell --block '
+      (printf "%s\n" "$@" | dragon-drop --stdin --all --and-exit >/dev/null 2>&1 &)
+    ' -- "$@"
+  ''', desc = "Dragon-drop (and-exit)" },
+
+  { on = [ "d", "d", "s" ], run = '''
+    shell --block '
+      (printf "%s\n" "$@" | dragon-drop --stdin --all >/dev/null 2>&1 &)
+    ' -- "$@"
+  ''', desc = "Dragon-drop (stay)" },
+
+  { on = [ "d", "d", "i" ], run = '''
+    shell --block '
+      (printf "%s\n" "$@" | dragon-drop --stdin --and-exit >/dev/null 2>&1 &)
+    ' -- "$@"
+  ''', desc = "Dragon-drop (individual)" },
+
+  # ----------------
+  # Archive helpers
+  # ----------------
+  { on = [ "a", "u" ], run = '''
+    shell --confirm --block '
+      set -e
+      f="$0"
+      case "$f" in
+        *.zip) unzip -- "$f" ;;
+        *.tar.gz|*.tgz) tar -xzvf -- "$f" ;;
+        *.tar.bz2) tar -xjvf -- "$f" ;;
+        *.tar) tar -xvf -- "$f" ;;
+        *) echo "Unsupported archive: $f" ;;
+      esac
+    ' -- "$0"
+  ''', desc = "Unarchive hovered" },
+
+{ on = [ "a", "z" ], run = '''
+  shell --confirm --block '
+    set -e
+    p="$0"
+    dir="$(dirname "$p")"
+    base="$(basename "$p")"
+
+    printf "Archive name (default: %s.zip): " "$base"
+    read -r name
+    [ -z "$name" ] && name="$base.zip"
+    case "$name" in *.zip) ;; *) name="$name.zip" ;; esac
+
+    cd "$dir"
+    zip -r "$name"  "$base"
+  ' -- "$0"
+''', desc = "Zip hovered (no full path)" },
+
+  { on = [ "a", "t" ], run = '''
+    shell --confirm --block '
+      set -e
+      p="$0"; base="$(basename "$p")"
+      tar cvf -- "${base}.tar" -- "$p"
+    ' -- "$0"
+  ''', desc = "Tar hovered -> <name>.tar" },
+
+  { on = [ "a", "g" ], run = '''
+    shell --confirm --block '
+      set -e
+      p="$0"; base="$(basename "$p")"
+      tar cvzf -- "${base}.tar.gz" -- "$p"
+    ' -- "$0"
+  ''', desc = "Tar.gz hovered -> <name>.tar.gz" },
+
+  { on = [ "a", "b" ], run = '''
+    shell --confirm --block '
+      set -e
+      p="$0"; base="$(basename "$p")"
+      tar cjvf -- "${base}.tar.bz2" -- "$p"
+    ' -- "$0"
+  ''', desc = "Tar.bz2 hovered -> <name>.tar.bz2" },
+
+  # -------------------
+  # Quick directory CDs
+  # -------------------
+  { on = [ "g", "t", "r" ], run = 'cd ~/.local/share/Trash/files', desc = "Go to Trash" },
+  { on = [ "g", "c" ],      run = 'cd ~/.config',                desc = "Go to ~/.config" },
+  { on = [ "c", "d" ],      run = 'cd ~',                        desc = "Go home" },
+  { on = [ "w", "w" ],      run = 'cd ~/Pictures/wallpaper',     desc = "Go to wallpapers" },
+
+  # -------------------------
+  # fzf_jump (like your lf ff)
+  # -------------------------
+  { on = [ "f", "f" ], run = '''
+    shell --block '
+      set -e
+      # Pick from current dir only (like find . -maxdepth 1)
+      res="$(find . -maxdepth 1 -mindepth 1 -print 2>/dev/null \
+        | sed "s|^\./||" \
+        | fzf --reverse --header="Jump to location")"
+
+      [ -z "$res" ] && exit 0
+
+      if [ -d "$res" ]; then
+        # tell yazi to cd
+        ya emit cd "$res"
+      else
+        # reveal + select file
+        ya emit reveal "$res"
+        ya emit select "$res"
+      fi
+    '
+  ''', desc = "fzf jump (dir=file)" },
+  # -------------------------
+  # Create file / dir, chmod +x
+  # -------------------------
+
+  # mf -> create file (like your lf mkfile)
+  { on = [ "m", "f" ], run = '''
+    shell --block '
+      set -e
+      printf "File name: "
+      read -r name
+      [ -z "$name" ] && exit 0
+      : > "$name"
+      ya emit refresh
+    '
+  ''', desc = "New file" },
+
+  # md -> create directory (like your lf mkdir)
+  { on = [ "m", "d" ], run = '''
+    shell --block '
+      set -e
+      printf "Directory name: "
+      read -r name
+      [ -z "$name" ] && exit 0
+      mkdir -p -- "$name"
+      ya emit refresh
+    '
+  ''', desc = "New directory" },
+
+  # chx -> chmod +x hovered file
+  { on = [ "c", "x" ], run = '''
+    shell --block '
+      set -e
+      p="$0"
+      [ -z "$p" ] && exit 0
+      chmod +x -- "$p"
+      ya emit refresh
+    ' -- "$0"
+  ''', desc = "chmod +x hovered" },
+
+]

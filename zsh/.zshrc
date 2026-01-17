@@ -32,6 +32,7 @@ alias powershell='powershell.exe'
 alias e='explorer.exe .'
 alias sw='~/.script/sw.sh'
 alias tuc="~/.local/script/Tu-clausthal.sh"
+alias y="yazi"
 
 
 # Miscellaneous

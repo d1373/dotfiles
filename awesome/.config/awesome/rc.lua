@@ -430,7 +430,7 @@ globalkeys = gears.table.join(
 	end, { description = "sxiv wallpaper picker", group = "system" }),
 	-- gui file
 	awful.key({ modkey }, "e", function()
-		awful.util.spawn("pcmanfm")
+		awful.util.spawn("ghostty -e yazi")
 	end, { description = "lauch file manager", group = "program" }),
 	-- gui file
 	awful.key({ modkey, "Shift" }, "e", function()
