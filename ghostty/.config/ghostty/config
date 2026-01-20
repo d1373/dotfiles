@@ -14,7 +14,7 @@ copy-on-select = true
 
 # Background and transparency
 background = #0a0a0a
-background-opacity = 1
+background-opacity = 0.9
 
 # Font and cursor
 font-family = Hack Nerd Font
