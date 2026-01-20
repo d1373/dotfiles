@@ -372,20 +372,44 @@ globalkeys = gears.table.join(
 	awful.key({ modkey }, "Right", awful.tag.viewnext, { description = "view next", group = "tag" }),
 	awful.key({ modkey }, "Escape", awful.tag.history.restore, { description = "go back", group = "tag" }),
 
-	awful.key({ modkey }, "j", function()
-		awful.client.focus.byidx(1)
-	end, { description = "focus next by index", group = "client" }),
-	awful.key({ modkey }, "k", function()
-		awful.client.focus.byidx(-1)
-	end, { description = "focus previous by index", group = "client" }),
+	-- Focus client by direction
+	awful.key({ modkey }, "h", function()
+		awful.client.focus.bydirection("left")
+	end, { description = "focus left", group = "client" }),
 
-	-- Layout manipulation
+	awful.key({ modkey }, "l", function()
+		awful.client.focus.bydirection("right")
+	end, { description = "focus right", group = "client" }),
+
+	awful.key({ modkey }, "j", function()
+		awful.client.focus.bydirection("down")
+	end, { description = "focus down", group = "client" }),
+
+	awful.key({ modkey }, "k", function()
+		awful.client.focus.bydirection("up")
+	end, { description = "focus up", group = "client" }),
+	awful.key({ modkey }, "n", function()
+		awful.client.focus.byidx(1)
+	end, { description = "focus next", group = "client" }),
+	awful.key({ modkey }, "p", function()
+		awful.client.focus.byidx(-1)
+	end, { description = "focus previous", group = "client" }),
+	-- Swap client by direction
+	awful.key({ modkey, "Shift" }, "h", function()
+		awful.client.swap.bydirection("left")
+	end, { description = "swap with left", group = "client" }),
+
+	awful.key({ modkey, "Shift" }, "l", function()
+		awful.client.swap.bydirection("right")
+	end, { description = "swap with right", group = "client" }),
+
 	awful.key({ modkey, "Shift" }, "j", function()
-		awful.client.swap.byidx(1)
-	end, { description = "swap with next client by index", group = "client" }),
+		awful.client.swap.bydirection("down")
+	end, { description = "swap with down", group = "client" }),
+
 	awful.key({ modkey, "Shift" }, "k", function()
-		awful.client.swap.byidx(-1)
-	end, { description = "swap with previous client by index", group = "client" }),
+		awful.client.swap.bydirection("up")
+	end, { description = "swap with up", group = "client" }),
 	awful.key({ modkey }, "u", awful.client.urgent.jumpto, { description = "jump to urgent client", group = "client" }),
 	awful.key({ modkey }, "Tab", function()
 		awful.client.focus.history.previous()
@@ -413,14 +437,11 @@ globalkeys = gears.table.join(
 	end, { description = "rofi emoji", group = "rofi" }),
 	-- rofi powermenu
 
-	awful.key({ modkey, "Shift" }, "p", function()
+	awful.key({ altkey, "Shift" }, "space", function()
 		awful.util.spawn("/home/dhyey/.script/powermenu.sh")
 	end, { description = "powemenu", group = "system" }),
 	-- rofi locate
 
-	awful.key({ modkey, "Shift" }, "l", function()
-		awful.spawn.with_shell("betterlockscreen -l")
-	end, { description = "lock screen", group = "system" }),
 	awful.key({ modkey }, "space", function()
 		awful.util.spawn("/home/dhyey/.script/rofi-fzf.sh")
 	end, { description = "launch fzf rofi", group = "rofi" }),
@@ -450,7 +471,7 @@ globalkeys = gears.table.join(
 	end, { description = "clipboard clear", group = "program" }),
 
 	-- fullscreen screenshot
-	awful.key({ modkey }, "p", function()
+	awful.key({ modkey, "Shift" }, "p", function()
 		--awful.util.spawn("/home/dhyey/scripts/scrotsave.sh") end,
 		awful.util.spawn("/home/dhyey/.script/scrot-full.sh")
 	end, { description = "fullscreen screenshot", group = "program" }),
@@ -495,22 +516,22 @@ globalkeys = gears.table.join(
 	end, { description = "open a terminal", group = "launcher" }),
 	awful.key({ altkey, "Control" }, "r", awesome.restart, { description = "reload awesome", group = "awesome" }),
 
-	awful.key({ modkey, "Control" }, "l", function()
-		awful.tag.incmwfact(0.05)
+	awful.key({ modkey, altkey }, "l", function()
+		awful.tag.incmwfact(0.03)
 	end, { description = "increase master width factor", group = "layout" }),
-	awful.key({ modkey, "Control" }, "h", function()
-		awful.tag.incmwfact(-0.05)
+	awful.key({ modkey, altkey }, "h", function()
+		awful.tag.incmwfact(-0.03)
 	end, { description = "decrease master width factor", group = "layout" }),
-	awful.key({ modkey, "Shift" }, "h", function()
+	awful.key({ modkey, altkey, "Shift" }, "h", function()
 		awful.tag.incnmaster(1, nil, true)
 	end, { description = "increase the number of master clients", group = "layout" }),
-	awful.key({ modkey, "Control" }, "j", function()
-		awful.client.incwfact(0.05)
+	awful.key({ modkey, altkey }, "j", function()
+		awful.client.incwfact(0.03)
 	end, { description = "Decrease master height factor", group = "layout" }),
-	awful.key({ modkey, "Control" }, "k", function()
-		awful.client.incwfact(-0.05)
+	awful.key({ modkey, altkey }, "k", function()
+		awful.client.incwfact(-0.03)
 	end, { description = "Increase master height factor", group = "layout" }),
-	awful.key({ modkey, "Shift" }, "l", function()
+	awful.key({ modkey, altkey, "Shift" }, "l", function()
 		awful.tag.incnmaster(-1, nil, true)
 	end, { description = "decrease the number of master clients", group = "layout" }),
 	awful.key({ altkey, "Control" }, "h", function()
@@ -567,11 +588,6 @@ clientkeys = gears.table.join(
 	awful.key({ modkey }, "t", function(c)
 		c.ontop = not c.ontop
 	end, { description = "toggle keep on top", group = "client" }),
-	awful.key({ modkey }, "n", function(c)
-		-- The client currently has the input focus, so it cannot be
-		-- minimized, since minimized clients can't have the focus.
-		c.minimized = true
-	end, { description = "minimize", group = "client" }),
 	awful.key({ modkey }, "m", function(c)
 		c.maximized = not c.maximized
 		c:raise()
@@ -832,6 +848,7 @@ awful.spawn.with_shell("xrandr -s 1920x1200")
 awful.spawn.with_shell("greenclip daemon&")
 awful.spawn.with_shell("xfce4-power-manager")
 awful.spawn.with_shell("nm-applet --indicator")
+awful.spawn.with_shell("blueman-applet &")
 awful.spawn.with_shell("volumeicon")
 awful.spawn.with_shell("numlockx on")
 awful.spawn.once("lxqt-policykit-agent")
