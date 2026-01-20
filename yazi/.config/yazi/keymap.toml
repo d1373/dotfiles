@@ -74,7 +74,7 @@ prepend_keymap = [
   # ----------------
   # Archive helpers
   # ----------------
-  { on = [ "a", "u" ], run = '''
+  { on = [ "'", "u" ], run = '''
     shell --confirm --block '
       set -e
       f="$0"
@@ -88,7 +88,7 @@ prepend_keymap = [
     ' -- "$0"
   ''', desc = "Unarchive hovered" },
 
-{ on = [ "a", "z" ], run = '''
+{ on = [ "'", "z" ], run = '''
   shell --confirm --block '
     set -e
     p="$0"
@@ -105,30 +105,6 @@ prepend_keymap = [
   ' -- "$0"
 ''', desc = "Zip hovered (no full path)" },
 
-  { on = [ "a", "t" ], run = '''
-    shell --confirm --block '
-      set -e
-      p="$0"; base="$(basename "$p")"
-      tar cvf -- "${base}.tar" -- "$p"
-    ' -- "$0"
-  ''', desc = "Tar hovered -> <name>.tar" },
-
-  { on = [ "a", "g" ], run = '''
-    shell --confirm --block '
-      set -e
-      p="$0"; base="$(basename "$p")"
-      tar cvzf -- "${base}.tar.gz" -- "$p"
-    ' -- "$0"
-  ''', desc = "Tar.gz hovered -> <name>.tar.gz" },
-
-  { on = [ "a", "b" ], run = '''
-    shell --confirm --block '
-      set -e
-      p="$0"; base="$(basename "$p")"
-      tar cjvf -- "${base}.tar.bz2" -- "$p"
-    ' -- "$0"
-  ''', desc = "Tar.bz2 hovered -> <name>.tar.bz2" },
-
   # -------------------
   # Quick directory CDs
   # -------------------
@@ -137,56 +113,6 @@ prepend_keymap = [
   { on = [ "c", "d" ],      run = 'cd ~',                        desc = "Go home" },
   { on = [ "w", "w" ],      run = 'cd ~/Pictures/wallpaper',     desc = "Go to wallpapers" },
 
-  # -------------------------
-  # fzf_jump (like your lf ff)
-  # -------------------------
-  { on = [ "f", "f" ], run = '''
-    shell --block '
-      set -e
-      # Pick from current dir only (like find . -maxdepth 1)
-      res="$(find . -maxdepth 1 -mindepth 1 -print 2>/dev/null \
-        | sed "s|^\./||" \
-        | fzf --reverse --header="Jump to location")"
-
-      [ -z "$res" ] && exit 0
-
-      if [ -d "$res" ]; then
-        # tell yazi to cd
-        ya emit cd "$res"
-      else
-        # reveal + select file
-        ya emit reveal "$res"
-        ya emit select "$res"
-      fi
-    '
-  ''', desc = "fzf jump (dir=file)" },
-  # -------------------------
-  # Create file / dir, chmod +x
-  # -------------------------
-
-  # mf -> create file (like your lf mkfile)
-  { on = [ "m", "f" ], run = '''
-    shell --block '
-      set -e
-      printf "File name: "
-      read -r name
-      [ -z "$name" ] && exit 0
-      : > "$name"
-      ya emit refresh
-    '
-  ''', desc = "New file" },
-
-  # md -> create directory (like your lf mkdir)
-  { on = [ "m", "d" ], run = '''
-    shell --block '
-      set -e
-      printf "Directory name: "
-      read -r name
-      [ -z "$name" ] && exit 0
-      mkdir -p -- "$name"
-      ya emit refresh
-    '
-  ''', desc = "New directory" },
 
   # chx -> chmod +x hovered file
   { on = [ "c", "x" ], run = '''
