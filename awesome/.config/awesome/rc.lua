@@ -388,10 +388,10 @@ globalkeys = gears.table.join(
 	awful.key({ modkey }, "k", function()
 		awful.client.focus.bydirection("up")
 	end, { description = "focus up", group = "client" }),
-	awful.key({ modkey }, "n", function()
+	awful.key({ altkey }, "Tab", function()
 		awful.client.focus.byidx(1)
 	end, { description = "focus next", group = "client" }),
-	awful.key({ modkey }, "p", function()
+	awful.key({ altkey, "Shift" }, "Tab", function()
 		awful.client.focus.byidx(-1)
 	end, { description = "focus previous", group = "client" }),
 	-- Swap client by direction
