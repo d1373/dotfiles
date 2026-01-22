@@ -137,4 +137,7 @@ alias y="yazi"
 alias n='pnpm'
 alias mb="~/.script/brew-search.sh"
 alias mbr="~/.script/brew-remove.sh"
+alias ss='yay -Ss'
+alias ins='yay -S'
+alias yrn="yay -Rns"
 # End of Aliases
