@@ -3,7 +3,7 @@ Personal configuration files managed with GNU Stow.
 
 ## What is configured here
 - **awesome/**: AwesomeWM configuration
-- **ghostty/**: Ghostty terminal configuration
+- **kitty/**: kitty terminal configuration
 - **git/**: Git configuration
 - **greenclip/**: Greenclip clipboard manager configuration
 - **rofi/**: Rofi launcher and theme configuration
@@ -21,7 +21,7 @@ stow */
 
 # Or install one at a time
 stow awesome
-stow ghostty
+stow kitty
 stow git
 stow greenclip
 stow rofi

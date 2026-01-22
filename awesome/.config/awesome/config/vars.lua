@@ -1,6 +1,6 @@
 local M = {}
 
-M.terminal = "ghostty"
+M.terminal = "kitty"
 M.editor = os.getenv("EDITOR") or "nvim"
 M.editor_cmd = M.terminal .. " -e " .. M.editor
 

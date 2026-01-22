@@ -135,7 +135,7 @@ powerprofilesctl set "$next"
 	local wifi_icon = make_icon_widget_color(wifi_glyph, bar_fg)
 	local wifi_widget = wibox.container.place(wifi_icon, "center", "center")
 	wifi_widget:buttons(gears.table.join(awful.button({}, 1, function()
-		awful.spawn("ghostty -e nmtui-go")
+		awful.spawn("kitty nmtui-go")
 	end)))
 
 	awful.widget.watch("nmcli -t -f DEVICE,TYPE,STATE dev", 5, function(widget, stdout)

@@ -98,7 +98,7 @@ function M.setup(opts)
 		end, { description = "sxiv wallpaper picker", group = "system" }),
 		-- gui file
 		awful.key({ modkey }, "e", function()
-			awful.util.spawn("ghostty -e yazi")
+			awful.util.spawn("kitty yazi")
 		end, { description = "lauch file manager", group = "program" }),
 		-- gui file
 		awful.key({ modkey, "Shift" }, "e", function()
