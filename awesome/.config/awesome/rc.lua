@@ -486,7 +486,7 @@ globalkeys = gears.table.join(
 
 	-- browser
 	awful.key({ modkey, "Shift" }, "Return", function()
-		awful.util.spawn("brave")
+		awful.util.spawn("helium-browser")
 	end, { description = "browser", group = "program" }),
 	--pulsemixer
 	awful.key({ altkey, "Shift" }, "v", function()
@@ -667,7 +667,7 @@ root.keys(globalkeys)
 -- Rules to apply to new clients (through the "manage" signal).
 awful.rules.rules = {
 	{
-		rule = { class = "Brave-browser" },
+		rule = { class = "helium-browser" },
 		properties = {
 			screen = awful.screen.preferred,
 			tag = awful.screen.focused().selected_tag,
@@ -854,4 +854,4 @@ awful.spawn.with_shell("numlockx on")
 awful.spawn.once("lxqt-policykit-agent")
 awful.spawn.with_shell("/home/dhyey/.fehbg")
 awful.spawn.with_shell("kill cbatticon && cbatticon")
-awful.spawn.with_shell("brave --no-startup-window --password-store=basic")
+awful.spawn.with_shell("helium-browser --no-startup-window --password-store=basic")
