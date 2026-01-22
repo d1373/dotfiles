@@ -32,7 +32,7 @@ export MANPAGER="sh -c 'col -bx | nvim -R -c \"set ft=man\" -'"
 export EDITOR="nvim"
 export VISUAL="nvim"
 export BAT_THEME="ansi"
-export BROWSER="brave"
+export BROWSER="helium-browser"
 export GPG_TTY=$(tty)
 export PATH="$HOME/.local/bin:$PATH"
 export QT_QPA_PLATFORMTHEME=qt5ct
