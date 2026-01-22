@@ -86,7 +86,7 @@ function M.setup(opts)
 
 	volume_widget:buttons(gears.table.join(
 		awful.button({}, 1, function()
-			awful.spawn("pavucontrol")
+			awful.spawn("kitty wiremix -v output")
 		end),
 		volume_scroll_buttons
 	))

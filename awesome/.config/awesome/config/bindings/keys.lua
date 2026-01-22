@@ -137,7 +137,11 @@ function M.setup(opts)
 		end, { description = "browser", group = "program" }),
 		--pulsemixer
 		awful.key({ altkey, "Shift" }, "v", function()
-			awful.util.spawn("pavucontrol")
+			awful.util.spawn("kitty wiremix -v output")
+		end, { description = "volume", group = "program" }),
+		-- wifi
+		awful.key({ modkey, "Shift" }, "w", function()
+			awful.util.spawn("kitty nmtui-go")
 		end, { description = "volume", group = "program" }),
 		-- Show/hide wibox
 		awful.key({ modkey }, "b", function()
