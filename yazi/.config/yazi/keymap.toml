@@ -53,21 +53,21 @@ prepend_keymap = [
   # ------------
   # Dragon-drop
   # ------------
-  { on = [ "d", "s" ], run = '''
+  { on = [ "d", "s","s" ], run = '''
     shell --block '
-      (printf "%s\n" "$@" | dragon-drop --stdin --all --and-exit >/dev/null 2>&1 &)
+      (dragon-drop --and-exit -- "$@" >/dev/null 2>&1 &)
     ' -- "$@"
   ''', desc = "Dragon-drop (and-exit)" },
 
-  { on = [ "d", "d", "s" ], run = '''
+  { on = [ "d", "s", "t" ], run = '''
     shell --block '
-      (printf "%s\n" "$@" | dragon-drop --stdin --all >/dev/null 2>&1 &)
+      (dragon-drop --all -- "$@" >/dev/null 2>&1 &)
     ' -- "$@"
   ''', desc = "Dragon-drop (stay)" },
 
-  { on = [ "d", "d", "i" ], run = '''
+  { on = [ "d", "s", "i" ], run = '''
     shell --block '
-      (printf "%s\n" "$@" | dragon-drop --stdin --and-exit >/dev/null 2>&1 &)
+      (dragon-drop --and-exit -- "$@" >/dev/null 2>&1 &)
     ' -- "$@"
   ''', desc = "Dragon-drop (individual)" },
 
