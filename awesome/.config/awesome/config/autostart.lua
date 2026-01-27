@@ -3,7 +3,6 @@ local awful = require("awful")
 local M = {}
 
 function M.setup()
-	awful.spawn.with_shell("/home/dhyey/.config/awesome/awspawn")
 	awful.spawn.with_shell("picom")
 	awful.spawn.with_shell("xrandr -s 1920x1200")
 	awful.spawn.with_shell("greenclip daemon&")

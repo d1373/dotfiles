@@ -211,7 +211,9 @@ powerprofilesctl set "$next"
 	screen.connect_signal("property::geometry", set_wallpaper)
 
 	awful.screen.connect_for_each_screen(function(s)
-		awful.tag({ "", "", "", "", "", "󰭹", "", "", "󰓇" }, s, awful.layout.layouts[1])
+		awful.tag({ "", "", "", "", "" }, s, awful.layout.layouts[1])
+		awful.tag({ "󰭹" }, s, awful.layout.suit.max)
+		awful.tag({ "", "", "󰓇" }, s, awful.layout.layouts[1])
 
 		s.mypromptbox = awful.widget.prompt()
 		s.mylayoutbox = awful.widget.layoutbox(s)
