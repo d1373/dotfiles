@@ -160,7 +160,7 @@ if.app-id = 'com.brave.Browser'
 run = "move-node-to-workspace 1"
 [[on-window-detected]]
 if.app-id = 'com.google.Chrome'
-run = "move-node-to-workspace 4"
+run = "move-node-to-workspace 3"
 [[on-window-detected]]
 if.app-id = 'com.apple.FaceTime'
 run = "move-node-to-workspace 6"
