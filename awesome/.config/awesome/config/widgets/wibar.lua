@@ -86,7 +86,7 @@ function M.setup(opts)
 
 	volume_widget:buttons(gears.table.join(
 		awful.button({}, 1, function()
-			awful.spawn("kitty wiremix -v output")
+			awful.spawn("alacritty -e wiremix -v output")
 		end),
 		volume_scroll_buttons
 	))
@@ -135,7 +135,7 @@ powerprofilesctl set "$next"
 	local wifi_icon = make_icon_widget_color(wifi_glyph, bar_fg)
 	local wifi_widget = wibox.container.place(wifi_icon, "center", "center")
 	wifi_widget:buttons(gears.table.join(awful.button({}, 1, function()
-		awful.spawn("kitty nmtui-go")
+		awful.spawn("alacritty -e nmtui-go")
 	end)))
 
 	awful.widget.watch("nmcli -t -f DEVICE,TYPE,STATE dev", 5, function(widget, stdout)
@@ -211,10 +211,10 @@ powerprofilesctl set "$next"
 	screen.connect_signal("property::geometry", set_wallpaper)
 
 	awful.screen.connect_for_each_screen(function(s)
-		awful.tag({ "", "", "", "", "" }, s, awful.layout.layouts[1])
-		awful.tag({ "󰭹" }, s, awful.layout.suit.max)
-		awful.tag({ "", "", "󰓇" }, s, awful.layout.layouts[1])
-
+		local l = awful.layout.suit
+		local names = { "", "", "", "", "", "󰭹", "", "", "󰓇" }
+		local layouts = { l.tile, l.tile, l.tile, l.tile, l.tile, l.max, l.tile, l.tile, l.tile }
+		awful.tag(names, s, layouts)
 		s.mypromptbox = awful.widget.prompt()
 		s.mylayoutbox = awful.widget.layoutbox(s)
 		s.mylayoutbox:buttons(gears.table.join(
@@ -273,7 +273,7 @@ powerprofilesctl set "$next"
 			},
 		})
 
-		s.mywibox = awful.wibar({ position = "top", screen = s, bg = bar_bg, height = 30 })
+		s.mywibox = awful.wibar({ position = "top", screen = s, bg = bar_bg, height = 26 })
 
 		s.mywibox:setup({
 			layout = wibox.layout.align.horizontal,

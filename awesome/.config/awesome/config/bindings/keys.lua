@@ -98,7 +98,7 @@ function M.setup(opts)
 		end, { description = "sxiv wallpaper picker", group = "system" }),
 		-- gui file
 		awful.key({ modkey }, "e", function()
-			awful.util.spawn("kitty yazi")
+			awful.util.spawn("alacritty -e yazi")
 		end, { description = "lauch file manager", group = "program" }),
 		-- gui file
 		awful.key({ modkey, "Shift" }, "e", function()
@@ -133,15 +133,15 @@ function M.setup(opts)
 
 		-- browser
 		awful.key({ modkey, "Shift" }, "Return", function()
-			awful.util.spawn("helium-browser")
+			awful.util.spawn("helium-browser --profile-directory='Default'")
 		end, { description = "browser", group = "program" }),
 		--pulsemixer
 		awful.key({ altkey, "Shift" }, "v", function()
-			awful.util.spawn("kitty wiremix -v output")
+			awful.util.spawn("alacritty -e wiremix -v output")
 		end, { description = "volume", group = "program" }),
 		-- wifi
 		awful.key({ modkey, "Shift" }, "w", function()
-			awful.util.spawn("kitty nmtui-go")
+			awful.util.spawn("alacritty -e nmtui-go")
 		end, { description = "volume", group = "program" }),
 		-- Show/hide wibox
 		awful.key({ modkey }, "b", function()
@@ -156,7 +156,7 @@ function M.setup(opts)
 		-- chrome
 
 		awful.key({ modkey, "Shift" }, "b", function()
-			awful.util.spawn("google-chrome-stable")
+			awful.util.spawn("helium-browser --profile-directory='Profile 1'")
 		end, { description = "google chrome", group = "browser" }),
 		-- Standard program
 		awful.key({ modkey }, "Return", function()

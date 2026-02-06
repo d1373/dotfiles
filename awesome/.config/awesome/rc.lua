@@ -5,7 +5,6 @@ pcall(require, "luarocks.loader")
 local gears = require("gears")
 local awful = require("awful")
 require("awful.autofocus")
-require("collision")()
 
 require("config.error_handling").setup()
 

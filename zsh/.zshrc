@@ -42,6 +42,7 @@ eval "$(fnm env)"
 autoload -U promptinit; promptinit
 prompt pure
 export PATH="$HOME/.jenv/bin:$PATH"
+export PATH="$HOME/.config/emacs/bin:$PATH"
 eval "$(jenv init -)"
 eval "$(zoxide init zsh)"
 # set option

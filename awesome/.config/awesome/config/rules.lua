@@ -62,7 +62,6 @@ function M.setup(opts)
 					"MessageWin",
 					--"Sxiv",
 					"veracrypt",
-					"mpv",
 					"Tor Browser",
 					"Wpa_gui",
 					"veromix",

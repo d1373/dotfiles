@@ -5,3 +5,8 @@ deps = []
 use = "BennyOe/tokyo-night"
 rev = "8e6296f"
 hash = "d9da921c3bd37ba32ee27a8a7a40461f"
+
+[[flavor.deps]]
+use = "marcosvnmelo/kanagawa-dragon"
+rev = "4905527"
+hash = "35929fa6d7ecf291d3d39e58167e7770"

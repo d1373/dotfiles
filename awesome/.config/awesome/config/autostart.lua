@@ -13,9 +13,10 @@ function M.setup()
 	awful.spawn.with_shell("numlockx on")
 	awful.spawn.once("lxqt-policykit-agent")
 	awful.spawn.with_shell("/home/dhyey/.fehbg")
-	awful.spawn.with_shell("kill cbatticon && cbatticon")
 	awful.spawn.with_shell("helium-browser --no-startup-window --password-store=basic")
+	awful.spawn.with_shell("pkill localsend")
 	awful.spawn.with_shell("flatpak run org.localsend.localsend_app --hidden")
+	awful.spawn.with_shell("emacs --daemon")
 end
 
 return M
