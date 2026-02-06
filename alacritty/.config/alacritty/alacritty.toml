@@ -22,7 +22,7 @@ background = "#0c0c0c"
 foreground = "#cdcdcd"
 
 [colors.selection]
-background = "#333738"
+background = "#535758"
 text = "#cdcdcd"
 
 [colors.cursor]
@@ -40,7 +40,7 @@ cyan    = "#b4d4cf"  # color6
 white   = "#cdcdcd"  # color7
 
 [colors.bright]
-black   = "#1c1c24"  # color8
+black   = "#5c5c5c"  # color8
 red     = "#e07a92"  # color9
 green   = "#9ac27f"  # color10
 yellow  = "#f3be7c"  # color11
