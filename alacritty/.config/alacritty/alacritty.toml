@@ -1,0 +1,50 @@
+[window]
+option_as_alt = 'Both'
+decorations = "Buttonless"          # hide_window_decorations yes
+opacity = 0.95                # background_opacity 0.95
+startup_mode = "Windowed"
+padding = { x = 10, y = 10 }
+[font]
+normal = { family = "Hack Nerd Font", style = "Regular" }
+size = 13.0
+
+[cursor]
+style = { shape = "Block", blinking = "Off" }
+
+[selection]
+save_to_clipboard = true      # copy_on_select yes
+
+[colors]
+# Vague.nvim matched palette
+
+[colors.primary]
+background = "#141416"
+foreground = "#cdcdcd"
+
+[colors.selection]
+background = "#535758"
+text = "#cdcdcd"
+
+[colors.cursor]
+cursor = "#e8b589"
+text = "#141415"
+
+[colors.normal]
+black   = "#141415"  # color0
+red     = "#d8647e"  # color1
+green   = "#7fa563"  # color2
+yellow  = "#e8b589"  # color3
+blue    = "#6e94b2"  # color4
+magenta = "#c48282"  # color5
+cyan    = "#b4d4cf"  # color6
+white   = "#cdcdcd"  # color7
+
+[colors.bright]
+black   = "#5c5c5c"  # color8
+red     = "#e07a92"  # color9
+green   = "#9ac27f"  # color10
+yellow  = "#f3be7c"  # color11
+blue    = "#7e98e8"  # color12
+magenta = "#bb9dbd"  # color13
+cyan    = "#9bb4bc"  # color14
+white   = "#ffffff"  # color15
