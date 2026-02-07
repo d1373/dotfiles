@@ -161,3 +161,5 @@ unset __conda_setup
 export PATH="$PATH:/Users/dhyey/.lmstudio/bin"
 # End of LM Studio CLI section
 
+
+source /home/dhyey/.config/broot/launcher/bash/br

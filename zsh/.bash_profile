@@ -28,3 +28,5 @@ unset __conda_setup
 # Qt theming
 export QT_QPA_PLATFORMTHEME=qt5ct
 export QT_QPA_PLATFORMTHEME_QT6=qt6ct
+
+source /home/dhyey/.config/broot/launcher/bash/br
