@@ -1,6 +1,15 @@
-# [flavor]
-# use = "tokyo-night"
-# # For Yazi 0.4 and above
-# dark = "tokyo-night"
-[flavor]
-dark = "kanagawa-dragon"
+[icon]
+conds = [
+  { if = "dir", text = "", fg = "#6e94b2" }, # your blue
+]
+dirs = [
+    { name = "Downloads", text = "", fg = "#6e94b2" }, # your blue
+    { name = "Desktop", text = "", fg = "#6e94b2" }, # your blue
+    { name = "Documents", text = "󰧮", fg = "#6e94b2" }, # your blue
+    { name = "Dev", text = "", fg = "#6e94b2" }, # your blue
+    { name = "Music", text = "󱍚", fg = "#6e94b2" }, # your blue
+    { name = "Pictures", text = "", fg = "#6e94b2" }, # your blue
+    { name = "Videos", text = "", fg = "#6e94b2" }, # your blue
+    { name = ".config", text = "", fg = "#6e94b2" }, # your blue
+    { name = "Notes", text = "", fg = "#6e94b2" }, # your blue
+]

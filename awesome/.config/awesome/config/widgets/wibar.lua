@@ -212,7 +212,7 @@ powerprofilesctl set "$next"
 
 	awful.screen.connect_for_each_screen(function(s)
 		local l = awful.layout.suit
-		local names = { "", "", "", "", "", "󰭹", "", "", "󰓇" }
+		local names = { "", "", "", "", "", "󰭹", "", "", "󰓇" }
 		local layouts = { l.tile, l.tile, l.tile, l.tile, l.tile, l.max, l.tile, l.tile, l.tile }
 		awful.tag(names, s, layouts)
 		s.mypromptbox = awful.widget.prompt()
