@@ -78,6 +78,17 @@ function M.setup(opts)
 			--awful.spawn('amixer -D pulse set Master 1+ toggle')
 			awful.spawn("pulsemixer --toggle-mute")
 		end, { description = "toggle mute", group = "hotkeys" }),
+		awful.key({}, "XF86AudioMute", function()
+			awful.spawn("pulsemixer --toggle-mute")
+		end, { description = "toggle mute", group = "hotkeys" }),
+
+		awful.key({}, "XF86AudioLowerVolume", function()
+			awful.spawn("pulsemixer --change-volume -5")
+		end, { description = "volume down", group = "hotkeys" }),
+
+		awful.key({}, "XF86AudioRaiseVolume", function()
+			awful.spawn("pulsemixer --change-volume +5")
+		end, { description = "volume up", group = "hotkeys" }),
 		-- Emoji Picker
 		awful.key({ modkey }, ",", function()
 			awful.util.spawn_with_shell("rofi -show emoji -modi emoji")
