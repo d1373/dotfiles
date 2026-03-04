@@ -9,7 +9,7 @@ local M = {}
 function M.setup(opts)
 	local modkey = opts.modkey
 
-	local mytextclock = wibox.widget.textclock(" %d - %H:%M")
+	local mytextclock = wibox.widget.textclock("%a %d - %H:%M")
 
 	local bar_bg = beautiful.bar_bg or "#101013"
 	local bar_accent = beautiful.bar_accent or beautiful.fg_focus
@@ -242,11 +242,53 @@ powerprofilesctl set "$next"
 			},
 		})
 
+		-- put this near the top of your rc.lua (once), or above the tasklist
+		local terminal_classes = {
+			["alacritty"] = true,
+			["kitty"] = true,
+			["wezterm"] = true,
+			["ghostty"] = true,
+			["gnome-terminal"] = true,
+			["gnome-terminal-server"] = true,
+			["xterm"] = true,
+			["urxvt"] = true,
+			["rxvt"] = true,
+			["foot"] = true,
+			["konsole"] = true,
+			["terminator"] = true,
+			["st"] = true,
+			["tilix"] = true,
+		}
+
+		local function is_terminal(c)
+			local class = (c.class or ""):lower()
+			local inst = (c.instance or ""):lower()
+			return terminal_classes[class] or terminal_classes[inst]
+		end
+
+		-- best-effort: many terminals set the window title to the running program
+		local function terminal_program_from_title(c)
+			local title = c.name or ""
+
+			-- common separators: "nvim — file", "nvim - file", "nvim | file"
+			local prog = title:match("^(.-)%s+[%-—|]%s+.+$") or title
+
+			-- trim whitespace
+			prog = prog:gsub("^%s+", ""):gsub("%s+$", "")
+
+			-- fallback if empty
+			if prog == "" then
+				prog = "Terminal"
+			end
+			return prog
+		end
+
 		s.myfocus = awful.widget.tasklist({
 			screen = s,
 			filter = awful.widget.tasklist.filter.focused,
 			buttons = tasklist_buttons,
 			layout = { layout = wibox.layout.fixed.horizontal },
+
 			widget_template = {
 				{
 					{
@@ -254,7 +296,7 @@ powerprofilesctl set "$next"
 						widget = wibox.widget.imagebox,
 					},
 					{
-						id = "text_role",
+						id = "app_text",
 						widget = wibox.widget.textbox,
 					},
 					spacing = 8,
@@ -262,13 +304,29 @@ powerprofilesctl set "$next"
 				},
 				id = "background_role",
 				widget = wibox.container.background,
-				create_callback = function(self)
+
+				create_callback = function(self, c)
 					self.bg = beautiful.bg_focus
 					self.fg = bar_fg
+
+					local t = self:get_children_by_id("app_text")[1]
+					if is_terminal(c) then
+						t.text = terminal_program_from_title(c) -- 👈 program/title for terminal
+					else
+						t.text = c.class or "App" -- 👈 app name for everything else
+					end
 				end,
-				update_callback = function(self)
+
+				update_callback = function(self, c)
 					self.bg = beautiful.bg_focus
 					self.fg = bar_fg
+
+					local t = self:get_children_by_id("app_text")[1]
+					if is_terminal(c) then
+						t.text = terminal_program_from_title(c)
+					else
+						t.text = c.class or "App"
+					end
 				end,
 			},
 		})
