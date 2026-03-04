@@ -30,8 +30,4 @@ name = "neovim config"
 path = "~/.config/nvim/"
 startup_command = "nvim ."
 
-[[session]]
-name = "Notes"
-path = "~/Notes/"
-startup_command = "nvim ."
 
