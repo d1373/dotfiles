@@ -32,7 +32,7 @@ export MANPAGER="bat -p -l man"
 export EDITOR="nvim"
 export VISUAL="nvim"
 export BAT_THEME="ansi"
-export BROWSER="helium-browser"
+export BROWSER="brave"
 export GPG_TTY=$(tty)
 export PATH="$HOME/.local/bin:$PATH"
 export QT_QPA_PLATFORMTHEME=qt5ct
@@ -138,10 +138,14 @@ alias y="yazi"
 alias n='pnpm'
 alias mb="~/.script/brew-search.sh"
 alias mbr="~/.script/brew-remove.sh"
+alias doasedit="~/.script/doasedit"
+alias sudoedit="~/.script/doasedit"
+alias yay="yay --sudo doas --sudoflags -- --save"
 alias ss='yay -Ss'
-alias ins='yay -S'
-alias yrn="yay -Rns"
+alias ins='yay --sudo doas --sudoflags -- --save -S'
+alias yrn="yay --sudo doas --sudoflags -- --save -Rns"
 alias em='emacsclient -c -a "emacs"'
+alias sudo="doas"
 # End of Aliases
 
 source /home/dhyey/.config/broot/launcher/bash/br
