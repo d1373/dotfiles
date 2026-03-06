@@ -67,27 +67,24 @@ function M.setup(opts)
 
 		-- ALSA volume control
 		awful.key({ modkey }, "F3", function()
-			--awful.spawn('amixer -D pulse sset Master 5%+')
-			awful.spawn("pulsemixer --change-volume +5")
+			awful.spawn("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+")
 		end, { description = "volume up", group = "hotkeys" }),
 		awful.key({ modkey }, "F2", function()
-			--awful.spawn('amixer -D pulse sset Master 5%-')
-			awful.spawn("pulsemixer --change-volume -5")
+			awful.spawn("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-")
 		end, { description = "volume down", group = "hotkeys" }),
 		awful.key({ modkey }, "F1", function()
-			--awful.spawn('amixer -D pulse set Master 1+ toggle')
-			awful.spawn("pulsemixer --toggle-mute")
+			awful.spawn("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle")
 		end, { description = "toggle mute", group = "hotkeys" }),
 		awful.key({}, "XF86AudioMute", function()
-			awful.spawn("pulsemixer --toggle-mute")
+			awful.spawn("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle")
 		end, { description = "toggle mute", group = "hotkeys" }),
 
 		awful.key({}, "XF86AudioLowerVolume", function()
-			awful.spawn("pulsemixer --change-volume -5")
+			awful.spawn("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-")
 		end, { description = "volume down", group = "hotkeys" }),
 
 		awful.key({}, "XF86AudioRaiseVolume", function()
-			awful.spawn("pulsemixer --change-volume +5")
+			awful.spawn("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+")
 		end, { description = "volume up", group = "hotkeys" }),
 		-- Emoji Picker
 		awful.key({ modkey }, ",", function()
@@ -144,7 +141,7 @@ function M.setup(opts)
 
 		-- browser
 		awful.key({ modkey, "Shift" }, "Return", function()
-			awful.util.spawn("helium-browser --profile-directory='Default'")
+			awful.util.spawn("brave")
 		end, { description = "browser", group = "program" }),
 		--pulsemixer
 		awful.key({ altkey, "Shift" }, "v", function()

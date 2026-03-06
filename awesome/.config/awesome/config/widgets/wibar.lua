@@ -71,8 +71,8 @@ function M.setup(opts)
 	end
 
 	local function change_volume(delta)
-		local sign = delta > 0 and "+" or ""
-		awful.spawn("pulsemixer --change-volume " .. sign .. delta)
+		local suffix = delta > 0 and "+" or "-"
+		awful.spawn("wpctl set-volume @DEFAULT_AUDIO_SINK@ " .. math.abs(delta) .. "%" .. suffix)
 	end
 
 	local volume_scroll_buttons = gears.table.join(
@@ -101,9 +101,10 @@ function M.setup(opts)
 	volume_text:buttons(volume_scroll_buttons)
 	volume_bar:buttons(volume_scroll_buttons)
 
-	awful.widget.watch("pulsemixer --get-volume", 1, function(widget, stdout)
-		local level = tonumber(stdout:match("(%d+)"))
+	awful.widget.watch("wpctl get-volume @DEFAULT_AUDIO_SINK@", 1, function(widget, stdout)
+		local level = tonumber(stdout:match("Volume:%s+([%d%.]+)"))
 		if level then
+			level = math.floor(level * 100)
 			widget:set_markup("<span foreground='" .. bar_fg .. "'>" .. level .. "%</span>")
 			volume_level = level
 			volume_bar:emit_signal("widget::redraw_needed")
