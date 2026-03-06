@@ -1,7 +1,7 @@
 
 [window]
 decorations = "None"          # hide_window_decorations yes
-opacity = 0.95                # background_opacity 0.95
+opacity = 0.97
 startup_mode = "Windowed"
 padding = { x = 10, y = 10 }
 [font]
@@ -18,7 +18,7 @@ save_to_clipboard = true      # copy_on_select yes
 # Vague.nvim matched palette
 
 [colors.primary]
-background = "#0c0c0c"
+background = "#0a0a0a"
 foreground = "#cdcdcd"
 
 [colors.selection]
