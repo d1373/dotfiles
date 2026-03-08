@@ -47,7 +47,7 @@ prepend_keymap = [
   # Wallpaper (bg)
   # -------------
   { on = [ "b", "g" ], run = '''
-    shell --block '~/.script/sw.sh "$0"' -- "$0"
+    shell --block '~/.script/setwallpaper_wl.sh "$0"' -- "$0"
   ''', desc = "Set wallpaper" },
 
   # ------------

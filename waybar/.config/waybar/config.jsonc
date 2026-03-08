@@ -1,0 +1,107 @@
+{
+    "layer": "top",
+    "position": "top",
+    "height": 28,
+    "spacing": 0,
+    "modules-left": ["hyprland/workspaces", "hyprland/window"],
+    "modules-center": [],
+    "modules-right": [
+        "tray",
+        "custom/sep",
+        "battery",
+        "custom/power",
+        "network",
+        "pulseaudio#icon",
+        "pulseaudio#text",
+        "custom/sep2",
+        "clock"
+    ],
+
+    "hyprland/workspaces": {
+        "format": "{icon}",
+        "format-icons": {
+            "1": "",
+            "2": "",
+            "3": "",
+            "4": "",
+            "5": "",
+            "6": "󰭹",
+            "7": "",
+            "8": "",
+            "9": "󰓇"
+
+        },
+        "on-click": "activate",
+        "sort-by-number": true,
+        "persistent-workspaces": {
+            "1": [], "2": [], "3": [], "4": [], "5": [],
+            "6": [], "7": [], "8": [], "9": []
+        }
+    },
+
+    "hyprland/window": {
+        "format": "{class}",
+        "icon": true,
+        "icon-size": 16,
+        "max-length": 80,
+        "separate-outputs": true
+    },
+
+    "tray": {
+        "spacing": 8,
+        "icon-size": 18
+    },
+
+    "custom/sep": {
+        "format": " | ",
+        "tooltip": false
+    },
+
+    "custom/sep2": {
+        "format": " | ",
+        "tooltip": false
+    },
+
+    "battery": {
+        "format": "󰁹",
+        "format-charging": "󰂄",
+        "format-plugged": "󰚥",
+        "tooltip-format": "{capacity}% — {timeTo}",
+        "on-click": "sh -c 'mode=$(powerprofilesctl get 2>/dev/null); case $mode in performance) next=balanced;; balanced) next=power-saver;; power-saver) next=performance;; *) next=balanced;; esac; powerprofilesctl set $next'"
+    },
+
+    "custom/power": {
+        "format": "󰐥",
+        "tooltip": false,
+        "on-click": "/home/dhyey/.script/powermenu.sh"
+    },
+
+    "network": {
+        "format-wifi": "󰖩",
+        "format-disconnected": "󰖪",
+        "format-ethernet": "󰈀",
+        "tooltip-format-wifi": "{essid} ({signalStrength}%)",
+        "tooltip-format-disconnected": "Disconnected",
+        "on-click": "alacritty -e nmtui-go"
+    },
+
+    "pulseaudio#icon": {
+        "format": "󰕾",
+        "tooltip": false,
+        "on-click": "alacritty -e wiremix -v output",
+        "on-scroll-up": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+",
+        "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
+    },
+
+    "pulseaudio#text": {
+        "format": "{volume}%",
+        "tooltip": false,
+        "on-scroll-up": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+",
+        "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
+    },
+
+    "clock": {
+        "format": "{:%a %d - %H:%M}",
+        "tooltip": false
+    }
+}

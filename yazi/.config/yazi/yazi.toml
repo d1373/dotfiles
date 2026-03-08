@@ -7,3 +7,7 @@ linemode = "size"
 tab_size = 2
 max_width = 1200
 max_height = 1200
+
+[[plugin.prepend_previewers]]
+mime = "image/*"
+run = "noop"

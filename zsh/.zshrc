@@ -146,6 +146,7 @@ alias ins='yay --sudo doas --sudoflags -- --save -S'
 alias yrn="yay --sudo doas --sudoflags -- --save -Rns"
 alias em='emacsclient -c -a "emacs"'
 alias sudo="doas"
+alias sioyek="QT_QPA_PLATFORM=xcb sioyek"
 # End of Aliases
 
 source /home/dhyey/.config/broot/launcher/bash/br
