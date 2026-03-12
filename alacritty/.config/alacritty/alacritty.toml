@@ -1,7 +1,7 @@
 [window]
 option_as_alt = 'Both'
 decorations = "Buttonless"          # hide_window_decorations yes
-opacity = 0.95                # background_opacity 0.95
+opacity = 1                # background_opacity 0.95
 startup_mode = "Windowed"
 padding = { x = 10, y = 10 }
 [font]
