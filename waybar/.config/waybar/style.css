@@ -1,48 +1,48 @@
 * {
-    font-family: "NotoSans Nerd Font";
-    font-size: 14px;
-    border: none;
-    border-radius: 0;
-    padding: 0;
-    margin: 0;
-    min-height: 0;
+  font-family: "NotoSans Nerd Font";
+  font-size: 14px;
+  border: none;
+  border-radius: 0;
+  padding: 0;
+  margin: 0;
+  min-height: 0;
 }
 
 window#waybar {
-    background-color: #121212;
-    color: #ffffff;
+  background-color: #121212;
+  color: #ffffff;
 }
 
 #workspaces {
-    background: transparent;
-    padding: 0 4px;
+  background: transparent;
+  padding: 0 4px;
 }
 
 #workspaces button {
-    background: transparent;
-    color: #ffffff;
-    padding: 0 8px;
-    min-width: 0;
-    border-top: 2px solid transparent;
+  background: transparent;
+  color: #ffffff;
+  padding: 0 8px;
+  min-width: 0;
+  border-top: 2px solid transparent;
 }
 
 #workspaces button.active,
 #workspaces button.focused {
-    color: #6e94b2;
-    border-top: 2px solid #6e94b2;
+  color: #6e94b2;
+  border-top: 2px solid #6e94b2;
 }
 
 #workspaces button:not(.active):not(.empty):not(.urgent) {
-    border-top: 2px solid #4a4a4a;
+  border-top: 2px solid #4a4a4a;
 }
 
 #workspaces button.urgent {
-    color: #e05f5f;
+  color: #e05f5f;
 }
 
 #window {
-    color: #ffffff;
-    padding: 0 12px;
+  color: #ffffff;
+  padding: 0 12px;
 }
 
 #tray,
@@ -54,42 +54,79 @@ window#waybar {
 #pulseaudio.icon,
 #pulseaudio.text,
 #clock {
-    color: #ffffff;
-    padding: 0 5px;
+  color: #ffffff;
+  padding: 0 5px;
 }
 
-#battery,
+#battery {
+  color: #f3be7b;
+}
 #pulseaudio.icon {
-    color: #6e94b2;
+  color: #6e94b2;
 }
 
 #network.wifi {
-    color: #7fa563;
+  color: #7fa563;
 }
 
 #network.disconnected {
-    color: #ffffff;
+  color: #ffffff;
 }
 
 #custom-power {
-    color: #e05f5f;
+  color: #e05f5f;
+}
+
+#custom-camera,
+#custom-mic {
+  padding: 0 5px;
+}
+
+#custom-camera.inactive,
+#custom-mic.inactive {
+  min-width: 0;
+  padding: 0;
+  font-size: 0;
+}
+
+#custom-camera.active {
+  color: #e05f5f;
+}
+
+#custom-mic.active {
+  color: #7fa563;
 }
 
 #custom-sep,
 #custom-sep2 {
-    color: #ffffff;
-    padding: 0 2px;
+  color: #ffffff;
+  padding: 0 2px;
 }
 
 #tray {
-    padding: 0 4px;
+  padding: 0 4px;
 }
 
 #tray > .passive {
-    -gtk-icon-effect: dim;
+  -gtk-icon-effect: dim;
 }
 
 #tray > .needs-attention {
-    -gtk-icon-effect: highlight;
-    background-color: #e05f5f;
+  -gtk-icon-effect: highlight;
+  background-color: #e05f5f;
+}
+tooltip {
+  background-color: #121212;
+  border: none;
+  padding: 10px;
+  margin: 10px;
+  font-size: 16px;
+}
+
+tooltip label {
+  background-color: #121212;
+  color: #ffffff;
+  padding: 10px;
+  margin: 10px;
+  font-size: 16px;
 }

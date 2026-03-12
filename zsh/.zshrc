@@ -35,6 +35,7 @@ export BAT_THEME="ansi"
 export BROWSER="brave"
 export GPG_TTY=$(tty)
 export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/.local/script:$PATH"
 export QT_QPA_PLATFORMTHEME=qt5ct
 export QT_QPA_PLATFORMTHEME_QT6=qt6ct
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
@@ -43,6 +44,7 @@ autoload -U promptinit; promptinit
 prompt pure
 export PATH="$HOME/.jenv/bin:$PATH"
 export PATH="$HOME/.config/emacs/bin:$PATH"
+export LIBVA_DRIVER_NAME=iHD
 eval "$(jenv init -)"
 eval "$(zoxide init zsh)"
 # set option
@@ -130,16 +132,14 @@ alias m='file --mime-type'
 alias o='xdg-open'
 alias tks='tmux kill-server'
 alias lg='lazygit'
-alias ta='~/.script/sss.sh'
+alias ta='~/.local/script/sss.sh'
 alias e='pcmanfm-qt .'
-alias sw='~/.script/sw.sh'
-alias tuc="~/.local/script/Tu-clausthal.sh"
-alias y="yazi"
+alias sw='~/.local/script/sw.sh'
 alias n='pnpm'
-alias mb="~/.script/brew-search.sh"
-alias mbr="~/.script/brew-remove.sh"
-alias doasedit="~/.script/doasedit"
-alias sudoedit="~/.script/doasedit"
+alias mb="~/.local/script/brew-search.sh"
+alias mbr="~/.local/script/brew-remove.sh"
+alias doasedit="~/.local/script/doasedit"
+alias sudoedit="~/.local/script/doasedit"
 alias yay="yay --sudo doas --sudoflags -- --save"
 alias ss='yay -Ss'
 alias ins='yay --sudo doas --sudoflags -- --save -S'
@@ -148,5 +148,16 @@ alias em='emacsclient -c -a "emacs"'
 alias sudo="doas"
 alias sioyek="QT_QPA_PLATFORM=xcb sioyek"
 # End of Aliases
-
+#===============================================================================
+# History
+#===============================================================================
+HISTFILE="$HOME/.zsh_history"
+HISTSIZE=50000
+SAVEHIST=50000
+setopt HIST_IGNORE_ALL_DUPS   # No duplicate entries
+setopt HIST_IGNORE_SPACE      # Ignore commands starting with space
+setopt SHARE_HISTORY          # Share history across all open terminals
+setopt INC_APPEND_HISTORY     # Write to history file immediately, not on exit
+# End of History
 source /home/dhyey/.config/broot/launcher/bash/br
+[ -f /opt/miniconda3/etc/profile.d/conda.sh ] && source /opt/miniconda3/etc/profile.d/conda.sh
