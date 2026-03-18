@@ -20,7 +20,7 @@ window#waybar {
 
 #workspaces button {
   background: transparent;
-  color: #ffffff;
+  color: #aaaaaa;
   padding: 0 8px;
   min-width: 0;
   border-top: 2px solid transparent;
@@ -34,6 +34,7 @@ window#waybar {
 
 #workspaces button:not(.active):not(.empty):not(.urgent) {
   border-top: 2px solid #4a4a4a;
+  color: #ffffff;
 }
 
 #workspaces button.urgent {
